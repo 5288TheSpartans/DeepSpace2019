@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.ArcadeDriveCommand;
 
 /**
  * Add your docs here.
@@ -31,13 +32,13 @@ public class DrivetrainSubsystem extends Subsystem {
   private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 
 
-  private VictorSP leftDriveMotor1 = new VictorSP(0);
-  private VictorSP leftDriveMotor2 = new VictorSP(0);
-  private VictorSP leftDriveMotor3 = new VictorSP(0);
+  private VictorSP leftDriveMotor1 = new VictorSP(RobotMap.leftDriveMotor1);
+  private VictorSP leftDriveMotor2 = new VictorSP(RobotMap.leftDriveMotor2);
+  private VictorSP leftDriveMotor3 = new VictorSP(RobotMap.leftDriveMotor3);
 
-  private VictorSP rightDriveMotor1 = new VictorSP(0);
-  private VictorSP rightDriveMotor2 = new VictorSP(0);
-  private VictorSP rightDriveMotor3 = new VictorSP(0);
+  private VictorSP rightDriveMotor1 = new VictorSP(RobotMap.rightDriveMotor1);
+  private VictorSP rightDriveMotor2 = new VictorSP(RobotMap.rightDriveMotor2);
+  private VictorSP rightDriveMotor3 = new VictorSP(RobotMap.rightDriveMotor3);
 
 
 
@@ -63,6 +64,7 @@ public class DrivetrainSubsystem extends Subsystem {
 
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new ArcadeDriveCommand());
   }
   // Set power to the LEFT side of the drivetrain.
   public void setLeftPower(double power) {
@@ -72,6 +74,8 @@ public class DrivetrainSubsystem extends Subsystem {
   // Set power to the RIGHT side of the drivetrain.
   public void setRightPower(double power) {
     rightPower = power;
+  }
+
   }
 
   public void updateOutputs() {

@@ -24,11 +24,11 @@ public class RobotMap {
     // PWM - Pulse Width Modulation Ports
     public static final int leftDriveMotor1 = 0;
     public static final int leftDriveMotor2 = 1;
-    public static final int leftDriveMotor3 = 2;
+    public static final int leftDriveMotor3 = 9;
 
-    public static final int rightDriveMotor1 = 3;
-    public static final int rightDriveMotor2 = 4;
-    public static final int rightDriveMotor3 = 5;
+    public static final int rightDriveMotor1 = 2;
+    public static final int rightDriveMotor2 = 3;
+    public static final int rightDriveMotor3 = 8;
 
   // D I/O - Digital Input/Output Ports
     public static final int leftDriveEncoder1 = 0;
