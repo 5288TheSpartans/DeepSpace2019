@@ -25,9 +25,8 @@ public class OI {
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
 
-  private XboxController xbox = new XboxController(0);
   
-
+  private Joystick gamePadLeftStick = new Joystick(0);
 
 
   // There are a few additional built in buttons you can use. Additionally,
@@ -51,9 +50,9 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   public double getXboxLeftTriggerY() {
-    return xbox.getY(Hand.kLeft);
+   return gamePadLeftStick.getRawAxis(1);  
   }
   public double getXboxRightTriggerX() {
-    return xbox.getX(Hand.kRight);
+   return gamePadLeftStick.getRawAxis(4);
   }
 }
