@@ -9,12 +9,14 @@ package frc.robot;
 
 import java.sql.DriverPropertyInfo;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.subsystems.CompressorSubsystem;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 
@@ -29,6 +31,7 @@ public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static DrivetrainSubsystem drivetrain;
   public static OI m_oi;
+  public static CompressorSubsystem compressor;
  
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -41,6 +44,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
     drivetrain = new DrivetrainSubsystem();
+    compressor = new CompressorSubsystem();
 
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());

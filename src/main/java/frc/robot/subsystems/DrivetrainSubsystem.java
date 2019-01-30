@@ -76,13 +76,13 @@ public class DrivetrainSubsystem extends Subsystem {
     rightPower = power;
   }
 
-  }
+  
 
   public void updateOutputs() {
 
-    leftDriveMotor1.set(leftPower);
-    leftDriveMotor2.set(leftPower);
-    leftDriveMotor3.set(leftPower);
+    leftDriveMotor1.set(-leftPower);
+    leftDriveMotor2.set(-leftPower);
+    leftDriveMotor3.set(-leftPower);
 
     rightDriveMotor1.set(rightPower);
     rightDriveMotor2.set(rightPower);
