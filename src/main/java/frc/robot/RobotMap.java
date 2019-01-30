@@ -18,6 +18,30 @@ public class RobotMap {
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
+ 
+  // PWM 
+    // DRIVETRAIN 
+    // PWM - Pulse Width Modulation Ports
+    public static final int leftDriveMotor1 = 0;
+    public static final int leftDriveMotor2 = 1;
+    public static final int leftDriveMotor3 = 2;
+
+    public static final int rightDriveMotor1 = 3;
+    public static final int rightDriveMotor2 = 4;
+    public static final int rightDriveMotor3 = 5;
+
+  // D I/O - Digital Input/Output Ports
+    public static final int leftDriveEncoder1 = 0;
+    public static final int leftDriveEncoder2 = 1;
+    public static final int rightDriveEncoder1 = 2;
+    public static final int rightDriveEncoder2 = 3;
+
+  // DEADZONES
+    public static final double joystickDeadzone = 0.1;
+
+
+  
+
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

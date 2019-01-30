@@ -7,6 +7,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -19,6 +24,11 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
+
+  private XboxController xbox = new XboxController(0);
+  
+
+
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
@@ -39,4 +49,11 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+
+  public double getXboxLeftTriggerY() {
+    return xbox.getY(Hand.kLeft);
+  }
+  public double getXboxRightTriggerX() {
+    return xbox.getX(Hand.kRight);
+  }
 }
