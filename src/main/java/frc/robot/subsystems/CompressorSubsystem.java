@@ -20,6 +20,7 @@ public class CompressorSubsystem extends Subsystem {
   public CompressorSubsystem() {
     Compressor mainCompressor = new Compressor();
     mainCompressor.start();
+    mainCompressor.close();
   }
 
 
