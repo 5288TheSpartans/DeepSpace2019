@@ -27,6 +27,7 @@ public class ArmSubsystem extends Subsystem {
   private CANEncoder armEncoder1 = armMotor1.getEncoder();
   private CANEncoder armEncoder2 = armMotor2.getEncoder();
   private CANEncoder armEncoder3 = armMotor3.getEncoder();
+  
 
 
   @Override

@@ -7,9 +7,12 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
@@ -29,7 +32,10 @@ public class Robot extends TimedRobot {
   public static DrivetrainSubsystem drivetrain;
   public static OI m_oi;
   public static CompressorSubsystem compressor;
- 
+  public static NetworkTableInstance inst;
+  public static NetworkTable table;
+  public static NetworkTableEntry distEntry;
+  double distance;
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -39,6 +45,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+     inst = NetworkTableInstance.getDefault();
+ 
+    table = inst.getTable("visionData1");
+    distEntry = table.getEntry("distance");
+		distance = distEntry.getNumber(-1).doubleValue();
+  
+    
     m_oi = new OI();
     drivetrain = new DrivetrainSubsystem();
     compressor = new CompressorSubsystem();
@@ -59,6 +72,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    System.out.println(inst.isConnected());
+    System.out.println(distEntry.getNumber(-1).doubleValue());
   }
 
   /**

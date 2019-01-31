@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -22,7 +24,7 @@ public class OI {
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
 
-  
+  private XboxController xbox = new XboxController(1);
   private Joystick gamePadLeftStick = new Joystick(0);
 
 
@@ -47,9 +49,11 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   public double getXboxLeftTriggerY() {
-   return gamePadLeftStick.getRawAxis(1);  
+   return xbox.getY(Hand.kLeft);
+   //return gamePadLeftStick.getRawAxis(1);  
   }
   public double getXboxRightTriggerX() {
-   return gamePadLeftStick.getRawAxis(4);
+   return xbox.getX(Hand.kRight);
+  //  return gamePadLeftStick.getRawAxis(4);
   }
 }
