@@ -34,9 +34,13 @@ public class ArmSubsystem extends Subsystem {
     // Set the default command for a subsystem here.
     
   }
-  public double getAverageDistance() {
+  public double getDistanceTicks() {
     
     return (armEncoder1.getPosition() + armEncoder2.getPosition() + armEncoder3.getPosition())/3;
+  }
+  // get the current angle of the arm.
+  public double getRotationAngle() {
+    return (getDistanceTicks()/360)%360;
   }
 
 
