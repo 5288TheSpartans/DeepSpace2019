@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
   public static CompressorSubsystem compressor;
   public static NetworkTableInstance inst;
   public static NetworkTable table;
-  public static NetworkTableEntry distEntry;
+  public static NetworkTableEntry angleToTurn, distEntry;
   double distance;
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -45,6 +45,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    
      inst = NetworkTableInstance.getDefault();
  
     table = inst.getTable("visionData1");
