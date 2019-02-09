@@ -8,8 +8,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.accessories.XboxController;
+import frc.robot.commands.LowerArmCommandHigh;
+import frc.robot.commands.LowerArmCommandLow;
+import frc.robot.commands.RaiseArmCommandHigh;
+import frc.robot.commands.RaiseArmCommandLow;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -23,9 +28,18 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
+  private XboxController primaryController = new XboxController(0);
+  private Joystick secondaryController = new Joystick(1);
+  public OI() {
 
-  private XboxController xbox = new XboxController(1);
-  private Joystick gamePadLeftStick = new Joystick(0);
+      primaryController.leftBumper.whileHeld(new RaiseArmCommandLow());
+      primaryController.selectButton.whileHeld(new RaiseArmCommandHigh());
+
+      primaryController.rightBumper.whileHeld(new LowerArmCommandLow());
+      primaryController.rightBumper.whileHeld(new LowerArmCommandHigh());
+  
+  }
+
 
 
   // There are a few additional built in buttons you can use. Additionally,
@@ -47,13 +61,18 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+  
+  
 
   public double getXboxLeftTriggerY() {
-   return xbox.getY(Hand.kLeft);
-   //return gamePadLeftStick.getRawAxis(1);  
+   //return xbox.getY(Hand.kLeft);
+   //return primaryController.getRawAxis(1);  
+   return primaryController.getLeftStickY();
+
   }
   public double getXboxRightTriggerX() {
-   return xbox.getX(Hand.kRight);
-  //  return gamePadLeftStick.getRawAxis(4);
+  // return xbox.getX(Hand.kRight);
+  //  return primaryController.getRawAxis(4);
+  return primaryController.getRightStickX();
   }
 }

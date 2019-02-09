@@ -27,7 +27,16 @@ public class ArmSubsystem extends Subsystem {
   private CANEncoder armEncoder1 = armMotor1.getEncoder();
   private CANEncoder armEncoder2 = armMotor2.getEncoder();
   private CANEncoder armEncoder3 = armMotor3.getEncoder();
-  
+
+  // The arm's limit angles (in degrees)
+  private final double armBottomLimit = -5;
+  private final double armTopLimit = 110;
+
+  private double currentArmPower = 0;
+
+  private boolean isOverride = false;
+
+
 
 
   @Override
@@ -43,6 +52,46 @@ public class ArmSubsystem extends Subsystem {
   public double getRotationAngle() {
     return (getDistanceTicks()/360)%360;
   }
+  
+  
+  public boolean isArmAtBottom() {
+    if(getRotationAngle() <= armBottomLimit) return true;
+    else return false;
+
+  }
+
+  public boolean isArmAtTop() {
+    if(getRotationAngle() >= armTopLimit) return true;
+    else return false;
+  }
+
+  public void setArmPower(double power) {
+    // if the arm is at the top and you're trying to push it further, do nothing
+    // if the arm is at the bottom and you're trying to push it further, do nothing
+    if((isArmAtTop() & power > 0) || (isArmAtBottom() & power < 0))
+       System.out.println("At limits. Do nothing.");
+    else {
+      currentArmPower = power;
+    }
+
+    System.out.println("isArmAtBottom: " + isArmAtBottom());
+    System.out.println("IsArmAtTop: " + isArmAtTop());
+    System.out.println("Power to set: " + power);
+  }
+
+  public void setArmPowerOverride( double power) {
+    if(isOverride) currentArmPower = power;
+  }
+
+  public void updateOutputs() {
+    armMotor1.set(currentArmPower);
+    armMotor2.set(currentArmPower);
+    armMotor3.set(currentArmPower);
+
+  }
+
+  
+
 
 
 }

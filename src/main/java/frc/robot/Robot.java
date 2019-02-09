@@ -16,6 +16,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.CompressorSubsystem;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -32,6 +33,7 @@ public class Robot extends TimedRobot {
   public static DrivetrainSubsystem drivetrain;
   public static OI m_oi;
   public static CompressorSubsystem compressor;
+  public static ArmSubsystem arm;
   public static NetworkTableInstance inst;
   public static NetworkTable table;
   public static NetworkTableEntry angleToTurn, distEntry;
@@ -46,17 +48,18 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     
-     inst = NetworkTableInstance.getDefault();
- 
+    m_oi = new OI();
+    drivetrain = new DrivetrainSubsystem();
+    arm = new ArmSubsystem();
+    compressor = new CompressorSubsystem();
+
+
+
+    inst = NetworkTableInstance.getDefault();
     table = inst.getTable("visionData1");
     distEntry = table.getEntry("distance");
 		distance = distEntry.getNumber(-1).doubleValue();
   
-    
-    m_oi = new OI();
-    drivetrain = new DrivetrainSubsystem();
-    compressor = new CompressorSubsystem();
-
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
@@ -73,6 +76,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    drivetrain.updateOutputs();
+    arm.updateOutputs();
     System.out.println(inst.isConnected());
     System.out.println(distEntry.getNumber(-1).doubleValue());
   }
@@ -144,7 +149,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    drivetrain.updateOutputs();
+    
   }
 
   /**
