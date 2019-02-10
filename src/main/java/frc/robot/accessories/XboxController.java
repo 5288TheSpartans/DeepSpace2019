@@ -1,14 +1,13 @@
 package frc.robot.accessories;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class XboxController extends Joystick {
 
 	public XboxController(int port) {
 		super(port);
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public JoystickButton xButton = new JoystickButton(this, 3);

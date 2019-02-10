@@ -7,14 +7,12 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.accessories.XboxController;
 import frc.robot.commands.LowerArmCommandHigh;
 import frc.robot.commands.LowerArmCommandLow;
 import frc.robot.commands.RaiseArmCommandHigh;
 import frc.robot.commands.RaiseArmCommandLow;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -29,7 +27,7 @@ public class OI {
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
   private XboxController primaryController = new XboxController(0);
-  private Joystick secondaryController = new Joystick(1);
+  //private Joystick secondaryController = new Joystick(1);
   public OI() {
 
       primaryController.leftBumper.whileHeld(new RaiseArmCommandLow());
