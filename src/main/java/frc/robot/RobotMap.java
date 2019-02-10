@@ -19,38 +19,43 @@ public class RobotMap {
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
 
-  // PWM 
-    // DRIVETRAIN 
-    // PWM - Pulse Width Modulation Ports
-    public static final int leftDriveMotor1 = 9;
-    public static final int leftDriveMotor2 = 8;
-    public static final int leftDriveMotor3 = 0;
+  // PWM
+  // DRIVETRAIN
+  // PWM - Pulse Width Modulation Ports
+  public static final int leftDriveMotor1 = 9;
+  public static final int leftDriveMotor2 = 8;
+  public static final int leftDriveMotor3 = 0;
 
-    public static final int rightDriveMotor1 = 7;
-    public static final int rightDriveMotor2 = 6;
-    public static final int rightDriveMotor3 = 1;
+  public static final int rightDriveMotor1 = 7;
+  public static final int rightDriveMotor2 = 6;
+  public static final int rightDriveMotor3 = 1;
 
   // D I/O - Digital Input/Output Ports
-    public static final int leftDriveEncoder1 = 0;
-    public static final int leftDriveEncoder2 = 1;
-    public static final int rightDriveEncoder1 = 2;
-    public static final int rightDriveEncoder2 = 3;
+  public static final int leftDriveEncoder1 = 0;
+  public static final int leftDriveEncoder2 = 1;
+  public static final int rightDriveEncoder1 = 2;
+  public static final int rightDriveEncoder2 = 3;
 
   // DEADZONES
-    public static final double joystickDeadzone = 0.1;
-  
+  public static final double joystickDeadzone = 0.1;
+
   // CAN
-    // ARM
-    public static final int armBaseMotor1 = 2;
-    public static final int armBaseMotor2 = 3;
-    public static final int armBaseMotor3 = 4;
+  // ARM
+  public static final int armBaseMotor1 = 2;
+  public static final int armBaseMotor2 = 3;
+  public static final int armBaseMotor3 = 4;
 
-    public static final int armEncoder1 = 0;
-    public static final int armEncoder2 = 0;
-    public static final int armEncoder3 = 0;
+  public static final int armEncoder1 = 0;
+  public static final int armEncoder2 = 0;
+  public static final int armEncoder3 = 0;
 
-  
+  // PID CONSTANTS
 
+  // DRIVE STRAIGHT
+  public static final double DriveStraightP = 0.002;
+  public static final double DriveStraightI = 0;
+  public static final double DriveStraightD = 0.002;
+  public static final double DriveStraightFF = 0;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
