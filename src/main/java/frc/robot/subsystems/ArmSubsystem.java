@@ -40,7 +40,7 @@ public class ArmSubsystem extends Subsystem {
 
 
   @Override
-  public void initDefaultCommand() {
+  public void initDefaultCommand() {   
     // Set the default command for a subsystem here.
     
   }

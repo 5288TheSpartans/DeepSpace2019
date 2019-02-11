@@ -7,8 +7,11 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -25,11 +28,12 @@ public class DrivetrainSubsystem extends Subsystem {
   private double leftPower, rightPower;
   private double numberOfTicks = 4096;
 
-  private Encoder leftEncoder = new Encoder(RobotMap.leftDriveEncoder1,RobotMap.leftDriveEncoder2,false, EncodingType.k4X);
-  private Encoder rightEncoder = new Encoder(RobotMap.rightDriveEncoder1,RobotMap.rightDriveEncoder2,true, EncodingType.k4X);
+  private Encoder leftEncoder = new Encoder(RobotMap.leftDriveEncoder1, RobotMap.leftDriveEncoder2, false,
+      EncodingType.k4X);
+  private Encoder rightEncoder = new Encoder(RobotMap.rightDriveEncoder1, RobotMap.rightDriveEncoder2, true,
+      EncodingType.k4X);
 
   private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-
 
   private VictorSP leftDriveMotor1 = new VictorSP(RobotMap.leftDriveMotor1);
   private VictorSP leftDriveMotor2 = new VictorSP(RobotMap.leftDriveMotor2);
@@ -39,22 +43,18 @@ public class DrivetrainSubsystem extends Subsystem {
   private VictorSP rightDriveMotor2 = new VictorSP(RobotMap.rightDriveMotor2);
   private VictorSP rightDriveMotor3 = new VictorSP(RobotMap.rightDriveMotor3);
 
-
-
   public DrivetrainSubsystem() {
-    leftEncoder.setDistancePerPulse((6*Math.PI) /numberOfTicks);
-    rightEncoder.setDistancePerPulse((6*Math.PI) /numberOfTicks);
+    leftEncoder.setDistancePerPulse((6 * Math.PI) / numberOfTicks);
+    rightEncoder.setDistancePerPulse((6 * Math.PI) / numberOfTicks);
 
     leftEncoder.setMaxPeriod(5);
-		rightEncoder.setMaxPeriod(5);
-		leftEncoder.setMinRate(0);
-		rightEncoder.setMinRate(0);
-		leftEncoder.setSamplesToAverage(1);
-		rightEncoder.setSamplesToAverage(1);
+    rightEncoder.setMaxPeriod(5);
+    leftEncoder.setMinRate(0);
+    rightEncoder.setMinRate(0);
+    leftEncoder.setSamplesToAverage(1);
+    rightEncoder.setSamplesToAverage(1);
 
-		gyro.calibrate();
-
-
+    gyro.calibrate();
 
   }
 
@@ -65,17 +65,17 @@ public class DrivetrainSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
     setDefaultCommand(new ArcadeDriveCommand());
   }
+
   // Set power to the LEFT side of the drivetrain.
   public void setLeftPower(double power) {
     leftPower = power;
 
   }
+
   // Set power to the RIGHT side of the drivetrain.
   public void setRightPower(double power) {
     rightPower = power;
   }
-
-  
 
   public void updateOutputs() {
 
@@ -87,24 +87,26 @@ public class DrivetrainSubsystem extends Subsystem {
     rightDriveMotor2.set(rightPower);
     rightDriveMotor3.set(rightPower);
   }
+
   public double getLeftDistanceInches() {
     return leftEncoder.getDistance();
   }
+
   public double getRightDistanceInches() {
     return rightEncoder.getDistance();
   }
 
   public double getGyroAngle() {
-		return gyro.getAngle();
-	}
+    return gyro.getAngle();
+  }
 
-	public void resetGyro() {
-		gyro.reset();
-	}
+  public void resetGyro() {
+    gyro.reset();
+  }
 
-	public void resetEncoders() {
-		leftEncoder.reset();
-		rightEncoder.reset();
-	}
+  public void resetEncoders() {
+    leftEncoder.reset();
+    rightEncoder.reset();
+  }
 
 }
