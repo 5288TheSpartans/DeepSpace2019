@@ -20,6 +20,8 @@ import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.CompressorSubsystem;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.WristSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,8 +36,10 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
   public static CompressorSubsystem compressor;
   public static ArmSubsystem arm;
+  public static WristSubsystem wrist;
   public static NetworkTableInstance inst;
   public static NetworkTable table;
+  public static IntakeSubsystem intake;
   public static NetworkTableEntry angleToTurn, distEntry;
   double distance;
   Command m_autonomousCommand;
@@ -52,6 +56,8 @@ public class Robot extends TimedRobot {
     drivetrain = new DrivetrainSubsystem();
     arm = new ArmSubsystem();
     compressor = new CompressorSubsystem();
+    wrist = new WristSubsystem();
+    intake = new IntakeSubsystem();
 
 
 

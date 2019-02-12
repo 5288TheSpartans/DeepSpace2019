@@ -30,8 +30,13 @@ public class RobotMap {
   public static final int rightDriveMotor2 = 6;
   public static final int rightDriveMotor3 = 1;
 
-  // IMPORTANT!! Change port.
+  // IMPORTANT!! CHANGE THE Port.
+  // also wrist motor
   public static final int wristMotor = 0;
+  // intake motor 
+  // IMPORTANT, CHANGE THE PORT
+  public static final int intakeLeft = 1;
+  public static final int intakeRight = 0;
 
   // D I/O - Digital Input/Output Ports
   public static final int leftDriveEncoder1 = 0;
@@ -74,6 +79,9 @@ public class RobotMap {
   public static final double TurnI = 0.2;
   public static final double TurnD = 0.03;
   public static final double TurnFF = 0.2;
+
+  
+  
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

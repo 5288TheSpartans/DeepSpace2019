@@ -7,8 +7,14 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPXPIDSetConfigUtil;
+
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
+
+
 
 /**
  * Add your docs here.
@@ -24,4 +30,20 @@ public class IntakeSubsystem extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+
+  private VictorSP intakeLeft = new VictorSP(RobotMap.intakeLeft);
+  private VictorSP intakeRight = new VictorSP(RobotMap.intakeRight);
+
+  public void setIntakePower(double power) {
+    intakeLeft.set(power);
+    intakeRight.set(-power);
+    
+  }
+  
+
+
+
+{
+
+}
 }

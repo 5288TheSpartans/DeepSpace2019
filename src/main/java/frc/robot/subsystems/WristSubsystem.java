@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -21,6 +22,7 @@ public class WristSubsystem extends Subsystem {
   private int encoderUnit = 4096;
   private double lowerAngleLimit = -10;
   private double topAngleLimit = 90;
+  private double wristPower = 0;
 
   @Override
   public void initDefaultCommand() {
@@ -50,15 +52,15 @@ public class WristSubsystem extends Subsystem {
     if(getRotationAngle() <= lowerAngleLimit) return true;
     return false;
   }
-
+  
   public void setWristPower(double power) {
 
-  //  if(getRotationAngle() == topAngleLimit ) 
-   
-
-
+    if(getRotationAngle() >= topAngleLimit || getRotationAngle() <= lowerAngleLimit ) wristPower = 0;
+    else wristPower = power;
   }
-
+  public void updateOutput(){
+    wristMotor.set(ControlMode.PercentOutput,wristPower);
+  }
   public void resetEncoders() {
     //reset
   }

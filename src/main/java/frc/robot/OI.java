@@ -9,10 +9,12 @@ package frc.robot;
 
 //import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.accessories.XboxController;
+import frc.robot.commands.IntakeBallCommand;
 import frc.robot.commands.LowerArmCommandHigh;
 import frc.robot.commands.LowerArmCommandLow;
 import frc.robot.commands.RaiseArmCommandHigh;
 import frc.robot.commands.RaiseArmCommandLow;
+import frc.robot.commands.ShootBallSlowCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -35,11 +37,11 @@ public class OI {
 
       primaryController.rightBumper.whileHeld(new LowerArmCommandLow());
       primaryController.rightBumper.whileHeld(new LowerArmCommandHigh());
+
+      primaryController.xButton.toggleWhenPressed(new IntakeBallCommand());
+      primaryController.bButton.toggleWhenPressed(new ShootBallSlowCommand());
   
   }
-  // hi my name is garen
-
-
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
