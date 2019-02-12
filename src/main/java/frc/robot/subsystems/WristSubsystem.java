@@ -9,7 +9,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -19,14 +18,48 @@ import frc.robot.RobotMap;
 public class WristSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  private int encoderUnit = 4096;
+  private double lowerAngleLimit = -10;
+  private double topAngleLimit = 90;
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    //setDefaultCommand(new MySpecialCommand()); 
+    // setDefaultCommand(new MySpecialCommand());
   }
 
-  private VictorSP wristMotor = new VictorSP(RobotMap.WristMotor);
+  private TalonSRX wristMotor;
   // connecting the Wristmotor to a wristmoror subsystem.
 
+  public WristSubsystem() {
+    wristMotor = new TalonSRX(RobotMap.wristMotor);
+    
+  }
+
+  public double getRotationAngle() {
+    //get the rotation angle
+    return (wristMotor.getSelectedSensorPosition()/encoderUnit) * 360;
+  }
+
+  public boolean isWristAtTop() {
+    if(getRotationAngle() >= topAngleLimit) return true; 
+    return false; 
+  }
+  
+  public boolean isWristAtBottom() {
+    if(getRotationAngle() <= lowerAngleLimit) return true;
+    return false;
+  }
+
+  public void setWristPower(double power) {
+
+  //  if(getRotationAngle() == topAngleLimit ) 
+   
+
+
+  }
+
+  public void resetEncoders() {
+    //reset
+  }
 }

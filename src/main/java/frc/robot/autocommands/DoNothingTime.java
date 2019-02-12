@@ -1,7 +1,5 @@
 package frc.robot.autocommands;
 
-import frc.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
