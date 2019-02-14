@@ -9,6 +9,7 @@ package frc.robot;
 
 //import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.accessories.XboxController;
+import frc.robot.autocommands.ArmRotateDegrees;
 import frc.robot.commands.IntakeBallCommand;
 import frc.robot.commands.LowerArmCommandHigh;
 import frc.robot.commands.LowerArmCommandLow;
@@ -37,6 +38,7 @@ public class OI {
 
       primaryController.rightBumper.whileHeld(new LowerArmCommandLow());
       primaryController.rightBumper.whileHeld(new LowerArmCommandHigh());
+      primaryController.bButton.whenPressed(new ArmRotateDegrees(90));
 
       primaryController.xButton.toggleWhenPressed(new IntakeBallCommand());
       primaryController.bButton.toggleWhenPressed(new ShootBallSlowCommand());

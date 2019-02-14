@@ -72,7 +72,12 @@ public class RobotMap {
   public static final double DistanceD = 0;
   public static final double DistanceFF = 0;
 
-  //
+  //ARM ROTATE
+  
+  public static final double ArmRotateP = 0;
+  public static final double ArmRotateI = 0;
+  public static final double ArmRotateD = 0;
+  public static final double ArmRotateFF = 0;
 
   // TURN
   public static final double TurnP = 0.5;

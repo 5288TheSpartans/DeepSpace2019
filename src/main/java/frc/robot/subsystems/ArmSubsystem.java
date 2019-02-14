@@ -34,6 +34,7 @@ public class ArmSubsystem extends Subsystem {
 
   private double currentArmPower = 0;
 
+
   private boolean isOverride = false;
 
 
@@ -50,10 +51,8 @@ public class ArmSubsystem extends Subsystem {
   }
   // get the current angle of the arm.
   public double getRotationAngle() {
-    return (getDistanceTicks()/360)%360;
+    return (getDistanceTicks()/4096)*360;
   }
-  
-  
   public boolean isArmAtBottom() {
     if(getRotationAngle() <= armBottomLimit) return true;
     else return false;
