@@ -38,8 +38,8 @@ public class ArcadeDriveCommand extends Command {
     if(rightJoyX > -RobotMap.joystickDeadzone && rightJoyX < RobotMap.joystickDeadzone) {
       rightJoyX = 0;
     }
-    Robot.drivetrain.setLeftPower(leftJoyY - rightJoyX);
-    Robot.drivetrain.setRightPower(leftJoyY + rightJoyX);
+    Robot.drivetrain.setLeftPower(-leftJoyY + rightJoyX);
+    Robot.drivetrain.setRightPower(-leftJoyY - rightJoyX);
 
 
   
