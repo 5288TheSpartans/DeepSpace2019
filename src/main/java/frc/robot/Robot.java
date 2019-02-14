@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static DrivetrainSubsystem drivetrain;
   public static OI m_oi;
-  public static CompressorSubsystem compressor;
+  //public static CompressorSubsystem compressor;
   public static ArmSubsystem arm;
   public static WristSubsystem wrist;
   public static NetworkTableInstance inst;
@@ -54,14 +54,14 @@ public class Robot extends TimedRobot {
     
     m_oi = new OI();
     drivetrain = new DrivetrainSubsystem();
-    arm = new ArmSubsystem();
-    compressor = new CompressorSubsystem();
-    wrist = new WristSubsystem();
-    intake = new IntakeSubsystem();
+   // arm = new ArmSubsystem();
+    //compressor = new CompressorSubsystem();
+    //wrist = new WristSubsystem();
+   // intake = new IntakeSubsystem();
 
 
 
-    inst = NetworkTableInstance.getDefault();
+   /* inst = NetworkTableInstance.getDefault();
     table = inst.getTable("visionData1");
     distEntry = table.getEntry("distance");
 		distance = distEntry.getNumber(-1).doubleValue();
@@ -69,7 +69,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-
+*/
   }
 
   /**
@@ -83,9 +83,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     drivetrain.updateOutputs();
-    arm.updateOutputs();
-    System.out.println(inst.isConnected());
-    System.out.println(distEntry.getNumber(-1).doubleValue());
+    //arm.updateOutputs();
+ //   System.out.println(inst.isConnected());
+  //  System.out.println(distEntry.getNumber(-1).doubleValue());
   }
 
   /**

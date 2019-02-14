@@ -7,8 +7,8 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+//import com.ctre.phoenix.motorcontrol.ControlMode;
+//import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -29,7 +29,7 @@ public class WristSubsystem extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-
+/*
   private TalonSRX wristMotor;
   // connecting the Wristmotor to a wristmoror subsystem.
 
@@ -64,4 +64,4 @@ public class WristSubsystem extends Subsystem {
   public void resetEncoders() {
     //reset
   }
-}
+*/}

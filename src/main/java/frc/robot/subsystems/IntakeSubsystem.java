@@ -7,8 +7,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.VictorSPXPIDSetConfigUtil;
-
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;

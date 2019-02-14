@@ -33,15 +33,15 @@ public class OI {
   //private Joystick secondaryController = new Joystick(1);
   public OI() {
 
-      primaryController.leftBumper.whileHeld(new RaiseArmCommandLow());
-      primaryController.selectButton.whileHeld(new RaiseArmCommandHigh());
+    //  primaryController.leftBumper.whileHeld(new RaiseArmCommandLow());
+   //   primaryController.selectButton.whileHeld(new RaiseArmCommandHigh());
 
-      primaryController.rightBumper.whileHeld(new LowerArmCommandLow());
-      primaryController.rightBumper.whileHeld(new LowerArmCommandHigh());
-      primaryController.bButton.whenPressed(new ArmRotateDegrees(90));
+   //   primaryController.rightBumper.whileHeld(new LowerArmCommandLow());
+    //  primaryController.rightBumper.whileHeld(new LowerArmCommandHigh());
+     // primaryController.bButton.whenPressed(new ArmRotateDegrees(90));
 
-      primaryController.xButton.toggleWhenPressed(new IntakeBallCommand());
-      primaryController.bButton.toggleWhenPressed(new ShootBallSlowCommand());
+ ///     primaryController.xButton.toggleWhenPressed(new IntakeBallCommand());
+   //   primaryController.bButton.toggleWhenPressed(new ShootBallSlowCommand());
   
   }
 
