@@ -5,30 +5,24 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.autocommands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 
-public class LowerArmCommandLow extends Command {
-  private final double power = -0.3;
-
-  public LowerArmCommandLow() {
+public class RaiseArm extends Command {
+  public RaiseArm() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.arm);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Initializing LowerArmCommandLow");
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.arm.setArmPower(power);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -46,6 +40,5 @@ public class LowerArmCommandLow extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.arm.setArmPower(0.0);
   }
 }

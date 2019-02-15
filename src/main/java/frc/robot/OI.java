@@ -11,12 +11,11 @@ package frc.robot;
 import frc.robot.accessories.XboxController;
 import frc.robot.autocommands.ArmRotateDegrees;
 import frc.robot.commands.IntakeBallCommand;
-import frc.robot.commands.LowerArmCommandHigh;
-import frc.robot.commands.LowerArmCommandLow;
+
 import frc.robot.commands.PneumaticsActivate;
 import frc.robot.commands.RaiseArmCommandHigh;
 import frc.robot.commands.RaiseArmCommandLow;
-import frc.robot.commands.ShootBallSlowCommand;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -38,7 +37,6 @@ public class OI {
     primaryController.leftBumper.whileHeld(new RaiseArmCommandLow());
     // primaryController.selectButton.whileHeld(new RaiseArmCommandHigh());
     primaryController.selectButton.whenPressed(new PneumaticsActivate());
-    primaryController.rightBumper.whileHeld(new LowerArmCommandLow());
     primaryController.xButton.whenPressed(new ArmRotateDegrees(45));
     // primaryController.rightBumper.whileHeld(new LowerArmCommandHigh());
     // primaryController.bButton.whenPressed(new ArmRotateDegrees(90));

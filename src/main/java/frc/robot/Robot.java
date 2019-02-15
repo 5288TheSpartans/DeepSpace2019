@@ -15,7 +15,6 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.autoCommandGroups.Level1LeftToFrontShuttle;
 import frc.robot.autocommands.SpotTurnDegrees;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ArmSubsystem;
@@ -71,7 +70,6 @@ public class Robot extends TimedRobot {
 
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand()); //
     m_chooser.addOption("Spot turn", new SpotTurnDegrees(180));
-    m_chooser.addOption("Level 1 Left to Front Shuttle", new Level1LeftToFrontShuttle());
     SmartDashboard.putData("Auto mode", m_chooser);
 
   }

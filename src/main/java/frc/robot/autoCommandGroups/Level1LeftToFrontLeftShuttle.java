@@ -8,19 +8,15 @@
 package frc.robot.autoCommandGroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.autocommands.ArmRotateDegrees;
 import frc.robot.autocommands.DriveStraightDistance;
 import frc.robot.autocommands.SpotTurnDegrees;
 import frc.robot.commands.PneumaticsActivate;
 
-public class Level1LeftToFrontShuttle extends CommandGroup {
+public class Level1LeftToFrontLeftShuttle extends CommandGroup {
   /**
-   * Preinstallations: (3) Cargo [front shuttles (2), side shuttle left or right
-   * (1)], Robot Hatch Panel Start Position: Level (1) Slightly left from middle
-   * platform. Objective: Efficiency Install 2 Hatch Panels.
+   * Objective:
    */
-  public Level1LeftToFrontShuttle() {
-
+  public Level1LeftToFrontLeftShuttle() {
     addSequential(new DriveStraightDistance(133));
     // Place Hatch on Left Front Shuttle
     addSequential(new PneumaticsActivate());

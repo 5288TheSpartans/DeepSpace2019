@@ -7,6 +7,9 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 //import com.ctre.phoenix.motorcontrol.ControlMode;
 //import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -23,45 +26,49 @@ public class WristSubsystem extends Subsystem {
   private double lowerAngleLimit = -10;
   private double topAngleLimit = 90;
   private double wristPower = 0;
+  private TalonSRX wristMotor;
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-/*
-  private TalonSRX wristMotor;
+
   // connecting the Wristmotor to a wristmoror subsystem.
 
   public WristSubsystem() {
     wristMotor = new TalonSRX(RobotMap.wristMotor);
-    
+
   }
 
-  public double getRotationAngle() {
-    //get the rotation angle
-    return (wristMotor.getSelectedSensorPosition()/encoderUnit) * 360;
+  public double getRotationAngle() { // get the rotation angle return
+    return (wristMotor.getSelectedSensorPosition() / encoderUnit) * 360; 
   }
 
   public boolean isWristAtTop() {
-    if(getRotationAngle() >= topAngleLimit) return true; 
-    return false; 
-  }
-  
-  public boolean isWristAtBottom() {
-    if(getRotationAngle() <= lowerAngleLimit) return true;
+    if (getRotationAngle() >= topAngleLimit)
+      return true;
     return false;
   }
-  
+
+  public boolean isWristAtBottom() {
+    if (getRotationAngle() <= lowerAngleLimit)
+      return true;
+    return false;
+  }
+
   public void setWristPower(double power) {
 
-    if(getRotationAngle() >= topAngleLimit || getRotationAngle() <= lowerAngleLimit ) wristPower = 0;
-    else wristPower = power;
+    if (getRotationAngle() >= topAngleLimit || getRotationAngle() <= lowerAngleLimit)
+      wristPower = 0;
+    else
+      wristPower = power;
   }
-  public void updateOutput(){
-    wristMotor.set(ControlMode.PercentOutput,wristPower);
+
+  public void updateOutput() {
+    wristMotor.set(ControlMode.PercentOutput, wristPower);
   }
-  public void resetEncoders() {
-    //reset
+
+  public void resetEncoders() { // reset }
   }
-*/}
+}
