@@ -33,7 +33,7 @@ public class RobotMap {
   // IMPORTANT!! CHANGE THE Port.
   // also wrist motor
   public static final int wristMotor = 9;
-  // intake motor 
+  // intake motor
   // IMPORTANT, CHANGE THE PORT
   public static final int intakeLeft = 9;
   public static final int intakeRight = 9;
@@ -57,6 +57,10 @@ public class RobotMap {
   public static final int armEncoder2 = 0;
   public static final int armEncoder3 = 0;
 
+  // Pneumatics Control Module (PCM) ports
+  public static final int leftIntakeSolenoid = 0;
+  public static final int rightIntakeSolenoid = 1;
+
   // PID CONSTANTS
 
   // DRIVE STRAIGHT
@@ -72,8 +76,8 @@ public class RobotMap {
   public static final double DistanceD = 0;
   public static final double DistanceFF = 0;
 
-  //ARM ROTATE
-  
+  // ARM ROTATE
+
   public static final double ArmRotateP = 0;
   public static final double ArmRotateI = 0;
   public static final double ArmRotateD = 0;
@@ -84,9 +88,12 @@ public class RobotMap {
   public static final double TurnI = 0.2;
   public static final double TurnD = 0.03;
   public static final double TurnFF = 0.2;
+  
+  // AUTO COMMANDS
+  public static final double DefaultLevel = 0;
+  public static final double RocketLevel2 = 0;
+  public static final double RocketLevel3 = 0;
 
-  
-  
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

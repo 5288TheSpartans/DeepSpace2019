@@ -8,13 +8,13 @@
 package frc.robot.autocommands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.accessories.SpartanPID;
 
-
 public class ArmRotateDegrees extends Command {
-  
+
   double m_basePower = 0.0;
   double error = 0;
   double armOutput = 0.0;
@@ -25,20 +25,22 @@ public class ArmRotateDegrees extends Command {
 
     requires(Robot.arm);
     angleToTurnTo = angle;
-    
-    //m_basePower = basePower;
-    armRotatePID = new SpartanPID(RobotMap.ArmRotateP,RobotMap.ArmRotateI,RobotMap.ArmRotateD,RobotMap.ArmRotateFF);
+
+    // m_basePower = basePower;
+    // armRotatePID = new
+    // SpartanPID(RobotMap.ArmRotateP,RobotMap.ArmRotateI,RobotMap.ArmRotateD,RobotMap.ArmRotateFF);
 
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    armRotatePID = new SpartanPID(RobotMap.ArmRotateP,RobotMap.ArmRotateI,RobotMap.ArmRotateD,RobotMap.ArmRotateFF);
+    armRotatePID = new SpartanPID(SmartDashboard.getNumber("Arm P", 0), 0, SmartDashboard.getNumber("Arm D", 0), 0);
+    // armRotatePID = new SpartanPID(RobotMap.ArmRotateP, RobotMap.ArmRotateI,
+    // RobotMap.ArmRotateD, RobotMap.ArmRotateFF);
     armRotatePID.setTarget(angleToTurnTo);
-    //System.out.println(m_basePower);
-  
-    
+    // System.out.println(m_basePower);
+
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -56,10 +58,10 @@ public class ArmRotateDegrees extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if((angleToTurnTo - 3) <= Robot.arm.getRotationAngle()  && Robot.arm.getRotationAngle() <= (angleToTurnTo + 3))  {
+    if ((angleToTurnTo - 3) <= Robot.arm.getRotationAngle() && Robot.arm.getRotationAngle() <= (angleToTurnTo + 3)) {
       return true;
-    }
-    else return false;
+    } else
+      return false;
   }
 
   // Called once after isFinished returns true
@@ -72,7 +74,6 @@ public class ArmRotateDegrees extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    
+
   }
 }
-

@@ -20,9 +20,9 @@ import frc.robot.RobotMap;
 public class ArmSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private CANSparkMax armMotor1 = new CANSparkMax(RobotMap.armBaseMotor1,MotorType.kBrushless);
-  private CANSparkMax armMotor2 = new CANSparkMax(RobotMap.armBaseMotor2,MotorType.kBrushless);
-  private CANSparkMax armMotor3 = new CANSparkMax(RobotMap.armBaseMotor3,MotorType.kBrushless);
+  private CANSparkMax armMotor1 = new CANSparkMax(RobotMap.armBaseMotor1, MotorType.kBrushless);
+  private CANSparkMax armMotor2 = new CANSparkMax(RobotMap.armBaseMotor2, MotorType.kBrushless);
+  private CANSparkMax armMotor3 = new CANSparkMax(RobotMap.armBaseMotor3, MotorType.kBrushless);
 
   private CANEncoder armEncoder1 = armMotor1.getEncoder();
   private CANEncoder armEncoder2 = armMotor2.getEncoder();
@@ -34,41 +34,44 @@ public class ArmSubsystem extends Subsystem {
 
   private double currentArmPower = 0;
 
-
   private boolean isOverride = false;
 
-
-
-
   @Override
-  public void initDefaultCommand() {   
+  public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    
+
   }
+
   public double getDistanceTicks() {
-    
-    return (armEncoder1.getPosition() + armEncoder2.getPosition() + armEncoder3.getPosition())/3;
+
+    return (armEncoder1.getPosition() + armEncoder2.getPosition() + armEncoder3.getPosition()) / 3;
   }
+
   // get the current angle of the arm.
   public double getRotationAngle() {
-    return (getDistanceTicks()/4096)*360;
+    return (getDistanceTicks() / 4096) * 360;
   }
+
   public boolean isArmAtBottom() {
-    if(getRotationAngle() <= armBottomLimit) return true;
-    else return false;
+    if (getRotationAngle() <= armBottomLimit)
+      return true;
+    else
+      return false;
 
   }
 
   public boolean isArmAtTop() {
-    if(getRotationAngle() >= armTopLimit) return true;
-    else return false;
+    if (getRotationAngle() >= armTopLimit)
+      return true;
+    else
+      return false;
   }
 
   public void setArmPower(double power) {
     // if the arm is at the top and you're trying to push it further, do nothing
     // if the arm is at the bottom and you're trying to push it further, do nothing
-    if((isArmAtTop() & power > 0) || (isArmAtBottom() & power < 0))
-       System.out.println("At limits. Do nothing.");
+    if ((isArmAtTop() & power > 0) || (isArmAtBottom() & power < 0))
+      System.out.println("At limits. Do nothing.");
     else {
       currentArmPower = power;
     }
@@ -78,8 +81,9 @@ public class ArmSubsystem extends Subsystem {
     System.out.println("Power to set: " + power);
   }
 
-  public void setArmPowerOverride( double power) {
-    if(isOverride) currentArmPower = power;
+  public void setArmPowerOverride(double power) {
+    if (isOverride)
+      currentArmPower = power;
   }
 
   public void updateOutputs() {
@@ -89,10 +93,4 @@ public class ArmSubsystem extends Subsystem {
 
   }
 
-  
-
-
-
 }
-
-  

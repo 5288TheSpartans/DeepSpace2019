@@ -46,14 +46,11 @@ public class DrivetrainSubsystem extends Subsystem {
   public DrivetrainSubsystem() {
     leftEncoder.setDistancePerPulse((6 * Math.PI) / numberOfTicks);
     rightEncoder.setDistancePerPulse((6 * Math.PI) / numberOfTicks);
-
-    leftEncoder.setMaxPeriod(5);
-    rightEncoder.setMaxPeriod(5);
-    leftEncoder.setMinRate(0);
-    rightEncoder.setMinRate(0);
-    leftEncoder.setSamplesToAverage(1);
-    rightEncoder.setSamplesToAverage(1);
-
+    /*
+     * leftEncoder.setMaxPeriod(5); rightEncoder.setMaxPeriod(5);
+     * leftEncoder.setMinRate(0); rightEncoder.setMinRate(0);
+     * leftEncoder.setSamplesToAverage(1); rightEncoder.setSamplesToAverage(1);
+     */
     gyro.calibrate();
 
   }

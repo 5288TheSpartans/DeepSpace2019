@@ -12,11 +12,11 @@ import frc.robot.Robot;
 
 public class RaiseArmCommandLow extends Command {
   private final double power = 0.3;
-  
+
   public RaiseArmCommandLow() {
+    requires(Robot.arm);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.arm);
   }
 
   // Called just before this Command runs the first time

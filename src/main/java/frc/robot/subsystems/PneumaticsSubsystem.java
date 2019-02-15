@@ -7,20 +7,31 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
 public class PneumaticsSubsystem extends Subsystem {
-  Solenoid mainSolenoid = new Solenoid(1);
+  private DoubleSolenoid intakeSolenoid;
+  private Compressor mainCompressor;
 
+  private enum intakeSolenoidState {
+    solenoidOut, solenoidIn;
+  }
+
+  intakeSolenoidState doubleIntakeSolenoid = intakeSolenoidState.solenoidIn;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   public PneumaticsSubsystem() {
-    mainSolenoid.set(true);
+    mainCompressor = new Compressor();
+    mainCompressor.start();
+    intakeSolenoid = new DoubleSolenoid(RobotMap.leftIntakeSolenoid, RobotMap.rightIntakeSolenoid);
   }
 
   @Override
@@ -28,4 +39,15 @@ public class PneumaticsSubsystem extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+
+  public void flipSolenoid() {
+    if (doubleIntakeSolenoid == intakeSolenoidState.solenoidIn) {
+      intakeSolenoid.set(Value.kForward);
+      doubleIntakeSolenoid = intakeSolenoidState.solenoidOut;
+    } else {
+      intakeSolenoid.set(Value.kReverse);
+      doubleIntakeSolenoid = intakeSolenoidState.solenoidIn;
+    }
+  }
+
 }

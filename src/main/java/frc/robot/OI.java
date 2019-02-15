@@ -13,6 +13,7 @@ import frc.robot.autocommands.ArmRotateDegrees;
 import frc.robot.commands.IntakeBallCommand;
 import frc.robot.commands.LowerArmCommandHigh;
 import frc.robot.commands.LowerArmCommandLow;
+import frc.robot.commands.PneumaticsActivate;
 import frc.robot.commands.RaiseArmCommandHigh;
 import frc.robot.commands.RaiseArmCommandLow;
 import frc.robot.commands.ShootBallSlowCommand;
@@ -30,19 +31,21 @@ public class OI {
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
   private XboxController primaryController = new XboxController(0);
-  //private Joystick secondaryController = new Joystick(1);
+
+  // private Joystick secondaryController = new Joystick(1);
   public OI() {
 
-    //  primaryController.leftBumper.whileHeld(new RaiseArmCommandLow());
-   //   primaryController.selectButton.whileHeld(new RaiseArmCommandHigh());
+    primaryController.leftBumper.whileHeld(new RaiseArmCommandLow());
+    // primaryController.selectButton.whileHeld(new RaiseArmCommandHigh());
+    primaryController.selectButton.whenPressed(new PneumaticsActivate());
+    primaryController.rightBumper.whileHeld(new LowerArmCommandLow());
+    primaryController.xButton.whenPressed(new ArmRotateDegrees(45));
+    // primaryController.rightBumper.whileHeld(new LowerArmCommandHigh());
+    // primaryController.bButton.whenPressed(new ArmRotateDegrees(90));
 
-   //   primaryController.rightBumper.whileHeld(new LowerArmCommandLow());
-    //  primaryController.rightBumper.whileHeld(new LowerArmCommandHigh());
-     // primaryController.bButton.whenPressed(new ArmRotateDegrees(90));
+    /// primaryController.xButton.toggleWhenPressed(new IntakeBallCommand());
+    // primaryController.bButton.toggleWhenPressed(new ShootBallSlowCommand());
 
- ///     primaryController.xButton.toggleWhenPressed(new IntakeBallCommand());
-   //   primaryController.bButton.toggleWhenPressed(new ShootBallSlowCommand());
-  
   }
 
   // There are a few additional built in buttons you can use. Additionally,
@@ -64,18 +67,17 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
-  
-  
 
   public double getXboxLeftTriggerY() {
-   //return xbox.getY(Hand.kLeft);
-   //return primaryController.getRawAxis(1);  
-   return primaryController.getLeftStickY();
+    // return xbox.getY(Hand.kLeft);
+    // return primaryController.getRawAxis(1);
+    return primaryController.getLeftStickY();
 
   }
+
   public double getXboxRightTriggerX() {
-  // return xbox.getX(Hand.kRight);
-  //  return primaryController.getRawAxis(4);
-  return primaryController.getRightStickX();
+    // return xbox.getX(Hand.kRight);
+    // return primaryController.getRawAxis(4);
+    return primaryController.getRightStickX();
   }
 }
