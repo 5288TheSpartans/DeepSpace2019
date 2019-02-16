@@ -11,7 +11,7 @@ package frc.robot;
 import frc.robot.accessories.XboxController;
 import frc.robot.autocommands.ArmRotateDegrees;
 import frc.robot.commands.IntakeBallCommand;
-
+import frc.robot.commands.LowerArmCommand;
 import frc.robot.commands.PneumaticsActivate;
 import frc.robot.commands.RaiseArmCommandHigh;
 import frc.robot.commands.RaiseArmCommandLow;
@@ -35,6 +35,7 @@ public class OI {
   public OI() {
 
     primaryController.leftBumper.whileHeld(new RaiseArmCommandLow());
+    primaryController.rightBumper.whileHeld(new LowerArmCommand(-0.2));
     // primaryController.selectButton.whileHeld(new RaiseArmCommandHigh());
     primaryController.selectButton.whenPressed(new PneumaticsActivate());
     primaryController.xButton.whenPressed(new ArmRotateDegrees(45));

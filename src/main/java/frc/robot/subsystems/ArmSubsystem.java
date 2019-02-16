@@ -22,15 +22,15 @@ public class ArmSubsystem extends Subsystem {
   // here. Call these from Commands.
   private CANSparkMax armMotor1 = new CANSparkMax(RobotMap.armBaseMotor1, MotorType.kBrushless);
   private CANSparkMax armMotor2 = new CANSparkMax(RobotMap.armBaseMotor2, MotorType.kBrushless);
-  private CANSparkMax armMotor3 = new CANSparkMax(RobotMap.armBaseMotor3, MotorType.kBrushless);
+ // private CANSparkMax armMotor3 = new CANSparkMax(RobotMap.armBaseMotor3, MotorType.kBrushless);
 
   private CANEncoder armEncoder1 = armMotor1.getEncoder();
   private CANEncoder armEncoder2 = armMotor2.getEncoder();
-  private CANEncoder armEncoder3 = armMotor3.getEncoder();
+  //private CANEncoder armEncoder3 = armMotor3.getEncoder();
 
   // The arm's limit angles (in degrees)
-  private final double armBottomLimit = -5;
-  private final double armTopLimit = 110;
+  private final double armBottomLimit = -10000000;
+  private final double armTopLimit = 10000000;
 
   private double currentArmPower = 0;
 
@@ -44,7 +44,8 @@ public class ArmSubsystem extends Subsystem {
 
   public double getDistanceTicks() {
 
-    return (armEncoder1.getPosition() + armEncoder2.getPosition() + armEncoder3.getPosition()) / 3;
+    //return (armEncoder1.getPosition() + armEncoder2.getPosition() + armEncoder3.getPosition()) / 3;
+    return (armEncoder1.getPosition() + armEncoder2.getPosition())/2;
   }
 
   // get the current angle of the arm.
@@ -89,7 +90,7 @@ public class ArmSubsystem extends Subsystem {
   public void updateOutputs() {
     armMotor1.set(currentArmPower);
     armMotor2.set(currentArmPower);
-    armMotor3.set(currentArmPower);
+  //  armMotor3.set(currentArmPower);
 
   }
 
