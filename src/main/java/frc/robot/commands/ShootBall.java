@@ -8,8 +8,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
-public class ShootBallCommand extends Command {
+public class ShootBall extends Command {
   public ShootBall() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -36,14 +37,6 @@ public class ShootBallCommand extends Command {
   protected void end() {
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
-}
- void end() {
-  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run

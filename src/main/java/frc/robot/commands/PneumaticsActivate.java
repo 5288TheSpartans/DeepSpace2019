@@ -22,6 +22,7 @@ public class PneumaticsActivate extends Command {
   @Override
   protected void initialize() {
     System.out.println("Initiating Pneumatics Activation.");
+
     Robot.pneumatics.flipSolenoid();
 
   }

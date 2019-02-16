@@ -17,8 +17,8 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class PneumaticsSubsystem extends Subsystem {
-  private DoubleSolenoid intakeSolenoid;
-  private Compressor mainCompressor;
+  //private DoubleSolenoid intakeSolenoid;
+  public Compressor mainCompressor;
 
   private enum intakeSolenoidState {
     solenoidOut, solenoidIn;
@@ -29,9 +29,10 @@ public class PneumaticsSubsystem extends Subsystem {
   // here. Call these from Commands.
 
   public PneumaticsSubsystem() {
-    mainCompressor = new Compressor();
+    mainCompressor = new Compressor(RobotMap.PCMID);
     mainCompressor.start();
-    intakeSolenoid = new DoubleSolenoid(RobotMap.leftIntakeSolenoid, RobotMap.rightIntakeSolenoid);
+  System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+  //  intakeSolenoid = new DoubleSolenoid(RobotMap.leftIntakeSolenoid, RobotMap.rightIntakeSolenoid);
   }
 
   @Override
@@ -41,13 +42,13 @@ public class PneumaticsSubsystem extends Subsystem {
   }
 
   public void flipSolenoid() {
-    if (doubleIntakeSolenoid == intakeSolenoidState.solenoidIn) {
+   /* if (doubleIntakeSolenoid == intakeSolenoidState.solenoidIn) {
       intakeSolenoid.set(Value.kForward);
       doubleIntakeSolenoid = intakeSolenoidState.solenoidOut;
     } else {
       intakeSolenoid.set(Value.kReverse);
       doubleIntakeSolenoid = intakeSolenoidState.solenoidIn;
-    }
+    }*/
   }
 
 }

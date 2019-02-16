@@ -48,9 +48,9 @@ public class RobotMap {
 
   // CAN
   // ARM
-  public static final int armBaseMotor1 = 9;
-  public static final int armBaseMotor2 = 9;
-  public static final int armBaseMotor3 = 9;
+  public static final int armBaseMotor1 = 6;
+  public static final int armBaseMotor2 = 7;
+  public static final int armBaseMotor3 = 8;
 
   public static final int armEncoder1 = 0;
   public static final int armEncoder2 = 0;
@@ -104,8 +104,8 @@ public class RobotMap {
   public static final double RocketLevel3 = 0;
 
   // CAN device IDs
-  public static final int PDPID = 0;
-  public static final int PCMID = 1;
+  public static final int PDPID = 1;
+  public static final int PCMID = 0;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
