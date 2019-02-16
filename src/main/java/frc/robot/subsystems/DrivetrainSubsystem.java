@@ -26,7 +26,8 @@ public class DrivetrainSubsystem extends Subsystem {
   // here. Call these from Commands.
 
   private double leftPower, rightPower;
-  private double numberOfTicks = 4096;
+  private final double numberOfTicks = 2048;
+  private final double wheelCircumference = (6*Math.PI);
 
   private Encoder leftEncoder = new Encoder(RobotMap.leftDriveEncoder1, RobotMap.leftDriveEncoder2, false,
       EncodingType.k4X);
@@ -44,13 +45,15 @@ public class DrivetrainSubsystem extends Subsystem {
   private VictorSP rightDriveMotor3 = new VictorSP(RobotMap.rightDriveMotor3);
 
   public DrivetrainSubsystem() {
-    leftEncoder.setDistancePerPulse((6 * Math.PI) / numberOfTicks);
-    rightEncoder.setDistancePerPulse((6 * Math.PI) / numberOfTicks);
-    /*
-     * leftEncoder.setMaxPeriod(5); rightEncoder.setMaxPeriod(5);
-     * leftEncoder.setMinRate(0); rightEncoder.setMinRate(0);
-     * leftEncoder.setSamplesToAverage(1); rightEncoder.setSamplesToAverage(1);
-     */
+    leftEncoder.setDistancePerPulse(wheelCircumference/numberOfTicks);
+    rightEncoder.setDistancePerPulse(wheelCircumference/numberOfTicks);
+    leftEncoder.setMaxPeriod(5);
+    rightEncoder.setMaxPeriod(5);
+    leftEncoder.setMinRate(0);
+    rightEncoder.setMinRate(0);
+    leftEncoder.setSamplesToAverage(1); 
+    rightEncoder.setSamplesToAverage(1);
+    
     gyro.calibrate();
 
   }
@@ -75,14 +78,18 @@ public class DrivetrainSubsystem extends Subsystem {
   }
 
   public void updateOutputs() {
+    
+    System.out.println("Left encoder: " + leftEncoder.getDistance());
+    System.out.println("Right encoder: " + rightEncoder.getDistance());
+    
 
     leftDriveMotor1.set(-leftPower);
     leftDriveMotor2.set(-leftPower);
     leftDriveMotor3.set(-leftPower);
 
-    rightDriveMotor1.set(rightPower);
-    rightDriveMotor2.set(rightPower);
-    rightDriveMotor3.set(rightPower);
+    rightDriveMotor1.set(-rightPower);
+    rightDriveMotor2.set(-rightPower);
+    rightDriveMotor3.set(-rightPower);
   }
 
   public double getLeftDistanceInches() {

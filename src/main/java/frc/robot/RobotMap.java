@@ -38,18 +38,18 @@ public class RobotMap {
   public static final int intakeRight = 9;
 
   // D I/O - Digital Input/Output Ports
-  public static final int leftDriveEncoder1 = 0;
-  public static final int leftDriveEncoder2 = 1;
-  public static final int rightDriveEncoder1 = 2;
-  public static final int rightDriveEncoder2 = 3;
+  public static final int leftDriveEncoder1 = 0; // white
+  public static final int leftDriveEncoder2 = 1; // green
+  public static final int rightDriveEncoder1 = 2; // white
+  public static final int rightDriveEncoder2 = 3; // green
 
   // DEADZONES
   public static final double joystickDeadzone = 0.1;
 
   // CAN
   // ARM
-  public static final int armBaseMotor1 = 6;
-  public static final int armBaseMotor2 = 7;
+  public static final int armBaseMotor1 = 3;
+  public static final int armBaseMotor2 = 4;
   public static final int armBaseMotor3 = 8;
 
   public static final int armEncoder1 = 0;
