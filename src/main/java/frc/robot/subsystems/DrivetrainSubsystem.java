@@ -87,9 +87,9 @@ public class DrivetrainSubsystem extends Subsystem {
     leftDriveMotor2.set(-leftPower);
     leftDriveMotor3.set(-leftPower);
 
-    rightDriveMotor1.set(-rightPower);
-    rightDriveMotor2.set(-rightPower);
-    rightDriveMotor3.set(-rightPower);
+    rightDriveMotor1.set(rightPower);
+    rightDriveMotor2.set(rightPower);
+    rightDriveMotor3.set(rightPower);
   }
 
   public double getLeftDistanceInches() {

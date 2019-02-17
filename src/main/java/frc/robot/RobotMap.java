@@ -30,8 +30,9 @@ public class RobotMap {
   public static final int rightDriveMotor2 = 1;
   public static final int rightDriveMotor3 = 9;
 
-  // also wrist motor
+  // wristMotor - Talon SRX
   public static final int wristMotor = 9;
+  
   // intake motor
   // IMPORTANT, CHANGE THE PORT
   public static final int intakeLeft = 9;
@@ -106,6 +107,9 @@ public class RobotMap {
   // CAN device IDs
   public static final int PDPID = 1;
   public static final int PCMID = 0;
+
+  // PCM device IDs
+  public static final int intakeSolenoidChannel = 7;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

@@ -88,10 +88,13 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     drivetrain.updateOutputs();
-    pneumatics.mainCompressor.start();
+    arm.updateOutputs();
+    
+    //pneumatics.mainCompressor.start();
     SmartDashboard.putNumber("TEST", 123123);
     SmartDashboard.putNumber("Arm P", 0.00001);
     SmartDashboard.putNumber("Arm D", 0.00000001);
+    SmartDashboard.putNumber("Intake Solenoid", pneumatics.getIsExtended()
    
     // arm.updateOutputs();
    
@@ -106,7 +109,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    pneumatics.mainCompressor.start();
+    //pneumatics.mainCompressor.start();
   }
 
   @Override

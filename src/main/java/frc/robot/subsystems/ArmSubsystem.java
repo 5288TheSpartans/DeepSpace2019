@@ -43,7 +43,8 @@ public class ArmSubsystem extends Subsystem {
   }
 
   public double getDistanceTicks() {
-
+    System.out.println("Arm encoder 1: " + armEncoder1.getPosition());
+    System.out.println("Arm encoder 2: " + armEncoder2.getPosition());
     //return (armEncoder1.getPosition() + armEncoder2.getPosition() + armEncoder3.getPosition()) / 3;
     return (armEncoder1.getPosition() + armEncoder2.getPosition())/2;
   }
@@ -54,32 +55,36 @@ public class ArmSubsystem extends Subsystem {
   }
 
   public boolean isArmAtBottom() {
-    if (getRotationAngle() <= armBottomLimit)
+  /*  if (getRotationAngle() <= armBottomLimit)
       return true;
     else
       return false;
-
+*/
+return false;
   }
 
   public boolean isArmAtTop() {
+    /*
     if (getRotationAngle() >= armTopLimit)
       return true;
     else
       return false;
-  }
+ */ return false;
+    }
 
   public void setArmPower(double power) {
     // if the arm is at the top and you're trying to push it further, do nothing
     // if the arm is at the bottom and you're trying to push it further, do nothing
-    if ((isArmAtTop() & power > 0) || (isArmAtBottom() & power < 0))
+  /*  if ((isArmAtTop() & power > 0) || (isArmAtBottom() & power < 0))
       System.out.println("At limits. Do nothing.");
     else {
       currentArmPower = power;
-    }
-
+    }*/
+    currentArmPower = power;
     System.out.println("isArmAtBottom: " + isArmAtBottom());
     System.out.println("IsArmAtTop: " + isArmAtTop());
     System.out.println("Power to set: " + power);
+    System.out.println("Arm angle: " + getRotationAngle());
   }
 
   public void setArmPowerOverride(double power) {

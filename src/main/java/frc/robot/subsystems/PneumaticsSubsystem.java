@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -17,22 +18,19 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class PneumaticsSubsystem extends Subsystem {
-  //private DoubleSolenoid intakeSolenoid;
+  private Solenoid intakeSolenoid;
   public Compressor mainCompressor;
 
-  private enum intakeSolenoidState {
-    solenoidOut, solenoidIn;
-  }
+  private boolean isExtended = false;
 
-  intakeSolenoidState doubleIntakeSolenoid = intakeSolenoidState.solenoidIn;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   public PneumaticsSubsystem() {
     mainCompressor = new Compressor(RobotMap.PCMID);
     mainCompressor.start();
-  System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-  //  intakeSolenoid = new DoubleSolenoid(RobotMap.leftIntakeSolenoid, RobotMap.rightIntakeSolenoid);
+  System.out.println("Initializing PneumaticsSubsystem.");
+    intakeSolenoid = new Solenoid(RobotMap.PCMID,RobotMap.intakeSolenoidChannel);
   }
 
   @Override
@@ -42,13 +40,12 @@ public class PneumaticsSubsystem extends Subsystem {
   }
 
   public void flipSolenoid() {
-   /* if (doubleIntakeSolenoid == intakeSolenoidState.solenoidIn) {
-      intakeSolenoid.set(Value.kForward);
-      doubleIntakeSolenoid = intakeSolenoidState.solenoidOut;
-    } else {
-      intakeSolenoid.set(Value.kReverse);
-      doubleIntakeSolenoid = intakeSolenoidState.solenoidIn;
-    }*/
+    isExtended = !isExtended;
+    intakeSolenoid.set(isExtended);
+   
+  }
+  public boolean getIsExtended() {
+    return isExtended;
   }
 
 }
