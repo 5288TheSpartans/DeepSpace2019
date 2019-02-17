@@ -94,7 +94,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("TEST", 123123);
     SmartDashboard.putNumber("Arm P", 0.00001);
     SmartDashboard.putNumber("Arm D", 0.00000001);
-    SmartDashboard.putNumber("Intake Solenoid", pneumatics.getIsExtended()
+    SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
    
     // arm.updateOutputs();
    
