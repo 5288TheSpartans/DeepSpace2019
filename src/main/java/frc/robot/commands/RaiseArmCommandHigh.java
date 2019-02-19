@@ -10,27 +10,26 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class RaiseArmCommand extends Command {
-  public double armPower = 0.1;
-
-  public RaiseArmCommand(double power) {
-    armPower = power;
-    requires(Robot.arm);
+public class RaiseArmCommandHigh extends Command {
+  private final double power = 0.8;
+  
+  public RaiseArmCommandHigh() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-   
+    requires(Robot.arm);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Initializing RaiseArmCommandLow");
+  System.out.println("Initializing RaiseArmCommandHigh");
   }
+
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.arm.setArmPower(armPower);
+    Robot.arm.setArmPower(power);
   }
 
   // Make this return true when this Command no longer needs to run execute()

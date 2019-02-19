@@ -7,7 +7,7 @@ public class XboxController extends Joystick {
 
 	public XboxController(int port) {
 		super(port);
-
+	
 	}
 
 	public JoystickButton xButton = new JoystickButton(this, 3);
@@ -20,19 +20,19 @@ public class XboxController extends Joystick {
 	public JoystickButton selectButton = new JoystickButton(this, 7);
 	public JoystickButton leftStickButton = new JoystickButton(this, 9);
 	public JoystickButton rightStickButton = new JoystickButton(this, 10);
-	public JoystickButton rightTriggerButton = new JoystickButton(this, 11);
-	public JoystickButton leftTriggerButton = new JoystickButton(this, 12);
+
+
 
 	public double getLeftStickX() {
 		return this.getRawAxis(0);
 	}
 
 	public double getLeftStickY() {
-		return this.getRawAxis(4);
+		return this.getRawAxis(1);
 	}
 
-	public double getRightStickX() {
-		return this.getRawAxis(1);
+	public double getRightStickX() { 
+		return this.getRawAxis(4); 
 	}
 
 	public double getRightStickY() {

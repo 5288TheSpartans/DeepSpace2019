@@ -10,16 +10,12 @@ package frc.robot;
 //import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.accessories.XboxController;
 import frc.robot.autocommands.ArmRotateDegrees;
-
-import frc.robot.commands.PneumaticsActivate;
 import frc.robot.commands.IntakeBallCommand;
 import frc.robot.commands.LowerArmCommand;
+import frc.robot.commands.PneumaticsActivate;
 import frc.robot.commands.RaiseArmCommand;
-import frc.robot.commands.ArcadeDriveCommand;
-import frc.robot.commands.ShootBallCommand;
-
-import frc.robot.commands.TankDriveCommand;
-
+import frc.robot.commands.RaiseArmCommandHigh;
+import frc.robot.commands.RaiseArmCommandLow;
 
 
 /**
@@ -37,36 +33,16 @@ public class OI {
   private XboxController primaryController = new XboxController(0);
 
   // private Joystick secondaryController = new Joystick(1);
-  
   public OI() {
 
-    
-    // setting command to raise and lower the arm(change number value)
-    primaryController.leftTriggerButton.whileHeld(new RaiseArmCommand(5));
-    primaryController.rightTriggerButton.whileHeld(new LowerArmCommand(-5));
-    
+    primaryController.leftBumper.whileHeld(new RaiseArmCommand(-0.1));
+    primaryController.rightBumper.whileHeld(new LowerArmCommand(0.1));
+    // primaryController.selectButton.whileHeld(new RaiseArmCommandHigh());
     primaryController.selectButton.whenPressed(new PneumaticsActivate());
-    primaryController.startButton.whenPressed(new IntakeBallCommand());
-
-    //setting the button to rotate the arm(Change number value if needed)
     primaryController.xButton.whenPressed(new ArmRotateDegrees(45));
-    primaryController.bButton.whenPressed(new ArmRotateDegrees(90));
-    //Change parameter value for ShootBallCommand
+    // primaryController.rightBumper.whileHeld(new LowerArmCommandHigh());
+    // primaryController.bButton.whenPressed(new ArmRotateDegrees(90));
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    primaryController.yButton.whenPressed(new ShootBallCommand(0.5));
     /// primaryController.xButton.toggleWhenPressed(new IntakeBallCommand());
     // primaryController.bButton.toggleWhenPressed(new ShootBallSlowCommand());
 
