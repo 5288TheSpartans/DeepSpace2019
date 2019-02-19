@@ -1,5 +1,7 @@
 package frc.robot.accessories;
 
+
+//import com.sun.tools.javac.tree.JCtree.JCTypeParameter;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -20,6 +22,9 @@ public class XboxController extends Joystick {
 	public JoystickButton selectButton = new JoystickButton(this, 7);
 	public JoystickButton leftStickButton = new JoystickButton(this, 9);
 	public JoystickButton rightStickButton = new JoystickButton(this, 10);
+	public JoystickButton rightTriggerButton = new JoystickButton(this, 11);
+	public JoystickButton leftTriggerButton = new JoystickButton(this, 12);
+
 
 
 

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class RaiseArmCommand extends Command {
-  public double armPower = 0.1;
+  public double armPower = 0.0;
 
   public RaiseArmCommand(double power) {
     armPower = power;

@@ -59,10 +59,10 @@ public class Robot extends TimedRobot {
     pneumatics = new PneumaticsSubsystem();
     arm = new ArmSubsystem();
     pneumatics.mainCompressor.start();
-    
+
     // compressor = new CompressorSubsystem();
-    // wrist = new WristSubsystem();
-    // intake = new IntakeSubsystem();
+    wrist = new WristSubsystem();
+    intake = new IntakeSubsystem();
     m_oi = new OI();
 
     inst = NetworkTableInstance.getDefault();
@@ -89,15 +89,15 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     drivetrain.updateOutputs();
     arm.updateOutputs();
-    
-    //pneumatics.mainCompressor.start();
+
+    // pneumatics.mainCompressor.start();
     SmartDashboard.putNumber("TEST", 123123);
     SmartDashboard.putNumber("Arm P", 0.00001);
     SmartDashboard.putNumber("Arm D", 0.00000001);
     SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
-   
+
     // arm.updateOutputs();
-   
+
     // System.out.println(inst.isConnected());
     // System.out.println(distEntry.getNumber(-1).doubleValue());
   }
@@ -109,7 +109,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    //pneumatics.mainCompressor.start();
+    // pneumatics.mainCompressor.start();
   }
 
   @Override

@@ -9,13 +9,22 @@ package frc.robot;
 
 //import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.accessories.XboxController;
-import frc.robot.autocommands.ArmRotateDegrees;
-import frc.robot.commands.IntakeBallCommand;
-import frc.robot.commands.LowerArmCommand;
 import frc.robot.commands.PneumaticsActivate;
+
+import frc.robot.commands.IntakeBallCommand;
+import frc.robot.commands.ShootBallCommand;
+
+import frc.robot.commands.LowerArmCommand;
 import frc.robot.commands.RaiseArmCommand;
-import frc.robot.commands.RaiseArmCommandHigh;
-import frc.robot.commands.RaiseArmCommandLow;
+
+
+import frc.robot.commands.ArcadeDriveCommand;
+import frc.robot.commands.TankDriveCommand;
+
+
+import frc.robot.commands.RaiseWristCommand;
+import frc.robot.commands.LowerWristCommand;
+
 
 
 /**
@@ -35,16 +44,22 @@ public class OI {
   // private Joystick secondaryController = new Joystick(1);
   public OI() {
 
-    primaryController.leftBumper.whileHeld(new RaiseArmCommand(-0.1));
-    primaryController.rightBumper.whileHeld(new LowerArmCommand(0.1));
-    // primaryController.selectButton.whileHeld(new RaiseArmCommandHigh());
-    primaryController.selectButton.whenPressed(new PneumaticsActivate());
-    primaryController.xButton.whenPressed(new ArmRotateDegrees(45));
-    // primaryController.rightBumper.whileHeld(new LowerArmCommandHigh());
-    // primaryController.bButton.whenPressed(new ArmRotateDegrees(90));
+    // setting up the raise arm and lowering arm(change value if needed)
+    primaryController.rightTriggerButton.whileHeld(new RaiseArmCommand(-0.1));
+    primaryController.leftTriggerButton.whileHeld(new LowerArmCommand(0.1));
 
-    /// primaryController.xButton.toggleWhenPressed(new IntakeBallCommand());
-    // primaryController.bButton.toggleWhenPressed(new ShootBallSlowCommand());
+    //using the newmatics for pushing.
+    primaryController.selectButton.whenPressed(new PneumaticsActivate());
+
+    //setting up the wrist
+    primaryController.leftBumper.whileHeld(new RaiseWristCommand());
+    primaryController.rightBumper.whileHeld(new LowerWristCommand());
+    
+    //setting up the intake
+    primaryController.xButton.toggleWhenPressed(new IntakeBallCommand());
+
+    //setting up the shooting the ball
+    primaryController.bButton.toggleWhenPressed(new ShootBallCommand(5));    
 
   }
 

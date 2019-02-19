@@ -7,23 +7,30 @@
 
 package frc.robot.commands;
 
+//import javax.sound.midi.SysexMessage;
+
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 
 public class RaiseWristCommand extends Command {
   public RaiseWristCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.wrist);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    System.out.println("Initializing raise wrist");
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.wrist.setWristPower(0.5);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -41,7 +48,7 @@ public class RaiseWristCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-
+    Robot.wrist.setWristPower(0.0);
 
   }
 }
