@@ -66,6 +66,7 @@ public class RobotMap {
   public static final double shootBallSlow = -0.5;
 
   // ARM ANGLE LEVEL CONSTANTS
+  public static final double defaultAngle = 0;
   public static final double rocketLevel2Angle = 0;
   public static final double rocketLevel3Angle = 0;
 
