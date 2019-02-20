@@ -112,6 +112,11 @@ public class RobotMap {
   // PCM device IDs
   public static final int intakeSolenoidChannel = 7;
 
+  // SPEED CONSTANTS
+  public static final double intakeSpeed = 0.2;
+  public static final double tossBallSpeed = -0.2;
+  public static final double blastBallSpeed = -0.7;
+
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;

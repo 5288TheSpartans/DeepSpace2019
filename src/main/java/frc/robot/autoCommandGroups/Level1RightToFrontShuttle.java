@@ -28,7 +28,7 @@ public class Level1RightToFrontShuttle extends CommandGroup {
     addSequential(new DriveStraightDistance(48.2));
     addSequential(new SpotTurnDegrees(90));
     addSequential(new DriveStraightDistance(218));
-    addSequential(new IntakeBallCommand());
+    addSequential(new IntakeBallCommand(RobotMap.intakeSpeed));
     addSequential(new SpotTurnDegrees(-90));
     addSequential(new DriveStraightDistance(1));
     addSequential(new SpotTurnDegrees(-90));
