@@ -17,26 +17,24 @@ public class Level1LeftToFrontLeftShuttle extends CommandGroup {
    * Objective:
    */
   public Level1LeftToFrontLeftShuttle() {
-    //setting up the autopath = left front left shuttul
-    
+    // setting up the autopath = left front left shuttul
 
-    //drive stright 
+    // drive stright
     addSequential(new DriveStraightDistance(133));
     // Place Hatch on Left Front Shuttle
     addSequential(new PneumaticsActivate());
-    //turn on the spot left
+    // turn on the spot left
     addSequential(new SpotTurnDegrees(-90));
-    //drive straight for 15in
+    // drive straight for 15in
     addSequential(new DriveStraightDistance(15));
-    //turn on the spot left
+    // turn on the spot left
     addSequential(new SpotTurnDegrees(-60));
-    //drive straight 211.9in
+    // drive straight 211.9in
     addSequential(new DriveStraightDistance(211.9));
     //
     addSequential(new SpotTurnDegrees(-30));
     addSequential(new DriveStraightDistance(5));
 
-    
     // Load Hatch Panel
     addSequential(new SpotTurnDegrees(180));
     addSequential(new DriveStraightDistance(5));

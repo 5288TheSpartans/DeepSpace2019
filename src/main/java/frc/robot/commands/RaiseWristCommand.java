@@ -14,7 +14,8 @@ import frc.robot.Robot;
 
 
 public class RaiseWristCommand extends Command {
-  public RaiseWristCommand() {
+  private double wristSpeed = 0;
+  public RaiseWristCommand(double speed) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.wrist);
@@ -30,7 +31,7 @@ public class RaiseWristCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.wrist.setWristPower(0.5);
+    Robot.wrist.setWristPower(wristSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()

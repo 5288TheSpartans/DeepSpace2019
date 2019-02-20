@@ -24,7 +24,7 @@ public class ShootBallCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Shoot ball initializing");
+    System.out.println("Initializing ShootBallCommand.");
   }
 
   // Called repeatedly when this Command is scheduled to run

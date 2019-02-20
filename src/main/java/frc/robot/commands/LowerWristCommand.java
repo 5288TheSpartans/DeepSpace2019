@@ -13,23 +13,25 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class LowerWristCommand extends Command {
-  public LowerWristCommand() {
+  private double wristSpeed = 0;
+  public LowerWristCommand(double speed) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    wristSpeed = speed;
     requires(Robot.wrist);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Initializing raise wrist");
+    System.out.println("Initializing LowerWristCommand.");
 
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.wrist.setWristPower(-0.5);
+    Robot.wrist.setWristPower(wristSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -13,9 +13,10 @@ import frc.robot.Robot;
 public class IntakeBallCommand extends Command {
 
   private double intakeSpeed = 0.8;
-  public IntakeBallCommand() {
+  public IntakeBallCommand(double speed) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    intakeSpeed = speed;
     requires(Robot.intake);
   }
 

@@ -40,35 +40,39 @@ public class WristSubsystem extends Subsystem {
     wristMotor = new TalonSRX(RobotMap.wristMotor);
 
   }
+  public double getWristDistanceTicks() {
+    return wristMotor.getSelectedSensorPosition();
+  }
 
   public double getRotationAngle() { // get the rotation angle return
     return (wristMotor.getSelectedSensorPosition() / encoderUnit) * 360; 
   }
 
   public boolean isWristAtTop() {
-    if (getRotationAngle() >= topAngleLimit)
-      return true;
+    //if (getRotationAngle() >= topAngleLimit)
+    //  return true;
     return false;
   }
 
   public boolean isWristAtBottom() {
-    if (getRotationAngle() <= lowerAngleLimit)
-      return true;
+   // if (getRotationAngle() <= lowerAngleLimit)
+   //   return true;
     return false;
   }
 
   public void setWristPower(double power) {
 
-    if (getRotationAngle() >= topAngleLimit || getRotationAngle() <= lowerAngleLimit)
-      wristPower = 0;
-    else
-      wristPower = power;
+    //if (getRotationAngle() >= topAngleLimit || getRotationAngle() <= lowerAngleLimit)
+    //  wristPower = 0;
+    //else
+    wristPower = power;
   }
 
   public void updateOutput() {
     wristMotor.set(ControlMode.PercentOutput, wristPower);
   }
 
-  public void resetEncoders() { // reset }
+  public void resetEncoders() {
+     // reset 
   }
 }

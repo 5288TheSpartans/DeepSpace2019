@@ -16,7 +16,6 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.autocommands.SpotTurnDegrees;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ArmSubsystem;
 
 import frc.robot.subsystems.DrivetrainSubsystem;
@@ -70,7 +69,6 @@ public class Robot extends TimedRobot {
     distEntry = table.getEntry("distance");
     distance = distEntry.getNumber(-1).doubleValue();
 
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand()); //
     m_chooser.addOption("Spot turn", new SpotTurnDegrees(180));
     SmartDashboard.putData("Auto mode", m_chooser);
 
@@ -89,12 +87,16 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     drivetrain.updateOutputs();
     arm.updateOutputs();
+    wrist.updateOutput();
 
     // pneumatics.mainCompressor.start();
     SmartDashboard.putNumber("TEST", 123123);
     SmartDashboard.putNumber("Arm P", 0.00001);
     SmartDashboard.putNumber("Arm D", 0.00000001);
     SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
+    SmartDashboard.putNumber("Wrist Distance", wrist.getWristDistanceTicks());
+    SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
+
 
     // arm.updateOutputs();
 
