@@ -61,6 +61,8 @@ public class OI {
     // setting up the shooting the ball
     primaryController.bButton.toggleWhenPressed(new ShootBallCommand(-0.5));
 
+    primaryController.yButton.whileHeld(new RaiseArmCommand(0.2));
+    primaryController.aButton.whileHeld(new LowerArmCommand(-0.2));
 
   }
 

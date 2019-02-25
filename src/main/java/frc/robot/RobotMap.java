@@ -34,9 +34,8 @@ public class RobotMap {
   public static final int wristMotor = 9;
   
   // intake motor
-  // IMPORTANT, CHANGE THE PORT
-  public static final int intakeLeft = 9;
-  public static final int intakeRight = 9;
+  public static final int intakeLeft = 4;
+  public static final int intakeRight = 5;
 
   // D I/O - Digital Input/Output Ports
   public static final int leftDriveEncoder1 = 0; // white
