@@ -8,7 +8,7 @@
 package frc.robot;
 
 //import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.accessories.XboxController;
+import frc.robot.accessories.XboxController2;
 import frc.robot.commands.PneumaticsActivate;
 
 import frc.robot.commands.IntakeBallCommand;
@@ -39,11 +39,11 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
-  private XboxController primaryController = new XboxController(0);
+  public XboxController2 primaryController = new XboxController2(0);
 
   // private Joystick secondaryController = new Joystick(1);
   public OI() {
-
+    
     // setting up the raise arm and lowering arm(change value if needed)
     primaryController.rightTriggerButton.whileHeld(new RaiseArmCommand(-0.1));
     primaryController.leftTriggerButton.whileHeld(new LowerArmCommand(0.1));

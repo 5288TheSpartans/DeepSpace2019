@@ -14,8 +14,11 @@ public class RaiseArmCommand extends Command {
   public double armPower = 0.0;
 
   public RaiseArmCommand(double power) {
-    armPower = power;
     requires(Robot.arm);
+    if((Robot.m_oi.primaryController.getRightAnalogTrigger()) != 0)
+      armPower = Robot.m_oi.primaryController.getRightAnalogTrigger();
+    else
+      armPower = power;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
 

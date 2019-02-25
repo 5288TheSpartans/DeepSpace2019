@@ -69,9 +69,10 @@ public class RobotMap {
   public static final double rocketLevel2Angle = 0;
   public static final double rocketLevel3Angle = 0;
 
-  // ARM POWER CONSTANTS
+  // ARM POWER AND DEADZONE CONSTANTS
   public static final double armPowerFast = 0.8;
   public static final double armPowerSlow = -0.3;
+  public static final double triggerDeadzone = 0.1;
 
   // PID CONSTANTS
 
