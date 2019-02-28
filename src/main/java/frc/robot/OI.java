@@ -45,15 +45,18 @@ public class OI {
   public OI() {
     
     // setting up the raise arm and lowering arm(change value if needed)
-    primaryController.rightTriggerButton.whileHeld(new RaiseArmCommand(-0.1));
-    primaryController.leftTriggerButton.whileHeld(new LowerArmCommand(0.1));
+    //primaryController.rightTriggerButton.whileHeld(new RaiseArmCommand(-0.1));
+    //primaryController.leftTriggerButton.whileHeld(new LowerArmCommand(0.1));
 
-    // using the newmatics for pushing.
+    // using the pneumatics for pushing.
     primaryController.selectButton.whenPressed(new PneumaticsActivate());
 
-    // setting up the wrist
-    primaryController.leftBumper.whileHeld(new RaiseWristCommand(0.2));
-    primaryController.rightBumper.whileHeld(new LowerWristCommand(-0.2));
+    // getting ball
+    primaryController.rightBumper.whenPressed(new IntakeBallCommand(0.8));
+    primaryController.leftBumper.whenPressed(new PneumaticsActivate());
+
+    // raising and lowering wrist
+    primaryController. 
 
     // setting up the intake
     primaryController.xButton.toggleWhenPressed(new IntakeBallCommand(0.3));
@@ -61,8 +64,10 @@ public class OI {
     // setting up the shooting the ball
     primaryController.bButton.toggleWhenPressed(new ShootBallCommand(-0.5));
 
-    primaryController.yButton.whileHeld(new RaiseArmCommand(0.2));
-    primaryController.aButton.whileHeld(new LowerArmCommand(-0.2));
+    //
+
+    //primaryController.yButton.whileHeld(new RaiseArmCommand(0.2));
+    //primaryController.aButton.whileHeld(new LowerArmCommand(-0.2));
 
   }
 

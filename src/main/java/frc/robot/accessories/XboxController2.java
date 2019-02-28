@@ -58,6 +58,8 @@ public class XboxController2 {
 		return xbox.getTriggerAxis(Hand.kRight);
 	}
 
+	public d
+
 	
 }
 
