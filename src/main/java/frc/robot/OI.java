@@ -86,14 +86,14 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-  public double getXboxLeftTriggerY() {
+  public double getXboxLeftStickY() {
     // return xbox.getY(Hand.kLeft);
     // return primaryController.getRawAxis(1);
     return primaryController.getLeftStickY();
 
   }
 
-  public double getXboxRightTriggerX() {
+  public double getXboxRightStickX() {
     // return xbox.getX(Hand.kRight);
     // return primaryController.getRawAxis(4);
     return primaryController.getRightStickX();

@@ -29,8 +29,8 @@ public class ArcadeDriveCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    leftJoyY = Robot.m_oi.getXboxLeftTriggerY();
-    rightJoyX = Robot.m_oi.getXboxRightTriggerX();
+    leftJoyY = Robot.m_oi.getXboxLeftStickY();
+    rightJoyX = Robot.m_oi.getXboxRightStickX();
     // If it IS within the deadzone
     if(leftJoyY > -RobotMap.joystickDeadzone && leftJoyY < RobotMap.joystickDeadzone ) {
       leftJoyY = 0;
