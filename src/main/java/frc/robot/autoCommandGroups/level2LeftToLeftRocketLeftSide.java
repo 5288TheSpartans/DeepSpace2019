@@ -30,7 +30,7 @@ public class level2LeftToLeftRocketLeftSide extends CommandGroup {
     addSequential(new PneumaticsActivate());
     addSequential(new DriveStraightDistance(201.13));
     addParallel(new SpotTurnDegrees(-205));
-    addParallel(new ArmRotateDegrees(RobotMap.RocketLevel2));
+    addParallel(new ArmRotateDegrees(RobotMap.rocketLevel2Angle));
     addSequential(new PneumaticsActivate());
   }
 }

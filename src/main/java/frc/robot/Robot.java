@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.autocommands.SpotTurnDegrees;
 import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.autoCommandGroups.Modifier1ButtonCombination;
+import frc.robot.autoCommandGroups.Modifier2ButtonCombination;
 
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -88,6 +90,7 @@ public class Robot extends TimedRobot {
     drivetrain.updateOutputs();
     arm.updateOutputs();
     wrist.updateOutput();
+
 
     // pneumatics.mainCompressor.start();
     SmartDashboard.putNumber("TEST", 123123);

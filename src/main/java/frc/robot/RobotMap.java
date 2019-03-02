@@ -64,8 +64,9 @@ public class RobotMap {
   public static final double shootBallFast = 0.8;
   public static final double shootBallSlow = -0.5;
 
-  // ARM ANGLE LEVEL CONSTANTS
-  public static final double defaultAngle = 0;
+  // ARM ANGLE LEVEL CONSTANTS (needs angle values)
+  public static final double cargoShipAngle = 0;
+  public static final double rocketLevel1Angle = 0;
   public static final double rocketLevel2Angle = 0;
   public static final double rocketLevel3Angle = 0;
 
@@ -101,9 +102,9 @@ public class RobotMap {
   public static final double TurnFF = 0.2;
 
   // ARM ANGLE TO LEVEL
-  public static final double DefaultLevel = 10;
-  public static final double RocketLevel2 = 35;
-  public static final double RocketLevel3 = 50;
+  //public static final double DefaultLevel = 10;
+  //public static final double RocketLevel2 = 35;
+  //public static final double RocketLevel3 = 50;
 
   // CAN device IDs
   public static final int PDPID = 1;
@@ -116,6 +117,7 @@ public class RobotMap {
   public static final double intakeSpeed = 0.2;
   public static final double tossBallSpeed = -0.2;
   public static final double blastBallSpeed = -0.7;
+public static String RocketLevel2;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

@@ -9,6 +9,8 @@ package frc.robot;
 
 //import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.accessories.XboxController2;
+import frc.robot.autoCommandGroups.Modifier1ButtonCombination;
+import frc.robot.autoCommandGroups.Modifier2ButtonCombination;
 import frc.robot.commands.PneumaticsActivate;
 
 import frc.robot.commands.IntakeBallCommand;
@@ -66,7 +68,11 @@ public class OI {
     // setting up shooting the ball
     primaryController.bButton.toggleWhenPressed(new ShootBallCommand(-0.5));
 
-    //
+    // modifier 1 (ball)
+    primaryController.rightBumper.whileHeld(new Modifier1ButtonCombination());
+
+    // modifier 2 (hatch)
+    primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
 
     //primaryController.yButton.whileHeld(new RaiseArmCommand(0.2));
     //primaryController.aButton.whileHeld(new LowerArmCommand(-0.2));
