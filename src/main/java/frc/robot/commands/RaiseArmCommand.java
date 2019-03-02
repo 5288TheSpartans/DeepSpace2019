@@ -9,14 +9,15 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class RaiseArmCommand extends Command {
   public double armPower = 0.0;
 
   public RaiseArmCommand(double power) {
     requires(Robot.arm);
-    if((Robot.m_oi.primaryController.getRightAnalogTrigger()) != 0)
-      armPower = Robot.m_oi.primaryController.getRightAnalogTrigger();
+    if((Robot.m_oi.primaryController.getLeftAnalogTrigger()) > RobotMap.triggerDeadzone)
+      armPower = Robot.m_oi.primaryController.getLeftAnalogTrigger();
     else
       armPower = power;
     // Use requires() here to declare subsystem dependencies

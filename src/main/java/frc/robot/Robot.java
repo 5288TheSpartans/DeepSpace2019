@@ -96,8 +96,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
     SmartDashboard.putNumber("Wrist Distance", wrist.getWristDistanceTicks());
     SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
-
-
+    
     // arm.updateOutputs();
 
     // System.out.println(inst.isConnected());

@@ -48,20 +48,22 @@ public class OI {
     //primaryController.rightTriggerButton.whileHeld(new RaiseArmCommand(-0.1));
     //primaryController.leftTriggerButton.whileHeld(new LowerArmCommand(0.1));
 
-    // using the pneumatics for pushing.
-    primaryController.selectButton.whenPressed(new PneumaticsActivate());
-
     // getting ball
-    primaryController.rightBumper.whenPressed(new IntakeBallCommand(0.8));
-    primaryController.leftBumper.whenPressed(new PneumaticsActivate());
+    //primaryController.rightBumper.whileHeld(new IntakeBallCommand(0.8));
+
+    // getting or placing hatch
+    //primaryController.leftBumper.whenPressed(new PneumaticsActivate());
 
     // raising and lowering wrist
-    primaryController. 
+    //primaryController.
+
+    // modifier button combinations
+
 
     // setting up the intake
     primaryController.xButton.toggleWhenPressed(new IntakeBallCommand(0.3));
 
-    // setting up the shooting the ball
+    // setting up shooting the ball
     primaryController.bButton.toggleWhenPressed(new ShootBallCommand(-0.5));
 
     //
@@ -103,4 +105,11 @@ public class OI {
     // return primaryController.getRawAxis(4);
     return primaryController.getRightStickX();
   }
+  public boolean getRightModifierStatus() {
+		return primaryController.getRightBumperStatus();
+	}
+	public boolean getLeftModifierStatus() {
+    return primaryController.getLeftBumperStatus();
+  }
 }
+
