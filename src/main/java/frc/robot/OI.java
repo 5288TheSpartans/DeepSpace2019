@@ -97,7 +97,6 @@ public class OI {
     // return xbox.getY(Hand.kLeft);
     // return primaryController.getRawAxis(1);
     return primaryController.getLeftStickY();
-
   }
 
   public double getXboxRightStickX() {
@@ -105,9 +104,11 @@ public class OI {
     // return primaryController.getRawAxis(4);
     return primaryController.getRightStickX();
   }
+
   public boolean getRightModifierStatus() {
 		return primaryController.getRightBumperStatus();
-	}
+  }
+  
 	public boolean getLeftModifierStatus() {
     return primaryController.getLeftBumperStatus();
   }

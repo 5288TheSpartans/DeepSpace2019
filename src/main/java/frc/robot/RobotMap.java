@@ -100,10 +100,10 @@ public class RobotMap {
   public static final double TurnD = 0.03;
   public static final double TurnFF = 0.2;
 
-  // AUTO COMMANDS
-  public static final double DefaultLevel = 0;
-  public static final double RocketLevel2 = 0;
-  public static final double RocketLevel3 = 0;
+  // ARM ANGLE TO LEVEL
+  public static final double DefaultLevel = 10;
+  public static final double RocketLevel2 = 35;
+  public static final double RocketLevel3 = 50;
 
   // CAN device IDs
   public static final int PDPID = 1;
