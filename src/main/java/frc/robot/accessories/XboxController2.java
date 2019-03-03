@@ -26,7 +26,7 @@ public class XboxController2 {
 	public JoystickButton rightStickButton = new JoystickButton(xbox, 10);
 	public JoystickButton rightTriggerButton = new JoystickButton(xbox, 11);
 	public JoystickButton leftTriggerButton = new JoystickButton(xbox, 12);
-
+	
 
 	public double getLeftStickX() {
 	//	return this.getRawAxis(0);
@@ -58,6 +58,7 @@ public class XboxController2 {
 	public double getDPadValue() {
 		return xbox.getPOV();
 	}
+	
 	public boolean getRightBumperStatus() {
 		return xbox.getBumperPressed(Hand.kRight);
 	}

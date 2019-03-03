@@ -22,30 +22,40 @@ public class Modifier2ButtonCombination extends CommandGroup {
    */
   public Modifier2ButtonCombination() {
     
-    //TO DO: Find out how to add parallel method to commands and add wrist commands.
+    //TO DO: Add wrist commands.
 
     // DPad up
-    //if((Robot.m_oi.primaryController.getDPadValue()) == 0)
+    if((Robot.m_oi.primaryController.getDPadValue()) == 0)
+      addParallel(new ArmRotateDegrees(RobotMap.groundLevelAngle));
+      //addParallel(new WristCommand);
       // Command: arm and wrist to loading station (hatch)
     
     // DPad down
-    //if((Robot.m_oi.primaryController.getDPadValue()) == 180)
+    if((Robot.m_oi.primaryController.getDPadValue()) == 180)
+      addParallel(new ArmRotateDegrees(RobotMap.groundLevelAngle));
+      //addParallel(new WristCommand);
       // Command: arm and wrist to ground to pick up (hatch)
     
     // A Button 
-    Robot.m_oi.primaryController.aButton.whenPressed(new ArmRotateDegrees(RobotMap.rocketLevel1Angle));
+    if(Robot.m_oi.primaryController.xbox.getAButton())
+      addParallel(new ArmRotateDegrees(RobotMap.rocketLevel1Angle));
+      //addParallel(new WristCommand);
     // Arm and wrist level 1 rocket pos (hatch)
 
     // X Button 
-    Robot.m_oi.primaryController.xButton.whenPressed(new ArmRotateDegrees(RobotMap.rocketLevel2Angle));
-    // Arm and wrist level 2 rocket pos (hatch)
+    if(Robot.m_oi.primaryController.xbox.getXButton())
+      addParallel(new ArmRotateDegrees(RobotMap.rocketLevel2Angle));
+      //addParallel(new WristCommand);
 
     // Y Button 
-    Robot.m_oi.primaryController.yButton.whenPressed(new ArmRotateDegrees(RobotMap.rocketLevel3Angle));
+    if(Robot.m_oi.primaryController.xbox.getYButton())
+      addParallel(new ArmRotateDegrees(RobotMap.rocketLevel3Angle));
+      //addParallel(new WristCommand);
     // Arm and wrist level 3 rocket pos (hatch)
 
     // B Button 
-    Robot.m_oi.primaryController.bButton.whenPressed(new ArmRotateDegrees(RobotMap.cargoShipAngle));
-    // Arm and wrist cargo ship pos (hatch)
+    if(Robot.m_oi.primaryController.xbox.getBButton())
+      addParallel(new ArmRotateDegrees(RobotMap.cargoShipAngle));
+      //addParallel(new WristCommand);
   }
 }

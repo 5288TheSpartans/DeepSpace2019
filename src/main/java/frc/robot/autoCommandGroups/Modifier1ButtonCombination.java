@@ -22,35 +22,42 @@ public class Modifier1ButtonCombination extends CommandGroup {
    */
   public Modifier1ButtonCombination() {
     
-    //TO DO: Find out how to add parallel method to commands and add wrist commands.
+    //TO DO: Add wrist commands.
 
     // DPad up
-    //if((Robot.m_oi.primaryController.getDPadValue()) == 0)
-      // Command: arm and wrist to loading station (ball)
+    if((Robot.m_oi.primaryController.getDPadValue()) == 0)
+      addParallel(new ArmRotateDegrees(RobotMap.cargoShipAngle));
+      //addParallel(new WristCommand);
+      //arm and wrist to loading station (ball)
     
     // DPad down
-    //if((Robot.m_oi.primaryController.getDPadValue()) == 180)
-      // Command: arm and wrist to ground to pick up (ball)
+    if((Robot.m_oi.primaryController.getDPadValue()) == 180)
+      addParallel(new ArmRotateDegrees(RobotMap.groundLevelAngle));
+      //addParallel(new WristCommand);
+      //arm and wrist to ground to pick up (ball)
     
     // A Button 
-    Robot.m_oi.primaryController.aButton.whenPressed(new ArmRotateDegrees(RobotMap.rocketLevel1Angle));
-    // Arm and wrist level 1 rocket pos (ball)
+    if(Robot.m_oi.primaryController.xbox.getAButton())
+      addParallel(new ArmRotateDegrees(RobotMap.rocketLevel1Angle));
+      //addParallel(new WristCommand);
+    //arm and wrist level 1 rocket pos (ball)
 
     // X Button 
-    Robot.m_oi.primaryController.xButton.whenPressed(new ArmRotateDegrees(RobotMap.rocketLevel2Angle));
-    // Arm and wrist level 2 rocket pos (ball)
+    if(Robot.m_oi.primaryController.xbox.getXButton())
+      addParallel(new ArmRotateDegrees(RobotMap.rocketLevel2Angle));
+      //addParallel(new WristCommand);
+    //arm and wrist level 2 rocket pos (ball)
 
     // Y Button 
-    Robot.m_oi.primaryController.yButton.whenPressed(new ArmRotateDegrees(RobotMap.rocketLevel3Angle));
-    // Arm and wrist level 3 rocket pos (ball)
+    if(Robot.m_oi.primaryController.xbox.getYButton())
+      addParallel(new ArmRotateDegrees(RobotMap.rocketLevel3Angle));
+      //addParallel(new WristCommand);
+    //arm and wrist level 3 rocket pos (hatch)
 
     // B Button 
-    Robot.m_oi.primaryController.bButton.whenPressed(new ArmRotateDegrees(RobotMap.cargoShipAngle));
-    // Arm and wrist cargo ship pos (ball)
-
-
-
-    
-
+    if(Robot.m_oi.primaryController.xbox.getBButton())
+      addParallel(new ArmRotateDegrees(RobotMap.cargoShipAngle));
+      //addParallel(new WristCommand);
+      //arm and wrist cargo ship pos (ball)
   }
 }

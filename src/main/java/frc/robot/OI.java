@@ -61,7 +61,6 @@ public class OI {
 
     // modifier button combinations
 
-
     // setting up the intake
     primaryController.xButton.toggleWhenPressed(new IntakeBallCommand(0.3));
 
@@ -111,12 +110,15 @@ public class OI {
     return primaryController.getRightStickX();
   }
 
-  public boolean getRightModifierStatus() {
-		return primaryController.getRightBumperStatus();
+  public void getRightModifierStatus() {
+    //if(primaryController.getRightBumperStatus())
+      //Command to call Modifier1ButtonCombination.
   }
   
-	public boolean getLeftModifierStatus() {
-    return primaryController.getLeftBumperStatus();
+	public void getLeftModifierStatus() {
+    //if(primaryController.getLeftBumperStatus())
+      //Command to call Modifier2ButtonCombination.
   }
+
 }
 

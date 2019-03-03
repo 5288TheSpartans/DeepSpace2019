@@ -65,6 +65,7 @@ public class RobotMap {
   public static final double shootBallSlow = -0.5;
 
   // ARM ANGLE LEVEL CONSTANTS (needs angle values)
+  public static final double groundLevelAngle = 0;
   public static final double cargoShipAngle = 0;
   public static final double rocketLevel1Angle = 0;
   public static final double rocketLevel2Angle = 0;
@@ -100,11 +101,6 @@ public class RobotMap {
   public static final double TurnI = 0.2;
   public static final double TurnD = 0.03;
   public static final double TurnFF = 0.2;
-
-  // ARM ANGLE TO LEVEL
-  //public static final double DefaultLevel = 10;
-  //public static final double RocketLevel2 = 35;
-  //public static final double RocketLevel3 = 50;
 
   // CAN device IDs
   public static final int PDPID = 1;
