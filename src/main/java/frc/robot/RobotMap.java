@@ -96,6 +96,12 @@ public class RobotMap {
   public static final double ArmRotateD = 0;
   public static final double ArmRotateFF = 0;
 
+  // WRIST ROTATE
+  public static final double WristRotateP = 0;
+  public static final double WristRotateI = 0;
+  public static final double WristRotateD = 0;
+  public static final double WristRotateFF = 0;
+
   // TURN
   public static final double TurnP = 0.5;
   public static final double TurnI = 0.2;

@@ -31,30 +31,30 @@ public class Modifier2ButtonCombination extends CommandGroup {
       // Command: arm and wrist to loading station (hatch)
     
     // DPad down
-    if((Robot.m_oi.primaryController.getDPadValue()) == 180)
+    else if((Robot.m_oi.primaryController.getDPadValue()) == 180)
       addParallel(new ArmRotateDegrees(RobotMap.groundLevelAngle));
       //addParallel(new WristCommand);
       // Command: arm and wrist to ground to pick up (hatch)
     
     // A Button 
-    if(Robot.m_oi.primaryController.xbox.getAButton())
+    else if(Robot.m_oi.primaryController.xbox.getAButton())
       addParallel(new ArmRotateDegrees(RobotMap.rocketLevel1Angle));
       //addParallel(new WristCommand);
     // Arm and wrist level 1 rocket pos (hatch)
 
     // X Button 
-    if(Robot.m_oi.primaryController.xbox.getXButton())
+    else if(Robot.m_oi.primaryController.xbox.getXButton())
       addParallel(new ArmRotateDegrees(RobotMap.rocketLevel2Angle));
       //addParallel(new WristCommand);
 
     // Y Button 
-    if(Robot.m_oi.primaryController.xbox.getYButton())
+    else if(Robot.m_oi.primaryController.xbox.getYButton())
       addParallel(new ArmRotateDegrees(RobotMap.rocketLevel3Angle));
       //addParallel(new WristCommand);
     // Arm and wrist level 3 rocket pos (hatch)
 
     // B Button 
-    if(Robot.m_oi.primaryController.xbox.getBButton())
+    else if(Robot.m_oi.primaryController.xbox.getBButton())
       addParallel(new ArmRotateDegrees(RobotMap.cargoShipAngle));
       //addParallel(new WristCommand);
   }
