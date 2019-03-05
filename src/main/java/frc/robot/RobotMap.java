@@ -71,6 +71,11 @@ public class RobotMap {
   public static final double rocketLevel2Angle = 0;
   public static final double rocketLevel3Angle = 0;
 
+  // WRIST ANGLE LEVEL CONSTANTS (needs angle values)
+  public static final double raisedWrist = 0;
+  public static final double loweredWrist = 0;
+
+
   // ARM POWER AND DEADZONE CONSTANTS
   public static final double armPowerFast = 0.8;
   public static final double armPowerSlow = -0.3;
