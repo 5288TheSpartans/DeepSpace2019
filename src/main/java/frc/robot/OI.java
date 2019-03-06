@@ -34,6 +34,8 @@ import frc.robot.commands.LowerWristCommand;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+  Modifier1ButtonCombination modifier1button;
+  Modifier2ButtonCombination modifier2button;
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.
@@ -109,15 +111,17 @@ public class OI {
     // return primaryController.getRawAxis(4);
     return primaryController.getRightStickX();
   }
-
+  // For "Modifiers", try adding "triggers" to your OI, instead of buttons.
+  // Check here:  
   public void getRightModifierStatus() {
-    //if(primaryController.getRightBumperStatus())
-      //Command to call Modifier1ButtonCombination.
+    if(primaryController.getRightBumperStatus()) {
+      modifier2button = new Modifier2ButtonCombination();
+    }
   }
   
 	public void getLeftModifierStatus() {
-    //if(primaryController.getLeftBumperStatus())
-      //Command to call Modifier2ButtonCombination.
+    if (primaryController.getLeftBumperStatus())
+      modifier2button = new Modifier2ButtonCombination();
   }
 
 }

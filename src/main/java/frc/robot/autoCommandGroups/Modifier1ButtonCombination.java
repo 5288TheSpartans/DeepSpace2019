@@ -57,7 +57,7 @@ public class Modifier1ButtonCombination extends CommandGroup {
     else if(Robot.m_oi.primaryController.xbox.getYButton()) {
       addParallel(new ArmRotateDegrees(RobotMap.rocketLevel3Angle));
       addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
-      //arm and wrist level 3 rocket pos (hatch)
+      //arm and wrist level 3 rocket pos (ball)
     }
 
     // B Button 
