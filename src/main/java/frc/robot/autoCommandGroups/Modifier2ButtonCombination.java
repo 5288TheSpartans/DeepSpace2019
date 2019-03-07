@@ -30,14 +30,14 @@ public class Modifier2ButtonCombination extends CommandGroup {
       //addParallel(new ArmRotateDegrees(RobotMap.groundLevelAngle));
       //addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
       //arm and wrist to loading station (hatch)
-    }
+    //}
     
     // DPad down
     //else if((Robot.m_oi.primaryController.getDPadValue()) == 180) {
       //addParallel(new ArmRotateDegrees(RobotMap.groundLevelAngle));
       //addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
       //arm and wrist to ground to pick up (hatch)
-    }
+    //}
     
     // A Button 
     if(Robot.m_oi.primaryController.xbox.getAButton()) {
