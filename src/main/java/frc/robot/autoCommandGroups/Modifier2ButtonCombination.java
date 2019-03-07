@@ -26,21 +26,21 @@ public class Modifier2ButtonCombination extends CommandGroup {
     //TO DO: Wrist commands need testing. (For now default is RobotMap.raisedWrist())
 
     // DPad up
-    if((Robot.m_oi.primaryController.getDPadValue()) == 0) {
-      addParallel(new ArmRotateDegrees(RobotMap.groundLevelAngle));
-      addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
+    //if((Robot.m_oi.primaryController.getDPadValue()) == 0) {
+      //addParallel(new ArmRotateDegrees(RobotMap.groundLevelAngle));
+      //addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
       //arm and wrist to loading station (hatch)
     }
     
     // DPad down
-    else if((Robot.m_oi.primaryController.getDPadValue()) == 180) {
-      addParallel(new ArmRotateDegrees(RobotMap.groundLevelAngle));
-      addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
+    //else if((Robot.m_oi.primaryController.getDPadValue()) == 180) {
+      //addParallel(new ArmRotateDegrees(RobotMap.groundLevelAngle));
+      //addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
       //arm and wrist to ground to pick up (hatch)
     }
     
     // A Button 
-    else if(Robot.m_oi.primaryController.xbox.getAButton()) {
+    if(Robot.m_oi.primaryController.xbox.getAButton()) {
       addParallel(new ArmRotateDegrees(RobotMap.rocketLevel1Angle));
       addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
       //arm and wrist level 1 rocket pos (hatch)
