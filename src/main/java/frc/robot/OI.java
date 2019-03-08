@@ -113,15 +113,12 @@ public class OI {
   }
   // For "Modifiers", try adding "triggers" to your OI, instead of buttons.
   // Check here:  
-  public void getRightModifierStatus() {
-    if(primaryController.getRightBumperStatus()) {
-      modifier2button = new Modifier2ButtonCombination();
-    }
+  public boolean getRightModifierStatus() {
+    return primaryController.getRightBumperStatus();
   }
   
-	public void getLeftModifierStatus() {
-    if (primaryController.getLeftBumperStatus())
-      modifier2button = new Modifier2ButtonCombination();
+	public boolean getLeftModifierStatus() {
+    return primaryController.getLeftBumperStatus();
   }
 
 }

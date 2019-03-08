@@ -90,8 +90,8 @@ public class Robot extends TimedRobot {
     drivetrain.updateOutputs();
     arm.updateOutputs();
     wrist.updateOutput();
-    Robot.m_oi.getLeftModifierStatus();
-    Robot.m_oi.getRightModifierStatus();
+    //Robot.m_oi.getLeftModifierStatus();
+    //Robot.m_oi.getRightModifierStatus();
 
 
     // pneumatics.mainCompressor.start();
