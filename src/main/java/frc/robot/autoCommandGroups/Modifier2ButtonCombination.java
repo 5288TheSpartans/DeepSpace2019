@@ -39,7 +39,7 @@ public class Modifier2ButtonCombination extends CommandGroup {
       //arm and wrist to ground to pick up (hatch)
     //}
     
-    // A Button 
+  /*  // A Button 
     if(Robot.m_oi.primaryController.xbox.getAButton()) {
       addParallel(new ArmRotateDegrees(RobotMap.rocketLevel1Angle));
       addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
@@ -65,6 +65,6 @@ public class Modifier2ButtonCombination extends CommandGroup {
       addParallel(new ArmRotateDegrees(RobotMap.cargoShipAngle));
       addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
       //arm and wrist cargo ship pos (hatch)
-    }
+    }*/
   }
 }

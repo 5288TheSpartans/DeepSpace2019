@@ -56,7 +56,11 @@ public class XboxController2 {
 		return xbox.getTriggerAxis(Hand.kRight);
 	}
 	public double getDPadValue() {
-		return xbox.getPOV();
+		try {
+		return	xbox.getPOV();
+		} catch(NullPointerException e) {
+			return -1;
+		}
 	}
 	
 	public boolean getRightBumperStatus() {

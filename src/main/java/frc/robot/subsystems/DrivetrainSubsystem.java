@@ -79,8 +79,6 @@ public class DrivetrainSubsystem extends Subsystem {
 
   public void updateOutputs() {
     
-    System.out.println("Left encoder: " + leftEncoder.getDistance());
-    System.out.println("Right encoder: " + rightEncoder.getDistance());
     
 
     leftDriveMotor1.set(-leftPower);

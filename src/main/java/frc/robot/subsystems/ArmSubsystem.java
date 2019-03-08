@@ -43,10 +43,16 @@ public class ArmSubsystem extends Subsystem {
   }
 
   public double getDistanceTicks() {
-    System.out.println("Arm encoder 1: " + armEncoder1.getPosition());
-    System.out.println("Arm encoder 2: " + armEncoder2.getPosition());
+  //  System.out.println("Arm encoder 1: " + armEncoder1.getPosition());
+  //  System.out.println("Arm encoder 2: " + armEncoder2.getPosition());
     //return (armEncoder1.getPosition() + armEncoder2.getPosition() + armEncoder3.getPosition()) / 3;
     return (armEncoder1.getPosition() + armEncoder2.getPosition())/2;
+  }
+  public double getArmMotor1Pos() {
+   return armEncoder1.getPosition();
+  }
+  public double getArmMotor2Pos() {
+    return armEncoder2.getPosition();
   }
 
   // get the current angle of the arm.
@@ -81,10 +87,10 @@ return false;
       currentArmPower = power;
     }*/
     currentArmPower = power;
-    System.out.println("isArmAtBottom: " + isArmAtBottom());
-    System.out.println("IsArmAtTop: " + isArmAtTop());
-    System.out.println("Power to set: " + power);
-    System.out.println("Arm angle: " + getRotationAngle());
+   // System.out.println("isArmAtBottom: " + isArmAtBottom());
+   // System.out.println("IsArmAtTop: " + isArmAtTop());
+   // System.out.println("Power to set: " + power);
+   // System.out.println("Arm angle: " + getRotationAngle());
   }
 
   public void setArmPowerOverride(double power) {

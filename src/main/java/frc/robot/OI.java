@@ -34,8 +34,6 @@ import frc.robot.commands.LowerWristCommand;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  Modifier1ButtonCombination modifier1button;
-  Modifier2ButtonCombination modifier2button;
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.
@@ -45,7 +43,8 @@ public class OI {
   // Button button = new JoystickButton(stick, buttonNumber);
   public XboxController2 primaryController = new XboxController2(0);
 
-  // private Joystick secondaryController = new Joystick(1);
+
+  public XboxController2 secondaryController = new XboxController2(1);
   public OI() {
     
     // setting up the raise arm and lowering arm(change value if needed)
@@ -75,8 +74,9 @@ public class OI {
     // modifier 2 (hatch)
     primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
 
-    //primaryController.yButton.whileHeld(new RaiseArmCommand(0.2));
-    //primaryController.aButton.whileHeld(new LowerArmCommand(-0.2));
+    
+    secondaryController.yButton.whileHeld(new RaiseArmCommand(0.2));
+    secondaryController.aButton.whileHeld(new LowerArmCommand(-0.2));
 
   }
 

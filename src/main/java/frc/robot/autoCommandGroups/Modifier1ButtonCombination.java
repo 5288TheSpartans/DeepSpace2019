@@ -24,6 +24,16 @@ public class Modifier1ButtonCombination extends CommandGroup {
   public Modifier1ButtonCombination() {
     
     //TO DO: Wrist commands need testing. (For now default is RobotMap.raisedWrist())
+    try {
+
+    
+    System.out.println(Robot.m_oi.primaryController.getDPadValue());
+      }
+      catch(Exception e){
+        e.printStackTrace();
+      }   addParallel(new ArmRotateDegrees(5));
+    
+
 
     // DPad up
     //if((Robot.m_oi.primaryController.getDPadValue()) == 0) {
@@ -40,7 +50,7 @@ public class Modifier1ButtonCombination extends CommandGroup {
     //}
     
     // A Button 
-    if(Robot.m_oi.primaryController.xbox.getAButton()) {
+ /*   if(Robot.m_oi.primaryController.xbox.getAButton()) {
       addParallel(new ArmRotateDegrees(RobotMap.rocketLevel1Angle));
       addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
       //arm and wrist level 1 rocket pos (ball)
@@ -65,6 +75,6 @@ public class Modifier1ButtonCombination extends CommandGroup {
       addParallel(new ArmRotateDegrees(RobotMap.cargoShipAngle));
       addParallel(new WristRotateDegrees(RobotMap.raisedWrist));
       //arm and wrist cargo ship pos (ball)
-    }
+    }*/
   }
 }

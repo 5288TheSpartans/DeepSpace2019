@@ -87,6 +87,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    System.out.println("D-Pad Value: " + Robot.m_oi.primaryController.getDPadValue());
+    System.out.println("Arm encoder 1: " + Robot.arm.getArmMotor1Pos());
+    System.out.println("Arm encoder 2: " + Robot.arm.getArmMotor2Pos());
+    System.out.println("Drive encoder 1 (inches): " + drivetrain.getLeftDistanceInches());
+    System.out.println("Drive encoder 2 (inches):" + drivetrain.getRightDistanceInches());
     drivetrain.updateOutputs();
     arm.updateOutputs();
     wrist.updateOutput();
@@ -95,10 +100,15 @@ public class Robot extends TimedRobot {
 
 
     // pneumatics.mainCompressor.start();
-    SmartDashboard.putNumber("TEST", 123123);
-    SmartDashboard.putNumber("Arm P", 0.00001);
-    SmartDashboard.putNumber("Arm D", 0.00000001);
-    SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
+   // SmartDashboard.putNumber("TEST", 123123);
+   // SmartDashboard.putNumber("Arm P", 0.00001);
+   // SmartDashboard.putNumber("Arm D", 0.00000001);
+    //SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
+    SmartDashboard.putNumber("D-Pad Value: ",Robot.m_oi.primaryController.getDPadValue());
+    SmartDashboard.putNumber("Arm encoder 1: ",Robot.arm.getArmMotor1Pos());
+    SmartDashboard.putNumber("Arm encoder 2: ", Robot.arm.getArmMotor2Pos());
+    SmartDashboard.putNumber("Drive encoder 1 (inches): ", drivetrain.getLeftDistanceInches());
+    SmartDashboard.putNumber("Drive encoder 2 (inches):", drivetrain.getRightDistanceInches());
     SmartDashboard.putNumber("Wrist Distance", wrist.getWristDistanceTicks());
     SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
     
