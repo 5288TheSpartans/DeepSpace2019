@@ -20,15 +20,11 @@ import frc.robot.commands.ShootBallCommand;
 import frc.robot.commands.LowerArmCommand;
 import frc.robot.commands.RaiseArmCommand;
 
-
 import frc.robot.commands.ArcadeDriveCommand;
 import frc.robot.commands.TankDriveCommand;
 
-
 import frc.robot.commands.RaiseWristCommand;
 import frc.robot.commands.LowerWristCommand;
-
-
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -42,40 +38,42 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
-  //public XboxController2 primaryController = new XboxController2(0);
-  //public XboxController2 secondaryController = new XboxController2(1);
-    public LogitechController primaryController = new LogitechController(0);
-    public XboxController2 secondaryController = new XboxController2(1);
+  // public XboxController2 primaryController = new XboxController2(0);
+  // public XboxController2 secondaryController = new XboxController2(1);
+  public LogitechController primaryController = new LogitechController(0);
+  public XboxController2 secondaryController = new XboxController2(1);
+
   public OI() {
-    
+
     // setting up the raise arm and lowering arm(change value if needed)
-    //primaryController.rightTriggerButton.whileHeld(new RaiseArmCommand(-0.1));
-    //primaryController.leftTriggerButton.whileHeld(new LowerArmCommand(0.1));
+    secondaryController.rightTriggerButton
+        .whileHeld(new RaiseArmCommand(secondaryController.getRightAnalogTrigger() / 2));
+    secondaryController.leftTriggerButton
+        .whileHeld(new LowerArmCommand(secondaryController.getLeftAnalogTrigger() / 2));
 
     // getting ball
-    //primaryController.rightBumper.whileHeld(new IntakeBallCommand(0.8));
+    // primaryController.rightBumper.whileHeld(new IntakeBallCommand(0.8));
 
     // getting or placing hatch
-    //primaryController.leftBumper.whenPressed(new PneumaticsActivate());
+    // primaryController.leftBumper.whenPressed(new PneumaticsActivate());
 
     // raising and lowering wrist
-    //primaryController.
+    // primaryController.
 
     // modifier button combinations
 
     // setting up the intake
-    //primaryController.xButton.toggleWhenPressed(new IntakeBallCommand(0.3));
+    // primaryController.xButton.toggleWhenPressed(new IntakeBallCommand(0.3));
 
     // setting up shooting the ball
-    //primaryController.bButton.toggleWhenPressed(new ShootBallCommand(-0.5));
+    // primaryController.bButton.toggleWhenPressed(new ShootBallCommand(-0.5));
 
     // modifier 1 (ball)
-    //primaryController.rightBumper.whileHeld(new Modifier1ButtonCombination());
+    // primaryController.rightBumper.whileHeld(new Modifier1ButtonCombination());
 
     // modifier 2 (hatch)
-    //primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
+    // primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
 
-    
     secondaryController.yButton.toggleWhenPressed(new IntakeBallCommand(0.3));
     secondaryController.aButton.toggleWhenPressed(new ShootBallCommand(-0.5));
     secondaryController.xButton.whileHeld(new RaiseWristCommand(1.00));
@@ -103,36 +101,36 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
-  public double getXboxLeftStickY() {
+  public double getPrimaryControllerLeftStickY() {
     // return xbox.getY(Hand.kLeft);
     // return primaryController.getRawAxis(1);
-    System.out.println("XBOX LEFT-Y: "+  primaryController.getLeftStickY());
+    System.out.println("XBOX LEFT-Y: " + primaryController.getLeftStickY());
     return primaryController.getLeftStickY();
   }
 
-  public double getXboxRightStickX() {
+  public double getPrimaryControllerRightStickX() {
     // return xbox.getX(Hand.kRight);
     // return primaryController.getRawAxis(4);
     System.out.println("XBOX RIGHT-X: " + primaryController.getRightStickX());
     return primaryController.getRightStickX();
   }
+
   public double getSecondaryControllerLeftStickY() {
-    System.out.println("SECONDARY LEFT-Y: "+ secondaryController.getLeftStickY());
+    System.out.println("SECONDARY LEFT-Y: " + secondaryController.getLeftStickY());
     return secondaryController.getLeftStickY();
   }
+
   public double getSecondaryControllerRightStickX() {
-    System.out.println("SECONDARY RIGHT-X: " +secondaryController.getRightStickX());
+    System.out.println("SECONDARY RIGHT-X: " + secondaryController.getRightStickX());
     return secondaryController.getRightStickX();
   }
-  // For "Modifiers", try adding "triggers" to your OI, instead of buttons.
-  // Check here:  
- /* public boolean getRightModifierStatus() {
-    return primaryController.getRightBumperStatus();
-  }
-  
-	public boolean getLeftModifierStatus() {
-    return primaryController.getLeftBumperStatus();
-  }
-*/
-}
 
+  public boolean getRightModifierStatus() {
+    return secondaryController.getRightBumperStatus();
+  }
+
+  public boolean getLeftModifierStatus() {
+    return secondaryController.getLeftBumperStatus();
+  }
+
+}

@@ -14,6 +14,7 @@ import frc.robot.RobotMap;
 public class ArcadeDriveCommand extends Command {
 
   double leftJoyY, rightJoyX;
+
   public ArcadeDriveCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -29,20 +30,17 @@ public class ArcadeDriveCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    leftJoyY = Robot.m_oi.getXboxLeftStickY();
-    rightJoyX = Robot.m_oi.getXboxRightStickX();
+    leftJoyY = Robot.m_oi.getPrimaryControllerLeftStickY();
+    rightJoyX = Robot.m_oi.getPrimaryControllerRightStickX();
     // If it IS within the deadzone
-    if(leftJoyY > -RobotMap.joystickDeadzone && leftJoyY < RobotMap.joystickDeadzone ) {
+    if (leftJoyY > -RobotMap.joystickDeadzone && leftJoyY < RobotMap.joystickDeadzone) {
       leftJoyY = 0;
     }
-    if(rightJoyX > -RobotMap.joystickDeadzone && rightJoyX < RobotMap.joystickDeadzone) {
+    if (rightJoyX > -RobotMap.joystickDeadzone && rightJoyX < RobotMap.joystickDeadzone) {
       rightJoyX = 0;
     }
     Robot.drivetrain.setLeftPower(leftJoyY - rightJoyX);
     Robot.drivetrain.setRightPower(leftJoyY + rightJoyX);
-
-
-  
 
   }
 
