@@ -24,7 +24,7 @@ public class Modifier1ButtonCombination extends CommandGroup {
   public Modifier1ButtonCombination() {
     
     //TO DO: Wrist commands need testing. (For now default is RobotMap.raisedWrist())
-    try {
+   /* try {
 
     
     System.out.println(Robot.m_oi.primaryController.getDPadValue());
@@ -32,7 +32,7 @@ public class Modifier1ButtonCombination extends CommandGroup {
       catch(Exception e){
         e.printStackTrace();
       }   addParallel(new ArmRotateDegrees(5));
-    
+    */
 
 
     // DPad up

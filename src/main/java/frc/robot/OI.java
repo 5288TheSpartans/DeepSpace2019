@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import frc.robot.accessories.LogitechController;
 //import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.accessories.XboxController2;
 import frc.robot.autoCommandGroups.Modifier1ButtonCombination;
@@ -41,10 +42,10 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
-  public XboxController2 primaryController = new XboxController2(0);
-
-
-  public XboxController2 secondaryController = new XboxController2(1);
+  //public XboxController2 primaryController = new XboxController2(0);
+  //public XboxController2 secondaryController = new XboxController2(1);
+    public LogitechController primaryController = new LogitechController(0);
+    public XboxController2 secondaryController = new XboxController2(1);
   public OI() {
     
     // setting up the raise arm and lowering arm(change value if needed)
@@ -63,20 +64,22 @@ public class OI {
     // modifier button combinations
 
     // setting up the intake
-    primaryController.xButton.toggleWhenPressed(new IntakeBallCommand(0.3));
+    //primaryController.xButton.toggleWhenPressed(new IntakeBallCommand(0.3));
 
     // setting up shooting the ball
-    primaryController.bButton.toggleWhenPressed(new ShootBallCommand(-0.5));
+    //primaryController.bButton.toggleWhenPressed(new ShootBallCommand(-0.5));
 
     // modifier 1 (ball)
-    primaryController.rightBumper.whileHeld(new Modifier1ButtonCombination());
+    //primaryController.rightBumper.whileHeld(new Modifier1ButtonCombination());
 
     // modifier 2 (hatch)
-    primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
+    //primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
 
     
-    secondaryController.yButton.whileHeld(new RaiseArmCommand(0.2));
-    secondaryController.aButton.whileHeld(new LowerArmCommand(-0.2));
+    secondaryController.yButton.toggleWhenPressed(new IntakeBallCommand(0.3));
+    secondaryController.aButton.toggleWhenPressed(new ShootBallCommand(-0.5));
+    secondaryController.xButton.whileHeld(new RaiseWristCommand(1.00));
+    secondaryController.bButton.whileHeld(new LowerWristCommand(-1.00));
 
   }
 
@@ -103,23 +106,33 @@ public class OI {
   public double getXboxLeftStickY() {
     // return xbox.getY(Hand.kLeft);
     // return primaryController.getRawAxis(1);
+    System.out.println("XBOX LEFT-Y: "+  primaryController.getLeftStickY());
     return primaryController.getLeftStickY();
   }
 
   public double getXboxRightStickX() {
     // return xbox.getX(Hand.kRight);
     // return primaryController.getRawAxis(4);
+    System.out.println("XBOX RIGHT-X: " + primaryController.getRightStickX());
     return primaryController.getRightStickX();
+  }
+  public double getSecondaryControllerLeftStickY() {
+    System.out.println("SECONDARY LEFT-Y: "+ secondaryController.getLeftStickY());
+    return secondaryController.getLeftStickY();
+  }
+  public double getSecondaryControllerRightStickX() {
+    System.out.println("SECONDARY RIGHT-X: " +secondaryController.getRightStickX());
+    return secondaryController.getRightStickX();
   }
   // For "Modifiers", try adding "triggers" to your OI, instead of buttons.
   // Check here:  
-  public boolean getRightModifierStatus() {
+ /* public boolean getRightModifierStatus() {
     return primaryController.getRightBumperStatus();
   }
   
 	public boolean getLeftModifierStatus() {
     return primaryController.getLeftBumperStatus();
   }
-
+*/
 }
 

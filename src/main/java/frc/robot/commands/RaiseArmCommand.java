@@ -16,13 +16,15 @@ public class RaiseArmCommand extends Command {
 
   public RaiseArmCommand(double power) {
     requires(Robot.arm);
-    if((Robot.m_oi.primaryController.getLeftAnalogTrigger()) > RobotMap.triggerDeadzone)
+    
+    /*if((Robot.m_oi.primaryController.getLeftAnalogTrigger()) > RobotMap.triggerDeadzone)
       armPower = Robot.m_oi.primaryController.getLeftAnalogTrigger();
     else
       armPower = power;
-    // Use requires() here to declare subsystem dependencies
+   */ 
+      // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-
+    armPower = power;
   }
 
   // Called just before this Command runs the first time

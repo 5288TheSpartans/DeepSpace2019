@@ -16,14 +16,15 @@ public class LowerArmCommand extends Command {
   // low power = -0.3
   // high power = 0.8
   public LowerArmCommand(double power) {
-    if((Robot.m_oi.primaryController.getLeftAnalogTrigger()) > RobotMap.triggerDeadzone)
+    /*if((Robot.m_oi.primaryController.getLeftAnalogTrigger()) > RobotMap.triggerDeadzone)
       armPower = Robot.m_oi.primaryController.getLeftAnalogTrigger();
     else
       armPower = power;
-
+*/
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.arm);
+    armPower = power;
   }
 
   // Called just before this Command runs the first time

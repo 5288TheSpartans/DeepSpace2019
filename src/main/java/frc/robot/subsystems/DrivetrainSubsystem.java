@@ -38,11 +38,11 @@ public class DrivetrainSubsystem extends Subsystem {
 
   private VictorSP leftDriveMotor1 = new VictorSP(RobotMap.leftDriveMotor1);
   private VictorSP leftDriveMotor2 = new VictorSP(RobotMap.leftDriveMotor2);
-  private VictorSP leftDriveMotor3 = new VictorSP(RobotMap.leftDriveMotor3);
+  //private VictorSP leftDriveMotor3 = new VictorSP(RobotMap.leftDriveMotor3);
 
   private VictorSP rightDriveMotor1 = new VictorSP(RobotMap.rightDriveMotor1);
   private VictorSP rightDriveMotor2 = new VictorSP(RobotMap.rightDriveMotor2);
-  private VictorSP rightDriveMotor3 = new VictorSP(RobotMap.rightDriveMotor3);
+ // private VictorSP rightDriveMotor3 = new VictorSP(RobotMap.rightDriveMotor3);
 
   public DrivetrainSubsystem() {
     leftEncoder.setDistancePerPulse(wheelCircumference/numberOfTicks);
@@ -83,11 +83,11 @@ public class DrivetrainSubsystem extends Subsystem {
 
     leftDriveMotor1.set(-leftPower);
     leftDriveMotor2.set(-leftPower);
-    leftDriveMotor3.set(-leftPower);
+   // leftDriveMotor3.set(-leftPower);
 
     rightDriveMotor1.set(rightPower);
     rightDriveMotor2.set(rightPower);
-    rightDriveMotor3.set(rightPower);
+   // rightDriveMotor3.set(rightPower);
   }
 
   public double getLeftDistanceInches() {

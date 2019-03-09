@@ -22,13 +22,13 @@ public class RobotMap {
   // PWM
   // DRIVETRAIN
   // PWM - Pulse Width Modulation Ports
-  public static final int leftDriveMotor1 = 2;
-  public static final int leftDriveMotor2 = 3;
-  public static final int leftDriveMotor3 = 8;
+  public static final int leftDriveMotor1 = 8;
+  public static final int leftDriveMotor2 = 9;
+  public static final int leftDriveMotor3 = 800;
 
   public static final int rightDriveMotor1 = 0;
   public static final int rightDriveMotor2 = 1;
-  public static final int rightDriveMotor3 = 9;
+  public static final int rightDriveMotor3 = 900;
 
   // wristMotor - Talon SRX
   public static final int wristMotor = 9;

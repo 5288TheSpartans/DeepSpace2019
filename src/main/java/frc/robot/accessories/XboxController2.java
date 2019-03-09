@@ -35,7 +35,7 @@ public class XboxController2 {
 
 	public double getLeftStickY() {
 		//return this.getRawAxis(1);
-		return xbox.getX(Hand.kRight);
+		return xbox.getY(Hand.kLeft);
 	}
 
 	public double getRightStickX() { 

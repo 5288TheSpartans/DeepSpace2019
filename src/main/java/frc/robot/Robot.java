@@ -87,12 +87,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    System.out.println("D-Pad Value: " + Robot.m_oi.primaryController.getDPadValue());
+   /* System.out.println("D-Pad Value: " + Robot.m_oi.primaryController.getDPadValue());
     System.out.println("Arm encoder 1: " + Robot.arm.getArmMotor1Pos());
     System.out.println("Arm encoder 2: " + Robot.arm.getArmMotor2Pos());
     System.out.println("Drive encoder 1 (inches): " + drivetrain.getLeftDistanceInches());
     System.out.println("Drive encoder 2 (inches):" + drivetrain.getRightDistanceInches());
-    drivetrain.updateOutputs();
+   */ drivetrain.updateOutputs();
     arm.updateOutputs();
     wrist.updateOutput();
     //Robot.m_oi.getLeftModifierStatus();
@@ -111,6 +111,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Drive encoder 2 (inches):", drivetrain.getRightDistanceInches());
     SmartDashboard.putNumber("Wrist Distance", wrist.getWristDistanceTicks());
     SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
+    SmartDashboard.putNumber("LeftJoyY", m_oi.getSecondaryControllerLeftStickY());
+    SmartDashboard.putNumber("RightStickX", m_oi.getSecondaryControllerRightStickX());
     
     // arm.updateOutputs();
 
