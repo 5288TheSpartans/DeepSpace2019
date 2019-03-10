@@ -32,7 +32,7 @@ public class RobotMap {
 
   // wristMotor - Talon SRX
   public static final int wristMotor = 9;
-  
+
   // intake motor
   public static final int intakeLeft = 4;
   public static final int intakeRight = 5;
@@ -46,7 +46,6 @@ public class RobotMap {
   // DEADZONES
   public static final double joystickDeadzone = 0.1;
   public static final double triggerDeadzone = 0.1;
-  
 
   // CAN
   // ARM
@@ -77,11 +76,9 @@ public class RobotMap {
   public static final double raisedWrist = 0;
   public static final double loweredWrist = 0;
 
-
   // ARM POWER CONSTANTS
   public static final double armPowerFast = 0.8;
   public static final double armPowerSlow = -0.3;
-
 
   // PID CONSTANTS
 
@@ -92,16 +89,22 @@ public class RobotMap {
   public static final double DriveStraightFF = 0;
 
   // DISTANCE
-  public static final double DistanceP = 0;
+  public static final double DistanceP = 0.035;
   public static final double DistanceI = 0;
   public static final double DistanceD = 0;
   public static final double DistanceFF = 0;
 
-  // ARM ROTATE
-  public static final double ArmRotateP = 0;
-  public static final double ArmRotateI = 0;
-  public static final double ArmRotateD = 0;
-  public static final double ArmRotateFF = 0;
+  // ARM RAISE
+  public static final double ArmRaiseP = 0;
+  public static final double ArmRaiseI = 0;
+  public static final double ArmRaiseD = 0;
+  public static final double ArmRaiseFF = 0;
+
+  // ARM LOWER
+  public static final double ArmLowerP = 0;
+  public static final double ArmLowerI = 0;
+  public static final double ArmLowerD = 0;
+  public static final double ArmLowerFF = 0;
 
   // WRIST ROTATE
   public static final double WristRotateP = 0;

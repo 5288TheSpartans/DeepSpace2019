@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
+import frc.robot.accessories.Modifier;
+import frc.robot.accessories.ModifierButtonCombination;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.WristCommand;
 
@@ -28,38 +30,46 @@ public class OI {
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
 
-  //public LogitechController primaryController = new LogitechController(0);
-  //public XboxController2 secondaryController = new XboxController2(1);
+  // public LogitechController primaryController = new LogitechController(0);
+  // public XboxController2 secondaryController = new XboxController2(1);
 
   public Joystick primaryController = new Joystick(0);
   public Joystick secondaryController = new Joystick(1);
 
-  private JoystickButton 
-  xboxA = new JoystickButton(primaryController,1),//Coloured buttons
-  xboxB = new JoystickButton(primaryController,2),//Coloured buttons
-  xboxY = new JoystickButton(primaryController,4),//Coloured buttons
-  xboxX = new JoystickButton(primaryController,3),//Coloured buttons
-  xboxLB = new JoystickButton(primaryController,5),//Left Bumper
-  xboxRB = new JoystickButton(primaryController,6),//Right Bumper
-  xboxStart = new JoystickButton(primaryController,8),//XboxStart buttons
-  xboxBack = new JoystickButton(primaryController,7),//XboxBack buttons
-  xboxLStickButton = new JoystickButton(primaryController, 9),
-  xboxRStickButton = new JoystickButton(primaryController, 10);
+  private JoystickButton xboxA = new JoystickButton(primaryController, 1), // Coloured buttons
+      xboxB = new JoystickButton(primaryController, 2), // Coloured buttons
+      xboxY = new JoystickButton(primaryController, 4), // Coloured buttons
+      xboxX = new JoystickButton(primaryController, 3), // Coloured buttons
+      xboxLB = new JoystickButton(primaryController, 5), // Left Bumper
+      xboxRB = new JoystickButton(primaryController, 6), // Right Bumper
+      xboxStart = new JoystickButton(primaryController, 8), // XboxStart buttons
+      xboxBack = new JoystickButton(primaryController, 7), // XboxBack buttons
+      xboxLStickButton = new JoystickButton(primaryController, 9),
+      xboxRStickButton = new JoystickButton(primaryController, 10);
 
-  private POVButton 
-  xboxLeft = new POVButton(primaryController, 270);
+  // private POVButton
+  // xboxUp = new POVButton(primaryController, 270),
 
-  private JoystickButton 
-  logitechA = new JoystickButton(secondaryController,1),//Coloured buttons
-  logitechB = new JoystickButton(secondaryController,2),//Coloured buttons
-  logitechY = new JoystickButton(secondaryController,4),//Coloured buttons
-  logitechX = new JoystickButton(secondaryController,3),//Coloured buttons
-  logitechLB = new JoystickButton(secondaryController,5),//Left Bumper
-  logitechRB = new JoystickButton(secondaryController,6),//Right Bumper
-  logitechStart = new JoystickButton(secondaryController,8),//XboxStart buttons
-  logitechBack = new JoystickButton(secondaryController,7),//XboxBack buttons
-  logitechLStickButton = new JoystickButton(secondaryController, 9),
-  logitechRStickButton = new JoystickButton(secondaryController, 10);
+  private JoystickButton logitechA = new JoystickButton(secondaryController, 1), // Coloured buttons
+      logitechB = new JoystickButton(secondaryController, 2), // Coloured buttons
+      logitechY = new JoystickButton(secondaryController, 4), // Coloured buttons
+      logitechX = new JoystickButton(secondaryController, 3), // Coloured buttons
+      logitechLB = new JoystickButton(secondaryController, 5), // Left Bumper
+      logitechRB = new JoystickButton(secondaryController, 6), // Right Bumper
+      logitechStart = new JoystickButton(secondaryController, 8), // XboxStart buttons
+      logitechBack = new JoystickButton(secondaryController, 7), // XboxBack buttons
+      logitechLStickButton = new JoystickButton(secondaryController, 9),
+      logitechRStickButton = new JoystickButton(secondaryController, 10);
+
+  POVButton xboxUp = new POVButton(secondaryController, 0), xboxDown = new POVButton(secondaryController, 180);
+
+  private Modifier mod1AndX = new Modifier(xboxRB, xboxX), mod1AndY = new Modifier(xboxRB, xboxY),
+      mod1AndA = new Modifier(xboxRB, xboxA), mod1AndB = new Modifier(xboxRB, xboxB),
+      mod1AndDPadUp = new Modifier(xboxRB, xboxUp), mod1AndDPadDown = new Modifier(xboxRB, xboxDown);
+
+  private Modifier mod2AndA = new Modifier(xboxLB, xboxA), mod2AndX = new Modifier(xboxLB, xboxX),
+      mod2AndB = new Modifier(xboxLB, xboxB), mod2AndY = new Modifier(xboxLB, xboxY),
+      mod2AndDPadUp = new Modifier(xboxLB, xboxUp), mod2AndDPadDown = new Modifier(xboxLB, xboxDown);
 
   public OI() {
 
@@ -77,17 +87,34 @@ public class OI {
     // modifier 2 (hatch)
     // primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
 
-    // IF USING XboxController2 AND LogitechController CLASSES, USE THIS CODE
-    /*secondaryController.yButton.toggleWhenPressed(new IntakeCommand(0.3));
-    secondaryController.aButton.toggleWhenPressed(new IntakeCommand(-0.5));
-    secondaryController.xButton.whileHeld(new WristCommand(1.00));
-    secondaryController.bButton.whileHeld(new WristCommand(-1.00));
-*/
-    logitechY.toggleWhenPressed(new IntakeCommand(0.3));
-    logitechA.toggleWhenPressed(new IntakeCommand(-0.5));
-    logitechX.whileHeld(new WristCommand(1.00));
-    logitechB.whileHeld(new WristCommand(-1.00));
+    mod1AndDPadDown.whenPressed(new ModifierButtonCombination(0, 20));
+    mod1AndDPadUp.whenPressed(new ModifierButtonCombination(0, 20));
+    mod1AndA.whenPressed(new ModifierButtonCombination(0, 20));
+    mod1AndX.whenPressed(new ModifierButtonCombination(0, 20));
+    mod1AndB.whenPressed(new ModifierButtonCombination(0, 20));
+    mod1AndY.whenPressed(new ModifierButtonCombination(0, 20));
 
+    mod2AndDPadDown.whenPressed(new ModifierButtonCombination(0, 20));
+    mod2AndDPadUp.whenPressed(new ModifierButtonCombination(0, 20));
+    mod2AndA.whenPressed(new ModifierButtonCombination(0, 20));
+    mod2AndX.whenPressed(new ModifierButtonCombination(0, 20));
+    mod2AndB.whenPressed(new ModifierButtonCombination(0, 20));
+    mod2AndY.whenPressed(new ModifierButtonCombination(0, 20));
+
+    // IF USING XboxController2 AND LogitechController CLASSES, USE THIS CODE
+    /*
+     * secondaryController.yButton.toggleWhenPressed(new IntakeCommand(0.3));
+     * secondaryController.aButton.toggleWhenPressed(new IntakeCommand(-0.5));
+     * secondaryController.xButton.whileHeld(new WristCommand(1.00));
+     * secondaryController.bButton.whileHeld(new WristCommand(-1.00));
+     */
+
+    // IF USING REGULAR JOYSTICK CLASSES
+    /*
+     * logitechY.toggleWhenPressed(new IntakeCommand(0.3));
+     * logitechA.toggleWhenPressed(new IntakeCommand(-0.5)); logitechX.whileHeld(new
+     * WristCommand(1.00)); logitechB.whileHeld(new WristCommand(-1.00));
+     */
   }
 
   // There are a few additional built in buttons you can use. Additionally,
@@ -112,46 +139,46 @@ public class OI {
 
   public double getPrimaryControllerLeftStickY() {
     return primaryController.getY(Hand.kLeft);
-    //return primaryController.getLeftStickY();
+    // return primaryController.getLeftStickY();
   }
 
   public double getPrimaryControllerRightStickX() {
     return primaryController.getX(Hand.kRight);
-   // return primaryController.getRightStickX();
+    // return primaryController.getRightStickX();
   }
 
   public double getSecondaryControllerLeftStickY() {
     return secondaryController.getY(Hand.kLeft);
-  //    return secondaryController.getLeftStickY();
+    // return secondaryController.getLeftStickY();
   }
 
   public double getSecondaryControllerRightStickY() {
     return secondaryController.getY(Hand.kRight);
-  //    return secondaryController.getLeftStickY();
+    // return secondaryController.getLeftStickY();
   }
 
   public double getSecondaryControllerRightStickX() {
     return secondaryController.getX(Hand.kRight);
-    //return secondaryController.getRightStickX();
+    // return secondaryController.getRightStickX();
   }
+
   public double getSecondaryControllerLeftTrigger() {
     return secondaryController.getRawAxis(5);
   }
+
   public double getSecondaryControllerRightTrigger() {
     return secondaryController.getRawAxis(6);
   }
 
   /*
-  USED FOR XboxController2 and LogitechController CLASSES
-  INSTEAD OF USING THIS, JUST USE Robot.m_oi.secondaryController.getRightBumperStatus() DIRECTLY
-  public boolean getSecondaryRightModifierStatus() {
-  
-    return secondaryController.getRightBumperStatus();
-  }
-
-  public boolean getSecondaryLeftModifierStatus() {
-    return secondaryController.getLeftBumperStatus();
-  }
-  */
+   * USED FOR XboxController2 and LogitechController CLASSES INSTEAD OF USING
+   * THIS, JUST USE Robot.m_oi.secondaryController.getRightBumperStatus() DIRECTLY
+   * public boolean getSecondaryRightModifierStatus() {
+   * 
+   * return secondaryController.getRightBumperStatus(); }
+   * 
+   * public boolean getSecondaryLeftModifierStatus() { return
+   * secondaryController.getLeftBumperStatus(); }
+   */
 
 }

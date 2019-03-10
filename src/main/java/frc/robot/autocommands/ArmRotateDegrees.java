@@ -18,7 +18,8 @@ public class ArmRotateDegrees extends Command {
   double error = 0;
   double armOutput = 0.0;
   double angleToTurnTo;
-  SpartanPID armRotatePID;
+  SpartanPID armRaisePID;
+  SpartanPID armLowerPID;
 
   public ArmRotateDegrees(double angle) {
 
@@ -34,10 +35,10 @@ public class ArmRotateDegrees extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    armRotatePID = new SpartanPID(SmartDashboard.getNumber("Arm P", 0), 0, SmartDashboard.getNumber("Arm D", 0), 0);
+    armRaisePID = new SpartanPID(SmartDashboard.getNumber("Arm P", 0), 0, SmartDashboard.getNumber("Arm D", 0), 0);
     // armRotatePID = new SpartanPID(RobotMap.ArmRotateP, RobotMap.ArmRotateI,
     // RobotMap.ArmRotateD, RobotMap.ArmRotateFF);
-    armRotatePID.setTarget(angleToTurnTo);
+    armRaisePID.setTarget(angleToTurnTo);
     // System.out.println(m_basePower);
 
   }
@@ -46,9 +47,9 @@ public class ArmRotateDegrees extends Command {
   @Override
   protected void execute() {
     // update armRotatePID with the current angle of the arm
-    armRotatePID.update(Robot.arm.getRotationAngle());
+    armRaisePID.update(Robot.arm.getRotationAngle());
 
-    armOutput = armRotatePID.getOutput();
+    armOutput = armRaisePID.getOutput();
 
     Robot.arm.setArmPower(armOutput);
 
