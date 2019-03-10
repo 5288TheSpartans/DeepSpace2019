@@ -9,8 +9,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.commands.AnalogIntakeCommand;
 
 
 
@@ -27,6 +27,7 @@ public class IntakeSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new AnalogIntakeCommand());
   }
 
   private VictorSP intakeLeft = new VictorSP(RobotMap.intakeLeft);

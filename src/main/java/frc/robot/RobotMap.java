@@ -45,6 +45,8 @@ public class RobotMap {
 
   // DEADZONES
   public static final double joystickDeadzone = 0.1;
+  public static final double triggerDeadzone = 0.1;
+  
 
   // CAN
   // ARM
@@ -76,10 +78,10 @@ public class RobotMap {
   public static final double loweredWrist = 0;
 
 
-  // ARM POWER AND DEADZONE CONSTANTS
+  // ARM POWER CONSTANTS
   public static final double armPowerFast = 0.8;
   public static final double armPowerSlow = -0.3;
-  public static final double triggerDeadzone = 0.1;
+
 
   // PID CONSTANTS
 
@@ -124,7 +126,7 @@ public class RobotMap {
   public static final double intakeSpeed = 0.2;
   public static final double tossBallSpeed = -0.2;
   public static final double blastBallSpeed = -0.7;
-public static String RocketLevel2;
+  public static String RocketLevel2;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

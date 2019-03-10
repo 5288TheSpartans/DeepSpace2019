@@ -7,11 +7,10 @@
 
 package frc.robot;
 
-import frc.robot.accessories.LogitechController;
-//import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.accessories.XboxController2;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.IntakeCommand;
-import frc.robot.commands.ArmCommand;
 import frc.robot.commands.WristCommand;
 
 /**
@@ -28,11 +27,37 @@ public class OI {
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
 
-  public LogitechController primaryController = new LogitechController(0);
-  public XboxController2 secondaryController = new XboxController2(1);
+  //public LogitechController primaryController = new LogitechController(0);
+  //public XboxController2 secondaryController = new XboxController2(1);
+
+  public Joystick primaryController = new Joystick(0);
+  public Joystick secondaryController = new Joystick(1);
+
+  private JoystickButton 
+  xboxA = new JoystickButton(primaryController,1),//Coloured buttons
+  xboxB = new JoystickButton(primaryController,2),//Coloured buttons
+  xboxY = new JoystickButton(primaryController,4),//Coloured buttons
+  xboxX = new JoystickButton(primaryController,3),//Coloured buttons
+  xboxLB = new JoystickButton(primaryController,5),//Left Bumper
+  xboxRB = new JoystickButton(primaryController,6),//Right Bumper
+  xboxStart = new JoystickButton(primaryController,8),//XboxStart buttons
+  xboxBack = new JoystickButton(primaryController,7),//XboxBack buttons
+  xboxLStickButton = new JoystickButton(primaryController, 9),
+  xboxRStickButton = new JoystickButton(primaryController, 10);
+
+  private JoystickButton 
+  logitechA = new JoystickButton(secondaryController,1),//Coloured buttons
+  logitechB = new JoystickButton(secondaryController,2),//Coloured buttons
+  logitechY = new JoystickButton(secondaryController,4),//Coloured buttons
+  logitechX = new JoystickButton(secondaryController,3),//Coloured buttons
+  logitechLB = new JoystickButton(secondaryController,5),//Left Bumper
+  logitechRB = new JoystickButton(secondaryController,6),//Right Bumper
+  logitechStart = new JoystickButton(secondaryController,8),//XboxStart buttons
+  logitechBack = new JoystickButton(secondaryController,7),//XboxBack buttons
+  logitechLStickButton = new JoystickButton(secondaryController, 9),
+  logitechRStickButton = new JoystickButton(secondaryController, 10);
 
   public OI() {
-
 
     // modifier button combinations
 
@@ -48,10 +73,16 @@ public class OI {
     // modifier 2 (hatch)
     // primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
 
-    secondaryController.yButton.toggleWhenPressed(new IntakeCommand(0.3));
+    // IF USING XboxController2 AND LogitechController CLASSES, USE THIS CODE
+    /*secondaryController.yButton.toggleWhenPressed(new IntakeCommand(0.3));
     secondaryController.aButton.toggleWhenPressed(new IntakeCommand(-0.5));
     secondaryController.xButton.whileHeld(new WristCommand(1.00));
     secondaryController.bButton.whileHeld(new WristCommand(-1.00));
+*/
+    logitechY.toggleWhenPressed(new IntakeCommand(0.3));
+    logitechA.toggleWhenPressed(new IntakeCommand(-0.5));
+    logitechX.whileHeld(new WristCommand(1.00));
+    logitechB.whileHeld(new WristCommand(-1.00));
 
   }
 
@@ -76,35 +107,47 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   public double getPrimaryControllerLeftStickY() {
-    // return xbox.getY(Hand.kLeft);
-    // return primaryController.getRawAxis(1);
-    System.out.println("XBOX LEFT-Y: " + primaryController.getLeftStickY());
-    return primaryController.getLeftStickY();
+    return primaryController.getY(Hand.kLeft);
+    //return primaryController.getLeftStickY();
   }
 
   public double getPrimaryControllerRightStickX() {
-    // return xbox.getX(Hand.kRight);
-    // return primaryController.getRawAxis(4);
-    System.out.println("XBOX RIGHT-X: " + primaryController.getRightStickX());
-    return primaryController.getRightStickX();
+    return primaryController.getX(Hand.kRight);
+   // return primaryController.getRightStickX();
   }
 
   public double getSecondaryControllerLeftStickY() {
-    System.out.println("SECONDARY LEFT-Y: " + secondaryController.getLeftStickY());
-    return secondaryController.getLeftStickY();
+    return secondaryController.getY(Hand.kLeft);
+  //    return secondaryController.getLeftStickY();
+  }
+
+  public double getSecondaryControllerRightStickY() {
+    return secondaryController.getY(Hand.kRight);
+  //    return secondaryController.getLeftStickY();
   }
 
   public double getSecondaryControllerRightStickX() {
-    System.out.println("SECONDARY RIGHT-X: " + secondaryController.getRightStickX());
-    return secondaryController.getRightStickX();
+    return secondaryController.getX(Hand.kRight);
+    //return secondaryController.getRightStickX();
+  }
+  public double getSecondaryControllerLeftTrigger() {
+    return secondaryController.getRawAxis(5);
+  }
+  public double getSecondaryControllerRightTrigger() {
+    return secondaryController.getRawAxis(6);
   }
 
+  /*
+  USED FOR XboxController2 and LogitechController CLASSES
+  INSTEAD OF USING THIS, JUST USE Robot.m_oi.secondaryController.getRightBumperStatus() DIRECTLY
   public boolean getSecondaryRightModifierStatus() {
+  
     return secondaryController.getRightBumperStatus();
   }
 
   public boolean getSecondaryLeftModifierStatus() {
     return secondaryController.getLeftBumperStatus();
   }
+  */
 
 }

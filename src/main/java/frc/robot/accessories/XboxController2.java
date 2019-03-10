@@ -1,10 +1,7 @@
 package frc.robot.accessories;
 
-//import com.sun.tools.javac.tree.JCtree.JCTypeParameter;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class XboxController2 extends XboxController {
 	int m_port = 0;

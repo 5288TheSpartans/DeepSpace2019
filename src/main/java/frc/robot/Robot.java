@@ -7,19 +7,16 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.autocommands.SpotTurnDegrees;
 import frc.robot.subsystems.ArmSubsystem;
-import frc.robot.autoCommandGroups.Modifier1ButtonCombination;
-import frc.robot.autoCommandGroups.Modifier2ButtonCombination;
-
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
@@ -102,7 +99,7 @@ public class Robot extends TimedRobot {
    // SmartDashboard.putNumber("Arm P", 0.00001);
    // SmartDashboard.putNumber("Arm D", 0.00000001);
     //SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
-    SmartDashboard.putNumber("D-Pad Value: ",Robot.m_oi.primaryController.getDPadValue());
+    //SmartDashboard.putNumber("D-Pad Value: ",Robot.m_oi.primaryController.getDPadValue());
     SmartDashboard.putNumber("Arm encoder 1: ",Robot.arm.getArmMotor1Pos());
     SmartDashboard.putNumber("Arm encoder 2: ", Robot.arm.getArmMotor2Pos());
     SmartDashboard.putNumber("Drive encoder 1 (inches): ", drivetrain.getLeftDistanceInches());

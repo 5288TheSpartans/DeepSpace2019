@@ -8,9 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -29,7 +27,7 @@ public class PneumaticsSubsystem extends Subsystem {
   public PneumaticsSubsystem() {
     mainCompressor = new Compressor(RobotMap.PCMID);
     mainCompressor.start();
-  System.out.println("Initializing PneumaticsSubsystem.");
+    System.out.println("Initializing PneumaticsSubsystem.");
     intakeSolenoid = new Solenoid(RobotMap.PCMID,RobotMap.intakeSolenoidChannel);
   }
 

@@ -11,35 +11,31 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class AnalogArmCommand extends Command {
-  double leftTrigger = 0, rightTrigger = 0;
-  public AnalogArmCommand() {
+public class AnalogIntakeCommand extends Command {
+  double rightJoyY = 0.0;
+  public AnalogIntakeCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.arm);
+    requires(Robot.intake);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Initializing AnalogArmCommand.");
+    System.out.println("Initialzing AnalogIntakeCommand.");
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
-    // FOR LOGITECHCONTROLLER/XBOXCONTROLLER2 CLASS
-    // Robot.arm.setArmPower(-Robot.m_oi.secondaryController.getLeftAnalogTrigger() + Robot.m_oi.secondaryController.getRightAnalogTrigger());
-    
-    leftTrigger = Robot.m_oi.getSecondaryControllerLeftTrigger();
-    rightTrigger = Robot.m_oi.getSecondaryControllerRightTrigger();
-    if(leftTrigger < RobotMap.triggerDeadzone) leftTrigger = 0;
-    if(rightTrigger < RobotMap.triggerDeadzone) rightTrigger = 0;
+    // For LogitechController class use Robot.m_oi.secondaryController.getRightStickY()
+    // get the left joystick Y value
+    rightJoyY = Robot.m_oi.getSecondaryControllerRightStickY();
+    if (rightJoyY > -RobotMap.joystickDeadzone && rightJoyY < RobotMap.joystickDeadzone) {
+      rightJoyY = 0;
+    }
 
-    // Left for lowering, right for raising
-    Robot.arm.setArmPower(leftTrigger -rightTrigger);
-
+    Robot.intake.setIntakePower(rightJoyY);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -57,7 +53,7 @@ public class AnalogArmCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    System.out.println("AnalogArmCommand interrupted.");
-    Robot.arm.setArmPower(0.0);
+    System.out.println("AnalogIntakeCommand interrupted.");
+    Robot.intake.setIntakePower(0.0);
   }
 }

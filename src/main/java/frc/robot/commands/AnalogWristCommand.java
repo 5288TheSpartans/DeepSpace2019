@@ -9,8 +9,10 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class AnalogWristCommand extends Command {
+  double leftJoyY = 0;
   public AnalogWristCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -26,7 +28,15 @@ public class AnalogWristCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.wrist.setWristPower(Robot.m_oi.secondaryController.getLeftStickY());
+
+    // For LogitechController class use Robot.m_oi.secondaryController.getLeftStickY()
+    // get the left joystick Y value
+    leftJoyY = Robot.m_oi.getSecondaryControllerLeftStickY();
+    if (leftJoyY > -RobotMap.joystickDeadzone && leftJoyY < RobotMap.joystickDeadzone) {
+      leftJoyY = 0;
+    }
+
+    Robot.wrist.setWristPower(leftJoyY);
   }
 
   // Make this return true when this Command no longer needs to run execute()

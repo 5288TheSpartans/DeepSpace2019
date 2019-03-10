@@ -7,7 +7,6 @@
 
 package frc.robot.autoCommandGroups;
 
-import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.RobotMap;
 import frc.robot.autocommands.ArmRotateDegrees;
