@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.POVButton;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.WristCommand;
 
@@ -44,6 +45,9 @@ public class OI {
   xboxBack = new JoystickButton(primaryController,7),//XboxBack buttons
   xboxLStickButton = new JoystickButton(primaryController, 9),
   xboxRStickButton = new JoystickButton(primaryController, 10);
+
+  private POVButton 
+  xboxLeft = new POVButton(primaryController, 270);
 
   private JoystickButton 
   logitechA = new JoystickButton(secondaryController,1),//Coloured buttons
