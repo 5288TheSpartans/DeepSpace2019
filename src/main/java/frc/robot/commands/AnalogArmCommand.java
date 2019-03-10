@@ -9,34 +9,24 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class RaiseArmCommand extends Command {
-  public double armPower = 0.0;
-
-  public RaiseArmCommand(double power) {
-    requires(Robot.arm);
-    
-    /*if((Robot.m_oi.primaryController.getLeftAnalogTrigger()) > RobotMap.triggerDeadzone)
-      armPower = Robot.m_oi.primaryController.getLeftAnalogTrigger();
-    else
-      armPower = power;
-   */ 
-      // Use requires() here to declare subsystem dependencies
+public class AnalogArmCommand extends Command {
+  public AnalogArmCommand() {
+    // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    armPower = power;
+    requires(Robot.arm);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Initializing RaiseArmCommandLow");
+    System.out.println("Initializing AnalogArmCommand.");
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.arm.setArmPower(armPower);
+    Robot.arm.setArmPower(-Robot.m_oi.secondaryController.getLeftAnalogTrigger() + Robot.m_oi.secondaryController.getRightAnalogTrigger());
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -54,6 +44,7 @@ public class RaiseArmCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    System.out.println("AnalogArmCommand interrupted.");
     Robot.arm.setArmPower(0.0);
   }
 }

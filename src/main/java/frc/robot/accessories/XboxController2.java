@@ -6,69 +6,68 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
-public class XboxController2 {
+public class XboxController2 extends XboxController {
 	int m_port = 0;
 
+	public JoystickButton xButton,yButton,aButton,bButton,
+	rightBumper,leftBumper,startButton,selectButton
+	,leftStickButton, rightStickButton;
+	
 	public XboxController2(int port) {
-		m_port = port;
+		super(port);
+		xButton = new JoystickButton(this, 3);	
+		yButton = new JoystickButton(this, 4);
+		aButton = new JoystickButton(this, 1);
+		bButton = new JoystickButton(this, 2);
+		rightBumper = new JoystickButton(this, 6);
+		leftBumper = new JoystickButton(this, 5);
+		startButton = new JoystickButton(this, 8);
+		selectButton = new JoystickButton(this, 7);
+		leftStickButton = new JoystickButton(this, 9);
+		rightStickButton = new JoystickButton(this, 10);
 	}
-
-	public XboxController xbox = new XboxController(m_port);
-
-	public JoystickButton xButton = new JoystickButton(xbox, 3);
-	public JoystickButton yButton = new JoystickButton(xbox, 4);
-	public JoystickButton aButton = new JoystickButton(xbox, 1);
-	public JoystickButton bButton = new JoystickButton(xbox, 2);
-	public JoystickButton rightBumper = new JoystickButton(xbox, 6);
-	public JoystickButton leftBumper = new JoystickButton(xbox, 5);
-	public JoystickButton startButton = new JoystickButton(xbox, 8);
-	public JoystickButton selectButton = new JoystickButton(xbox, 7);
-	public JoystickButton leftStickButton = new JoystickButton(xbox, 9);
-	public JoystickButton rightStickButton = new JoystickButton(xbox, 10);
-	public JoystickButton rightTriggerButton = new JoystickButton(xbox, 11);
-	public JoystickButton leftTriggerButton = new JoystickButton(xbox, 12);
 
 	public double getLeftStickX() {
 		// return this.getRawAxis(0);
-		return xbox.getX(Hand.kLeft);
+		return this.getX(Hand.kLeft);
 	}
 
 	public double getLeftStickY() {
 		// return this.getRawAxis(1);
-		return xbox.getY(Hand.kLeft);
+		return this.getY(Hand.kLeft);
 	}
 
 	public double getRightStickX() {
 		// return this.getRawAxis(4);
-		return xbox.getX(Hand.kRight);
+		return this.getX(Hand.kRight);
 	}
 
 	public double getRightStickY() {
 		// return this.getRawAxis(5);
-		return xbox.getY(Hand.kRight);
+		return this.getY(Hand.kRight);
 	}
 
 	public double getLeftAnalogTrigger() {
-		return xbox.getTriggerAxis(Hand.kLeft);
+		return this.getTriggerAxis(Hand.kLeft);
 	}
 
 	public double getRightAnalogTrigger() {
-		return xbox.getTriggerAxis(Hand.kRight);
+		return this.getTriggerAxis(Hand.kRight);
 	}
 
 	public double getDPadValue() {
 		try {
-			return xbox.getPOV();
+			return this.getPOV();
 		} catch (NullPointerException e) {
 			return -1;
 		}
 	}
 
 	public boolean getRightBumperStatus() {
-		return xbox.getBumperPressed(Hand.kRight);
+		return this.getBumperPressed(Hand.kRight);
 	}
 
 	public boolean getLeftBumperStatus() {
-		return xbox.getBumperPressed(Hand.kLeft);
+		return this.getBumperPressed(Hand.kLeft);
 	}
 }

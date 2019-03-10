@@ -1,61 +1,59 @@
 package frc.robot.accessories;
 
-
 //import com.sun.tools.javac.tree.JCtree.JCTypeParameter;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 
-public class LogitechController {
-	int m_port = 0;
+public class LogitechController extends Joystick {
+	
+	public JoystickButton xButton,yButton,aButton,bButton,
+	rightBumper,leftBumper,startButton,selectButton
+	,leftStickButton, rightStickButton;
+	
 	public LogitechController(int port) {
-		m_port = port;
+		super(port);
+		xButton = new JoystickButton(this, 3);	
+		yButton = new JoystickButton(this, 4);
+		aButton = new JoystickButton(this, 1);
+		bButton = new JoystickButton(this, 2);
+		rightBumper = new JoystickButton(this, 6);
+		leftBumper = new JoystickButton(this, 5);
+		startButton = new JoystickButton(this, 8);
+		selectButton = new JoystickButton(this, 7);
+		leftStickButton = new JoystickButton(this, 9);
+		rightStickButton = new JoystickButton(this, 10);
 	}
-	public Joystick controller = new Joystick(m_port);
-	
-	public JoystickButton xButton = new JoystickButton(controller, 3);	
-	public JoystickButton yButton = new JoystickButton(controller, 4);
-	public JoystickButton aButton = new JoystickButton(controller, 1);
-	public JoystickButton bButton = new JoystickButton(controller, 2);
-	public JoystickButton rightBumper = new JoystickButton(controller, 6);
-	public JoystickButton leftBumper = new JoystickButton(controller, 5);
-	public JoystickButton startButton = new JoystickButton(controller, 8);
-	public JoystickButton selectButton = new JoystickButton(controller, 7);
-	public JoystickButton leftStickButton = new JoystickButton(controller, 9);
-	public JoystickButton rightStickButton = new JoystickButton(controller, 10);
-	
 
 	public double getLeftStickX() {
 	//	return this.getRawAxis(0);
-		return controller.getX(Hand.kLeft);
+		return this.getX(Hand.kLeft);
 	}
 
 	public double getLeftStickY() {
 		//return this.getRawAxis(1);
-		return controller.getY(Hand.kLeft);
+		return this.getY(Hand.kLeft);
 	}
 
 	public double getRightStickX() { 
 	//	return this.getRawAxis(4);
-		return controller.getX(Hand.kRight);
+		return this.getX(Hand.kRight);
 	}
 
 	public double getRightStickY() {
 	//	return this.getRawAxis(5);
-		return controller.getY(Hand.kRight);
+		return this.getY(Hand.kRight);
 	}
 
 	public double getLeftAnalogTrigger() {
-		return controller.getRawAxis(2);
+		return this.getRawAxis(2);
 	}
 
 	public double getRightAnalogTrigger() {
-		return controller.getRawAxis(3);
+		return this.getRawAxis(3);
 	}
 	public double getDPadValue() {
 		try {
-		return	controller.getPOV();
+		return	this.getPOV();
 		} catch(NullPointerException e) {
 			return -1;
 		}

@@ -7,31 +7,26 @@
 
 package frc.robot.commands;
 
-//import javax.sound.midi.SysexMessage;
-
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class LowerWristCommand extends Command {
-  private double wristSpeed = 0;
-  public LowerWristCommand(double speed) {
+public class AnalogWristCommand extends Command {
+  public AnalogWristCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    wristSpeed = speed;
     requires(Robot.wrist);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Initializing LowerWristCommand.");
-
+    System.out.println("Initializing AnalogWristCommand.");
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.wrist.setWristPower(wristSpeed);
+    Robot.wrist.setWristPower(Robot.m_oi.secondaryController.getLeftStickY());
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -49,6 +44,7 @@ public class LowerWristCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    System.out.println("AnalogWristCommand interrupted.");
     Robot.wrist.setWristPower(0.0);
 
   }

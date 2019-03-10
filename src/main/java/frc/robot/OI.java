@@ -10,27 +10,16 @@ package frc.robot;
 import frc.robot.accessories.LogitechController;
 //import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.accessories.XboxController2;
-import frc.robot.autoCommandGroups.Modifier1ButtonCombination;
-import frc.robot.autoCommandGroups.Modifier2ButtonCombination;
-import frc.robot.commands.PneumaticsActivate;
-
-import frc.robot.commands.IntakeBallCommand;
-import frc.robot.commands.ShootBallCommand;
-
-import frc.robot.commands.LowerArmCommand;
-import frc.robot.commands.RaiseArmCommand;
-
-import frc.robot.commands.ArcadeDriveCommand;
-import frc.robot.commands.TankDriveCommand;
-
-import frc.robot.commands.RaiseWristCommand;
-import frc.robot.commands.LowerWristCommand;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ArmCommand;
+import frc.robot.commands.WristCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.
@@ -38,27 +27,12 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
-  // public XboxController2 primaryController = new XboxController2(0);
-  // public XboxController2 secondaryController = new XboxController2(1);
+
   public LogitechController primaryController = new LogitechController(0);
   public XboxController2 secondaryController = new XboxController2(1);
 
   public OI() {
 
-    // setting up the raise arm and lowering arm(change value if needed)
-    secondaryController.rightTriggerButton
-        .whileHeld(new RaiseArmCommand(secondaryController.getRightAnalogTrigger() / 2));
-    secondaryController.leftTriggerButton
-        .whileHeld(new LowerArmCommand(secondaryController.getLeftAnalogTrigger() / 2));
-
-    // getting ball
-    // primaryController.rightBumper.whileHeld(new IntakeBallCommand(0.8));
-
-    // getting or placing hatch
-    // primaryController.leftBumper.whenPressed(new PneumaticsActivate());
-
-    // raising and lowering wrist
-    // primaryController.
 
     // modifier button combinations
 
@@ -74,10 +48,10 @@ public class OI {
     // modifier 2 (hatch)
     // primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
 
-    secondaryController.yButton.toggleWhenPressed(new IntakeBallCommand(0.3));
-    secondaryController.aButton.toggleWhenPressed(new ShootBallCommand(-0.5));
-    secondaryController.xButton.whileHeld(new RaiseWristCommand(1.00));
-    secondaryController.bButton.whileHeld(new LowerWristCommand(-1.00));
+    secondaryController.yButton.toggleWhenPressed(new IntakeCommand(0.3));
+    secondaryController.aButton.toggleWhenPressed(new IntakeCommand(-0.5));
+    secondaryController.xButton.whileHeld(new WristCommand(1.00));
+    secondaryController.bButton.whileHeld(new WristCommand(-1.00));
 
   }
 
@@ -125,11 +99,11 @@ public class OI {
     return secondaryController.getRightStickX();
   }
 
-  public boolean getRightModifierStatus() {
+  public boolean getSecondaryRightModifierStatus() {
     return secondaryController.getRightBumperStatus();
   }
 
-  public boolean getLeftModifierStatus() {
+  public boolean getSecondaryLeftModifierStatus() {
     return secondaryController.getLeftBumperStatus();
   }
 

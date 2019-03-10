@@ -8,12 +8,6 @@
 package frc.robot.autoCommandGroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.OI;
-import frc.robot.Robot;
-import frc.robot.accessories.XboxController2;
-import frc.robot.autocommands.ArmRotateDegrees;
-import frc.robot.autocommands.WristRotateDegrees;
-import frc.robot.RobotMap;
 
 public class Modifier1ButtonCombination extends CommandGroup {
   /**

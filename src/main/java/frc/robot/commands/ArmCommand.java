@@ -10,27 +10,32 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ShootBallCommand extends Command {
+public class ArmCommand extends Command {
+  public double armPower = 0.0;
 
-  private double intakeSpeed = 0;
-
-  public ShootBallCommand(double speed) {
-    intakeSpeed = speed;
-    // Use requires() here to declare subsystem dependencies
+  public ArmCommand(double power) {
+    requires(Robot.arm);
+    
+    /*if((Robot.m_oi.primaryController.getLeftAnalogTrigger()) > RobotMap.triggerDeadzone)
+      armPower = Robot.m_oi.primaryController.getLeftAnalogTrigger();
+    else
+      armPower = power;
+   */ 
+      // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
+    armPower = power;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Initializing ShootBallCommand.");
+    System.out.println("Initializing ArmCommand. Speed: " + armPower);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.intake.setIntakePower(intakeSpeed);
+    Robot.arm.setArmPower(armPower);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -48,6 +53,7 @@ public class ShootBallCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.intake.setIntakePower(0.0);
+    System.out.println("ArmCommand interrupted");
+    Robot.arm.setArmPower(0.0);
   }
 }

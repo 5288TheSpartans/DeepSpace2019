@@ -7,29 +7,32 @@
 
 package frc.robot.commands;
 
+//import javax.sound.midi.SysexMessage;
+
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class IntakeBallCommand extends Command {
 
-  private double intakeSpeed = 0.8;
-  public IntakeBallCommand(double speed) {
+public class WristCommand extends Command {
+  private double wristSpeed = 0;
+  public WristCommand(double speed) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    intakeSpeed = speed;
-    requires(Robot.intake);
+    wristSpeed = speed;
+    requires(Robot.wrist);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    System.out.println("Initializing IntakeBallCommand.");
+    System.out.println("Initializing WristCommand. Speed: " + wristSpeed);
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.intake.setIntakePower(intakeSpeed);
+    Robot.wrist.setWristPower(wristSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -47,6 +50,8 @@ public class IntakeBallCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.intake.setIntakePower(0.0);
+    System.out.println("WristCommand interrupted.");
+    Robot.wrist.setWristPower(0.0);
+
   }
 }

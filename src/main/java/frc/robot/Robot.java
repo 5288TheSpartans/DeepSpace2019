@@ -21,7 +21,6 @@ import frc.robot.autoCommandGroups.Modifier1ButtonCombination;
 import frc.robot.autoCommandGroups.Modifier2ButtonCombination;
 
 import frc.robot.subsystems.DrivetrainSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.WristSubsystem;
@@ -34,7 +33,6 @@ import frc.robot.subsystems.WristSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static DrivetrainSubsystem drivetrain;
   public static OI m_oi;
   // public static CompressorSubsystem compressor;

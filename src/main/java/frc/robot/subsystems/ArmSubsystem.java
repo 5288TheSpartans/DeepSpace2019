@@ -22,7 +22,7 @@ public class ArmSubsystem extends Subsystem {
   // here. Call these from Commands.
   private CANSparkMax armMotor1 = new CANSparkMax(RobotMap.armBaseMotor1, MotorType.kBrushless);
   private CANSparkMax armMotor2 = new CANSparkMax(RobotMap.armBaseMotor2, MotorType.kBrushless);
- // private CANSparkMax armMotor3 = new CANSparkMax(RobotMap.armBaseMotor3, MotorType.kBrushless);
+  // private CANSparkMax armMotor3 = new CANSparkMax(RobotMap.armBaseMotor3, MotorType.kBrushless);
 
   private CANEncoder armEncoder1 = armMotor1.getEncoder();
   private CANEncoder armEncoder2 = armMotor2.getEncoder();

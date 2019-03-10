@@ -11,10 +11,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.RobotMap;
 import frc.robot.autocommands.DriveStraightDistance;
 import frc.robot.autocommands.SpotTurnDegrees;
-import frc.robot.commands.IntakeBallCommand;
+import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.PneumaticsActivate;
-import frc.robot.commands.ShootBallCommand;
-
 public class Level1RightToFrontShuttle extends CommandGroup {
   /**
    * Objective: Place hatch on front right shuttle,
@@ -28,12 +26,12 @@ public class Level1RightToFrontShuttle extends CommandGroup {
     addSequential(new DriveStraightDistance(48.2));
     addSequential(new SpotTurnDegrees(90));
     addSequential(new DriveStraightDistance(218));
-    addSequential(new IntakeBallCommand(RobotMap.intakeSpeed));
+    addSequential(new IntakeCommand(RobotMap.intakeSpeed));
     addSequential(new SpotTurnDegrees(-90));
     addSequential(new DriveStraightDistance(1));
     addSequential(new SpotTurnDegrees(-90));
     addSequential(new DriveStraightDistance(172));
-    addSequential(new ShootBallCommand(RobotMap.shootBallSlow));
+    addSequential(new IntakeCommand(RobotMap.shootBallSlow));
     
 }
 }
