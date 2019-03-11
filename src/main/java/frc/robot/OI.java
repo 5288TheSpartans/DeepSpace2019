@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
-import frc.robot.accessories.Modifier;
-import frc.robot.accessories.ModifierButtonCombination;
+import frc.robot.accessories.ModifierCombo;
+import frc.robot.autoCommandGroups.ModifierButtonCombination;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.WristCommand;
 
@@ -63,13 +63,13 @@ public class OI {
 
   POVButton xboxUp = new POVButton(secondaryController, 0), xboxDown = new POVButton(secondaryController, 180);
 
-  private Modifier mod1AndX = new Modifier(xboxRB, xboxX), mod1AndY = new Modifier(xboxRB, xboxY),
-      mod1AndA = new Modifier(xboxRB, xboxA), mod1AndB = new Modifier(xboxRB, xboxB),
-      mod1AndDPadUp = new Modifier(xboxRB, xboxUp), mod1AndDPadDown = new Modifier(xboxRB, xboxDown);
+  private ModifierCombo mod1AndX = new ModifierCombo(xboxRB, xboxX), mod1AndY = new ModifierCombo(xboxRB, xboxY),
+      mod1AndA = new ModifierCombo(xboxRB, xboxA), mod1AndB = new ModifierCombo(xboxRB, xboxB),
+      mod1AndDPadUp = new ModifierCombo(xboxRB, xboxUp), mod1AndDPadDown = new ModifierCombo(xboxRB, xboxDown);
 
-  private Modifier mod2AndA = new Modifier(xboxLB, xboxA), mod2AndX = new Modifier(xboxLB, xboxX),
-      mod2AndB = new Modifier(xboxLB, xboxB), mod2AndY = new Modifier(xboxLB, xboxY),
-      mod2AndDPadUp = new Modifier(xboxLB, xboxUp), mod2AndDPadDown = new Modifier(xboxLB, xboxDown);
+  private ModifierCombo mod2AndA = new ModifierCombo(xboxLB, xboxA), mod2AndX = new ModifierCombo(xboxLB, xboxX),
+      mod2AndB = new ModifierCombo(xboxLB, xboxB), mod2AndY = new ModifierCombo(xboxLB, xboxY),
+      mod2AndDPadUp = new ModifierCombo(xboxLB, xboxUp), mod2AndDPadDown = new ModifierCombo(xboxLB, xboxDown);
 
   public OI() {
 

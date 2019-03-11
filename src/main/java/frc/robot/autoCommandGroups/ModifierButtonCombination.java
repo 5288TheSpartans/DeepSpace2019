@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.accessories;
+package frc.robot.autoCommandGroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.autocommands.ArmRotateDegrees;

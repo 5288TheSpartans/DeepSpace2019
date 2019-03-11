@@ -15,12 +15,12 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 /**
  * Add your docs here.
  */
-public class Modifier extends Button {
+public class ModifierCombo extends Button {
 
     Button modifierButton;
     Button activator;
 
-    public Modifier(Button modifierButton, Button activator) {
+    public ModifierCombo(Button modifierButton, Button activator) {
         this.modifierButton = modifierButton;
 
     }
