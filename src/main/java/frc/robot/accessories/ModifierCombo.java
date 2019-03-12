@@ -22,6 +22,7 @@ public class ModifierCombo extends Button {
 
     public ModifierCombo(Button modifierButton, Button activator) {
         this.modifierButton = modifierButton;
+        this.activator = activator;
 
     }
 
