@@ -42,6 +42,7 @@ public class RobotMap {
   public static final int leftDriveEncoder2 = 1; // green
   public static final int rightDriveEncoder1 = 2; // white
   public static final int rightDriveEncoder2 = 3; // green
+  public static final int bottomArmLimitSwitch = 9;
 
   // DEADZONES
   public static final double joystickDeadzone = 0.1;
@@ -105,6 +106,18 @@ public class RobotMap {
   public static final double ArmLowerI = 0;
   public static final double ArmLowerD = 0;
   public static final double ArmLowerFF = 0;
+
+  // ARM GRAVITY RESIST
+  public static final double ArmGravityP = 0;
+  public static final double ArmGravityI = 0;
+  public static final double ArmGravityD = 0;
+  public static final double ArmGravityFF = 0;
+
+  // WRIST GRAVITY RESIST
+  public static final double WristGravityP = 0;
+  public static final double WristGravityI = 0;
+  public static final double WristGravityD = 0;
+  public static final double WristGravityFF = 0;
 
   // WRIST ROTATE
   public static final double WristRotateP = 0;

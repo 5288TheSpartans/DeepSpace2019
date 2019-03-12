@@ -20,6 +20,7 @@ public class WristSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private int encoderUnit = 4096;
+  private double gearRatio = 100;
   private double lowerAngleLimit = -10;
   private double topAngleLimit = 90;
   private double wristPower = 0;
@@ -36,6 +37,9 @@ public class WristSubsystem extends Subsystem {
 
   public WristSubsystem() {
     wristMotor = new TalonSRX(RobotMap.wristMotor);
+    wristMotor.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.CTRE_MagEncoder_Relative, 0,
+        0);
+    wristMotor.setSensorPhase(false);
 
   }
 
@@ -44,7 +48,7 @@ public class WristSubsystem extends Subsystem {
   }
 
   public double getRotationAngle() { // get the rotation angle return
-    return (wristMotor.getSelectedSensorPosition() / encoderUnit) * 360;
+    return ((wristMotor.getSelectedSensorPosition() / encoderUnit) / gearRatio) * 360;
   }
 
   public boolean isWristAtTop() {

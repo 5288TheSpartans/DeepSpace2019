@@ -10,9 +10,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.accessories.SpartanPID;
 
 public class AnalogArmCommand extends Command {
-  double leftTrigger = 0, rightTrigger = 0;
+  double leftTrigger = 0, rightTrigger = 0, error = 0, lastArmAngle = 0;
+  SpartanPID armGravityPID;
+
   public AnalogArmCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -23,22 +26,40 @@ public class AnalogArmCommand extends Command {
   @Override
   protected void initialize() {
     System.out.println("Initializing AnalogArmCommand.");
+    armGravityPID = new SpartanPID(RobotMap.ArmGravityP, RobotMap.ArmGravityI, RobotMap.ArmGravityD,
+        RobotMap.ArmGravityFF);
+
+    armGravityPID.setTarget(0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
+
     // FOR LOGITECHCONTROLLER/XBOXCONTROLLER2 CLASS
-    // Robot.arm.setArmPower(-Robot.m_oi.secondaryController.getLeftAnalogTrigger() + Robot.m_oi.secondaryController.getRightAnalogTrigger());
-    
+    // Robot.arm.setArmPower(-Robot.m_oi.secondaryController.getLeftAnalogTrigger()
+    // + Robot.m_oi.secondaryController.getRightAnalogTrigger());
+
     leftTrigger = Robot.m_oi.getSecondaryControllerLeftTrigger();
     rightTrigger = Robot.m_oi.getSecondaryControllerRightTrigger();
-    if(leftTrigger < RobotMap.triggerDeadzone) leftTrigger = 0;
-    if(rightTrigger < RobotMap.triggerDeadzone) rightTrigger = 0;
 
-    // Left for lowering, right for raising
-    Robot.arm.setArmPower(leftTrigger -rightTrigger);
+    error = Robot.wrist.getRotationAngle() - lastArmAngle;
+    lastArmAngle = Robot.wrist.getRotationAngle();
+
+    if (leftTrigger < RobotMap.triggerDeadzone || rightTrigger < RobotMap.triggerDeadzone) {
+
+      if (leftTrigger < RobotMap.triggerDeadzone)
+        leftTrigger = 0;
+      if (rightTrigger < RobotMap.triggerDeadzone)
+        rightTrigger = 0;
+
+      // Left for lowering, right for raising
+      Robot.arm.setArmPower(leftTrigger - rightTrigger);
+
+    } else {
+      armGravityPID.update(error);
+      Robot.arm.setArmPower(armGravityPID.getOutput());
+    }
 
   }
 

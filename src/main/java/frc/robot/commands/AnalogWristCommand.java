@@ -10,9 +10,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.accessories.SpartanPID;
 
 public class AnalogWristCommand extends Command {
-  double leftJoyY = 0;
+  double leftJoyY = 0, error = 0, lastWristAngle = 0;
+  SpartanPID wristGravityPID;
+
   public AnalogWristCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -23,20 +26,34 @@ public class AnalogWristCommand extends Command {
   @Override
   protected void initialize() {
     System.out.println("Initializing AnalogWristCommand.");
+    wristGravityPID = new SpartanPID(RobotMap.WristGravityP, RobotMap.WristGravityI, RobotMap.WristGravityD,
+        RobotMap.WristGravityFF);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
 
-    // For LogitechController class use Robot.m_oi.secondaryController.getLeftStickY()
+    // For LogitechController class use
+    // Robot.m_oi.secondaryController.getLeftStickY()
     // get the left joystick Y value
+    error = Robot.wrist.getRotationAngle() - lastWristAngle;
+    lastWristAngle = Robot.wrist.getRotationAngle();
     leftJoyY = Robot.m_oi.getSecondaryControllerLeftStickY();
+
+    // When in joystick deadzone or no input
     if (leftJoyY > -RobotMap.joystickDeadzone && leftJoyY < RobotMap.joystickDeadzone) {
-      leftJoyY = 0;
+
+      // Sets the WristPower accordingly depending on how far the current error is to
+      // 0.
+      wristGravityPID.update(error);
+      Robot.wrist.setWristPower(wristGravityPID.getOutput());
+
+      // If not in joystick deadzone, use Joystick values
+    } else {
+      Robot.wrist.setWristPower(leftJoyY);
     }
 
-    Robot.wrist.setWristPower(leftJoyY);
   }
 
   // Make this return true when this Command no longer needs to run execute()

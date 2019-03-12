@@ -16,9 +16,12 @@ public class ModifierButtonCombination extends CommandGroup {
    * OBJECTIVE: CARGO This command group is called while the program still detects
    * that modifier 2 (left bumper) is held.
    */
+
+  // Takes in the values to rotate to and does this in parallel
   public ModifierButtonCombination(double armAngle, double wristAngle) {
     addParallel(new ArmRotateDegrees(armAngle));
     addParallel(new WristRotateDegrees(wristAngle));
+
     // TO DO: Wrist commands need testing. (For now default is
     // RobotMap.raisedWrist())
 

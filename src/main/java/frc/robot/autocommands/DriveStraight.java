@@ -1,9 +1,4 @@
 
-
-
-
-
-
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -39,7 +34,7 @@ public class DriveStraight extends Command {
 
     m_basePower = basePower;
     straightPID = new SpartanPID(RobotMap.DriveStraightP, RobotMap.DriveStraightI, RobotMap.DriveStraightD,
-      RobotMap.DriveStraightFF); //
+        RobotMap.DriveStraightFF); //
   }
 
   // Called just before this Command runs the first time
@@ -53,16 +48,17 @@ public class DriveStraight extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   protected void execute() {
+
     // Calculate how much one side is spinning more than the other
     error = Robot.drivetrain.getLeftDistanceInches() - Robot.drivetrain.getRightDistanceInches();
     // Print outs
     System.out.println("Error: " + error);
     System.out.println("Encoder values(Left,Right): " + Robot.drivetrain.getLeftDistanceInches() + ", "
         + Robot.drivetrain.getRightDistanceInches());
-    
+
     // Update PID with the new error
     straightPID.update(error);
-    
+
     gain = straightPID.getOutput();
     Robot.drivetrain.setLeftPower(m_basePower - gain);
     Robot.drivetrain.setRightPower(m_basePower + gain);
