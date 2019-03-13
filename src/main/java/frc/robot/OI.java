@@ -88,7 +88,7 @@ public class OI {
     // modifier 2 (hatch)
     // primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
 
-    mod1AndDPadDown.whenPressed(new ModifierButtonCombination(0, 20));
+    mod1AndDPadDown.whenPressed(new ModifierButtonCombination(66, 0));
     mod1AndDPadUp.whenPressed(new ModifierButtonCombination(0, 20));
     mod1AndA.whenPressed(new ModifierButtonCombination(0, 20));
     mod1AndX.whenPressed(new ModifierButtonCombination(0, 20));

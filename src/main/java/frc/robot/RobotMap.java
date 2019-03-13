@@ -96,9 +96,9 @@ public class RobotMap {
   public static final double DistanceFF = 0;
 
   // ARM RAISE
-  public static final double ArmRaiseP = 1;
+  public static final double ArmRaiseP = 0.001;
   public static final double ArmRaiseI = 0;
-  public static final double ArmRaiseD = 0;
+  public static final double ArmRaiseD = 0.;
   public static final double ArmRaiseFF = 0;
 
   // ARM LOWER

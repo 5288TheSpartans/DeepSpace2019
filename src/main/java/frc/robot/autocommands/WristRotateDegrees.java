@@ -49,11 +49,13 @@ public class WristRotateDegrees extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if ((angleToTurnTo - 3) <= Robot.wrist.getRotationAngle() && Robot.wrist.getRotationAngle() <= (angleToTurnTo + 3))
+    return true;
+    /*  if ((angleToTurnTo - 3) <= Robot.wrist.getRotationAngle() && Robot.wrist.getRotationAngle() <= (angleToTurnTo + 3))
       return true;
     else
       return false;
-  }
+  */
+    }
 
   // Called once after isFinished returns true
   @Override
