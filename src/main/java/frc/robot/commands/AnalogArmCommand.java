@@ -60,7 +60,7 @@ public class AnalogArmCommand extends Command {
 
     if (leftTrigger < RobotMap.triggerDeadzone && rightTrigger < RobotMap.triggerDeadzone) {
 
-      Robot.arm.setArmPower(0.1*Math.sin(Robot.arm.getRotationAngle()+24));
+      Robot.arm.setArmPower(Robot.arm.getGravityFightingValue());
 
     } else {
       // Left for lowering, right for raising

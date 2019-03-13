@@ -13,6 +13,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.AnalogArmCommand;
 
@@ -113,6 +114,9 @@ public class ArmSubsystem extends Subsystem {
     armMotor2.set(currentArmPower);
     // armMotor3.set(currentArmPower);
 
+  }
+  public double getGravityFightingValue() {
+    return -0.1*Math.sin(getRotationAngle()+24);
   }
 
 }
