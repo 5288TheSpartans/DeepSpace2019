@@ -51,7 +51,7 @@ public class AnalogWristCommand extends Command {
 
       // If not in joystick deadzone, use Joystick values
     } else {
-      Robot.wrist.setWristPower(leftJoyY);
+      Robot.wrist.setWristPower(-leftJoyY);
     }
 
   }
