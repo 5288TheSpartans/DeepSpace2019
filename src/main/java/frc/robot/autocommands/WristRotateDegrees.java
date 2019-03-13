@@ -38,7 +38,7 @@ public class WristRotateDegrees extends Command {
   @Override
   protected void execute() {
 
-    wristRotatePID.update(Robot.wrist.getRotationAngle());
+    wristRotatePID.update(Robot.wrist.getRotationAngle() - Robot.wrist.getRotationAngle());
 
     wristOutput = wristRotatePID.getOutput();
 
@@ -58,7 +58,9 @@ public class WristRotateDegrees extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.wrist.setWristPower(0.0);
   }
+
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run

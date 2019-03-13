@@ -10,6 +10,7 @@ package frc.robot.autocommands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.accessories.SpartanPID;
 
 public class ArmRotateDegrees extends Command {
@@ -18,6 +19,8 @@ public class ArmRotateDegrees extends Command {
   double error = 0;
   double armOutput = 0.0;
   double angleToTurnTo;
+  double startingAngle;
+  double currentAngle;
   SpartanPID armRaisePID;
   SpartanPID armLowerPID;
 
@@ -35,10 +38,13 @@ public class ArmRotateDegrees extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    armRaisePID = new SpartanPID(SmartDashboard.getNumber("Arm P", 0), 0, SmartDashboard.getNumber("Arm D", 0), 0);
-    // armRotatePID = new SpartanPID(RobotMap.ArmRotateP, RobotMap.ArmRotateI,
-    // RobotMap.ArmRotateD, RobotMap.ArmRotateFF);
+    startingAngle = Robot.arm.getRotationAngle();
+    currentAngle = Robot.arm.getRotationAngle();
+    armRaisePID = new SpartanPID(RobotMap.ArmRaiseP,RobotMap.ArmRaiseI,RobotMap.ArmRaiseD,RobotMap.ArmRaiseD);
+   // armLowerPID = new SpartanPID(RobotMap.ArmLowerP, RobotMap.ArmLowerI,RobotMap.ArmLowerD,RobotMap.ArmLowerD);
+    
     armRaisePID.setTarget(angleToTurnTo);
+   // armLowerPID.setTarget(angleToTurnTo);
     // System.out.println(m_basePower);
 
   }
@@ -46,8 +52,10 @@ public class ArmRotateDegrees extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    currentAngle = Robot.arm.getRotationAngle();
+    //  if(currentAngle < angleToTurnTo && currentAngle <  )
     // update armRotatePID with the current angle of the arm
-    armRaisePID.update(Robot.arm.getRotationAngle());
+    armRaisePID.update(Robot.arm.getRotationAngle() - angleToTurnTo);
 
     armOutput = armRaisePID.getOutput();
 
@@ -74,6 +82,7 @@ public class ArmRotateDegrees extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.arm.setArmPower(0.0);
 
   }
 }

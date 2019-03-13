@@ -25,8 +25,8 @@ public class ArmSubsystem extends Subsystem {
   private double encoderUnit = 4096;
   private double gearRatio = 93.33;
   // The arm's limit angles (in degrees)
-  private final double armBottomLimit = -10000000;
-  private final double armTopLimit = 10000000;
+  private final double armBottomLimit = 0;
+  private final double armTopLimit = 200;
 
   private DigitalInput bottomLimitSwitch = new DigitalInput(RobotMap.bottomArmLimitSwitch);
 
