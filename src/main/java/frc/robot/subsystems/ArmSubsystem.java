@@ -56,7 +56,7 @@ public class ArmSubsystem extends Subsystem {
     // System.out.println("Arm encoder 2: " + armEncoder2.getPosition());
     // return (armEncoder1.getPosition() + armEncoder2.getPosition() +
     // armEncoder3.getPosition()) / 3;
-    armEncoder1.getPo
+
     return (armEncoder1.getPosition() + armEncoder2.getPosition()) / 2;
   }
 
