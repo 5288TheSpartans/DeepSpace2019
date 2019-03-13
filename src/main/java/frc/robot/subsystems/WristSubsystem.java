@@ -20,9 +20,9 @@ public class WristSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private int encoderUnit = 4096;
-  private double gearRatio = 100;
+  private double gearRatio = 183.33333333;
   private double lowerAngleLimit = -10;
-  private double topAngleLimit = 90;
+  private double topAngleLimit = 170;
   private double wristPower = 0;
   private TalonSRX wristMotor;
 

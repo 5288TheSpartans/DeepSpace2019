@@ -93,7 +93,6 @@ public class Robot extends TimedRobot {
     //Robot.m_oi.getLeftModifierStatus();
     //Robot.m_oi.getRightModifierStatus();
 
-
     // pneumatics.mainCompressor.start();
    // SmartDashboard.putNumber("TEST", 123123);
    // SmartDashboard.putNumber("Arm P", 0.00001);
@@ -102,6 +101,8 @@ public class Robot extends TimedRobot {
     //SmartDashboard.putNumber("D-Pad Value: ",Robot.m_oi.primaryController.getDPadValue());
     SmartDashboard.putNumber("Arm encoder 1: ",Robot.arm.getArmMotor1Pos());
     SmartDashboard.putNumber("Arm encoder 2: ", Robot.arm.getArmMotor2Pos());
+    SmartDashboard.putNumber("Arm angle: ", Robot.arm.getRotationAngle());
+    SmartDashboard.putNumber("Wrist angle: ", Robot.wrist.getRotationAngle());
     SmartDashboard.putNumber("Drive encoder 1 (inches): ", drivetrain.getLeftDistanceInches());
     SmartDashboard.putNumber("Drive encoder 2 (inches):", drivetrain.getRightDistanceInches());
     SmartDashboard.putNumber("Wrist Distance", wrist.getWristDistanceTicks());
@@ -110,7 +111,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("RightStickX", m_oi.getSecondaryControllerRightStickX());
     
     // arm.updateOutputs();
-
     // System.out.println(inst.isConnected());
     // System.out.println(distEntry.getNumber(-1).doubleValue());
   }
