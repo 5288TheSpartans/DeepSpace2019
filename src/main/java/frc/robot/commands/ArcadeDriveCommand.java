@@ -56,16 +56,16 @@ public class ArcadeDriveCommand extends Command {
     // But if both joystick values are within the deadzones, they will both be 0.
     // Apply no power in that case.
     if (rightJoyX != 0) {
-      Robot.drivetrain.setLeftPower(leftJoyY + rightJoyX);
-      Robot.drivetrain.setRightPower(leftJoyY - rightJoyX);
+      Robot.drivetrain.setLeftPower(leftJoyY - rightJoyX);
+      Robot.drivetrain.setRightPower(leftJoyY + rightJoyX);
     }
     // right joystick is in the deadzone, left joystick is not; apply PID to keep
     // the robot going straight
     else if (rightJoyX == 0 && leftJoyY != 0) {
       straightPID.update(error);
       gain = straightPID.getOutput();
-      Robot.drivetrain.setLeftPower(leftJoyY + gain);
-      Robot.drivetrain.setRightPower(leftJoyY - gain);
+      Robot.drivetrain.setLeftPower(leftJoyY - gain);
+      Robot.drivetrain.setRightPower(leftJoyY + gain);
     }
     // both joystick values are within the deadzone
     else {
