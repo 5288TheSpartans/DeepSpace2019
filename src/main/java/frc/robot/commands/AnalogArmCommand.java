@@ -50,20 +50,23 @@ public class AnalogArmCommand extends Command {
     System.out.println("Error: " + error );
     System.out.println(armGravityPID.getPIDConstants());
     lastArmAngle = Robot.arm.getRotationAngle();
+    System.out.println("Left trigger: " + leftTrigger);
+    System.out.println("Right trigger: " + rightTrigger);
 
-    if (leftTrigger < RobotMap.triggerDeadzone || rightTrigger < RobotMap.triggerDeadzone) {
+    if (leftTrigger < RobotMap.triggerDeadzone)
+     leftTrigger = 0;
+    if (rightTrigger < RobotMap.triggerDeadzone)
+     rightTrigger = 0;
 
-      if (leftTrigger < RobotMap.triggerDeadzone)
-        leftTrigger = 0;
-      if (rightTrigger < RobotMap.triggerDeadzone)
-        rightTrigger = 0;
+    if (leftTrigger < RobotMap.triggerDeadzone && rightTrigger < RobotMap.triggerDeadzone) {
 
+      armGravityPID.update(error);
+      Robot.arm.setArmPower(armGravityPID.getOutput());
+
+    } else {
       // Left for lowering, right for raising
       Robot.arm.setArmPower(leftTrigger - rightTrigger);
 
-    } else {
-      armGravityPID.update(error);
-      Robot.arm.setArmPower(armGravityPID.getOutput());
     }
 
   }
