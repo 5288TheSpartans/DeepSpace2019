@@ -56,6 +56,7 @@ public class ArmSubsystem extends Subsystem {
     // System.out.println("Arm encoder 2: " + armEncoder2.getPosition());
     // return (armEncoder1.getPosition() + armEncoder2.getPosition() +
     // armEncoder3.getPosition()) / 3;
+    armEncoder1.getPo
     return (armEncoder1.getPosition() + armEncoder2.getPosition()) / 2;
   }
 
@@ -69,7 +70,8 @@ public class ArmSubsystem extends Subsystem {
 
   // get the current angle of the arm.
   public double getRotationAngle() {
-    return ((getDistanceTicks() / encoderUnit)* (1/gearRatio)) * 360;
+    return (getDistanceTicks()/106)*360;
+    //return ((getDistanceTicks() / encoderUnit)* (1/gearRatio)) * 360;
   }
 
   public boolean isArmAtBottom() {
