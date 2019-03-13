@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.accessories.SpartanPID;
+import java.lang.Math;
 
 public class AnalogArmCommand extends Command {
   double leftTrigger = 0, rightTrigger = 0, error = 0, lastArmAngle = 0;
@@ -59,7 +60,7 @@ public class AnalogArmCommand extends Command {
 
     if (leftTrigger < RobotMap.triggerDeadzone && rightTrigger < RobotMap.triggerDeadzone) {
 
-      Robot.arm.setArmPower(SmartDashboard.getNumber("Horizontal Arm Counter Value", 0.1));
+      Robot.arm.setArmPower(0.1*Math.sin(Robot.arm.getRotationAngle()+24));
 
     } else {
       // Left for lowering, right for raising

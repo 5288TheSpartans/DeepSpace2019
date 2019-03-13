@@ -45,8 +45,8 @@ public class RobotMap {
   public static final int bottomArmLimitSwitch = 9;
 
   // DEADZONES
-  public static final double joystickDeadzone = 0.1;
-  public static final double triggerDeadzone = 0.075;
+  public static final double joystickDeadzone = 0.05;
+  public static final double triggerDeadzone = 0.05;
 
   // CAN
   // ARM
@@ -84,9 +84,9 @@ public class RobotMap {
   // PID CONSTANTS
 
   // DRIVE STRAIGHT
-  public static final double DriveStraightP = 0.002;
+  public static final double DriveStraightP = 0.00;
   public static final double DriveStraightI = 0;
-  public static final double DriveStraightD = 0.002;
+  public static final double DriveStraightD = 0.00;
   public static final double DriveStraightFF = 0;
 
   // DISTANCE
