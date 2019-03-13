@@ -48,7 +48,7 @@ public class WristSubsystem extends Subsystem {
   }
 
   public double getRotationAngle() { // get the rotation angle return
-    return (((wristMotor.getSelectedSensorPosition()/encoderUnit)* (1/gearRatio)))*360;
+    return (((wristMotor.getSelectedSensorPosition()/encoderUnit)/(gearRatio)))*360;
   }
 
   public boolean isWristAtTop() {
