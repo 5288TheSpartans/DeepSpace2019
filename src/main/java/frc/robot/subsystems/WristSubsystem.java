@@ -19,7 +19,7 @@ import frc.robot.commands.AnalogWristCommand;
 public class WristSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private int encoderUnit = 4096;
+  private double encoderUnit = 4096;
   private double gearRatio = 183.33333333;
   private double lowerAngleLimit = -10;
   private double topAngleLimit = 170;
@@ -48,7 +48,7 @@ public class WristSubsystem extends Subsystem {
   }
 
   public double getRotationAngle() { // get the rotation angle return
-    return ((wristMotor.getSelectedSensorPosition() / encoderUnit) / gearRatio) * 360;
+    return ((wristMotor.getSelectedSensorPosition() / encoderUnit) / 360)/gearRatio;
   }
 
   public boolean isWristAtTop() {
