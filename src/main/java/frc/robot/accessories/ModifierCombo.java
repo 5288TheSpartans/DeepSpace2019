@@ -11,16 +11,22 @@ package frc.robot.accessories;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.POVButton;
 
 /**
  * Add your docs here.
  */
 public class ModifierCombo extends Button {
 
-    Button modifierButton;
+    JoystickButton modifierButton;
     Button activator;
 
-    public ModifierCombo(Button modifierButton, Button activator) {
+    public ModifierCombo(JoystickButton modifierButton, POVButton activator) {
+        this.modifierButton = modifierButton;
+        this.activator = activator;
+
+    }
+    public ModifierCombo(JoystickButton modifierButton, JoystickButton activator) {
         this.modifierButton = modifierButton;
         this.activator = activator;
 

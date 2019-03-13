@@ -95,6 +95,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    System.out.println(m_oi.mod1AndDPadDown.get());
    /* System.out.println("D-Pad Value: " + Robot.m_oi.primaryController.getDPadValue());
     System.out.println("Arm encoder 1: " + Robot.arm.getArmMotor1Pos());
     System.out.println("Arm encoder 2: " + Robot.arm.getArmMotor2Pos());

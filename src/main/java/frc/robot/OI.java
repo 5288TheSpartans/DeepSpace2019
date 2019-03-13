@@ -64,7 +64,7 @@ public class OI {
 
   POVButton xboxUp = new POVButton(secondaryController, 0), xboxDown = new POVButton(secondaryController, 180);
 
-  private ModifierCombo mod1AndX = new ModifierCombo(xboxRB, xboxX), mod1AndY = new ModifierCombo(xboxRB, xboxY),
+  public ModifierCombo mod1AndX = new ModifierCombo(xboxRB, xboxX), mod1AndY = new ModifierCombo(xboxRB, xboxY),
       mod1AndA = new ModifierCombo(xboxRB, xboxA), mod1AndB = new ModifierCombo(xboxRB, xboxB),
       mod1AndDPadUp = new ModifierCombo(xboxRB, xboxUp), mod1AndDPadDown = new ModifierCombo(xboxRB, xboxDown);
 
