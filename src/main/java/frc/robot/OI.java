@@ -140,36 +140,42 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
   public double getPrimaryControllerLeftStickY() {
-    return primaryController.getY(Hand.kLeft);
+    return primaryController.getRawAxis(1);
+    //return primaryController.getY(Hand.kLeft);
     // return primaryController.getLeftStickY();
   }
 
   public double getPrimaryControllerRightStickX() {
-    return primaryController.getX(Hand.kRight);
+    return primaryController.getRawAxis(4);
+    //return primaryController.getX(Hand.kRight);
+
     // return primaryController.getRightStickX();
   }
 
   public double getSecondaryControllerLeftStickY() {
-    return secondaryController.getY(Hand.kLeft);
+    return secondaryController.getRawAxis(1);
+    //return secondaryController.getY(Hand.kLeft);
     // return secondaryController.getLeftStickY();
   }
 
   public double getSecondaryControllerRightStickY() {
-    return secondaryController.getY(Hand.kRight);
+    return secondaryController.getRawAxis(5)
+;  //  return secondaryController.getY(Hand.kRight);
     // return secondaryController.getLeftStickY();
   }
 
   public double getSecondaryControllerRightStickX() {
-    return secondaryController.getX(Hand.kRight);
+    return secondaryController.getRawAxis(4);
+    // return secondaryController.getX(Hand.kRight);
     // return secondaryController.getRightStickX();
   }
 
   public double getSecondaryControllerLeftTrigger() {
-    return secondaryController.getRawAxis(5);
+    return secondaryController.getRawAxis(2);
   }
 
   public double getSecondaryControllerRightTrigger() {
-    return secondaryController.getRawAxis(6);
+    return secondaryController.getRawAxis(3);
   }
 
   /*
