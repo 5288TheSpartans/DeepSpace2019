@@ -54,9 +54,6 @@ public class Robot extends TimedRobot {
     drivetrain = new DrivetrainSubsystem();
     pneumatics = new PneumaticsSubsystem();
     arm = new ArmSubsystem();
-    pneumatics.mainCompressor.start();
-
-    // compressor = new CompressorSubsystem();
     wrist = new WristSubsystem();
     intake = new IntakeSubsystem();
     m_oi = new OI();
@@ -66,8 +63,21 @@ public class Robot extends TimedRobot {
     distEntry = table.getEntry("distance");
     distance = distEntry.getNumber(-1).doubleValue();
 
+    pneumatics.mainCompressor.start();
     m_chooser.addOption("Spot turn", new SpotTurnDegrees(180));
     SmartDashboard.putData("Auto mode", m_chooser);
+
+    SmartDashboard.putNumber("Arm Gravity P", RobotMap.ArmGravityP);
+    SmartDashboard.putNumber("Arm Gravity I", RobotMap.ArmGravityI);
+    SmartDashboard.putNumber("Arm Gravity D", RobotMap.ArmGravityD);
+
+    SmartDashboard.putNumber("Arm Raise P", RobotMap.ArmRaiseP);
+    SmartDashboard.putNumber("Arm Raise I", RobotMap.ArmRaiseI);
+    SmartDashboard.putNumber("Arm Raise D", RobotMap.ArmRaiseD);
+
+    SmartDashboard.putNumber("Arm Lower P", RobotMap.ArmLowerP);
+    SmartDashboard.putNumber("Arm Lower I", RobotMap.ArmLowerI);
+    SmartDashboard.putNumber("Arm Lower D", RobotMap.ArmLowerD);
 
   }
 
@@ -87,16 +97,12 @@ public class Robot extends TimedRobot {
     System.out.println("Arm encoder 2: " + Robot.arm.getArmMotor2Pos());
     System.out.println("Drive encoder 1 (inches): " + drivetrain.getLeftDistanceInches());
     System.out.println("Drive encoder 2 (inches):" + drivetrain.getRightDistanceInches());
-   */ drivetrain.updateOutputs();
+   */ 
+    drivetrain.updateOutputs();
     arm.updateOutputs();
     wrist.updateOutput();
-    //Robot.m_oi.getLeftModifierStatus();
-    //Robot.m_oi.getRightModifierStatus();
-
     // pneumatics.mainCompressor.start();
-   // SmartDashboard.putNumber("TEST", 123123);
-   // SmartDashboard.putNumber("Arm P", 0.00001);
-   // SmartDashboard.putNumber("Arm D", 0.00000001);
+    // SmartDashboard.putNumber("TEST", 123123);
     //SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
     //SmartDashboard.putNumber("D-Pad Value: ",Robot.m_oi.primaryController.getDPadValue());
     SmartDashboard.putNumber("Arm encoder 1: ",Robot.arm.getArmMotor1Pos());

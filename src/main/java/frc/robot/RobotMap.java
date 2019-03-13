@@ -46,7 +46,7 @@ public class RobotMap {
 
   // DEADZONES
   public static final double joystickDeadzone = 0.1;
-  public static final double triggerDeadzone = 0.1;
+  public static final double triggerDeadzone = 0.05;
 
   // CAN
   // ARM

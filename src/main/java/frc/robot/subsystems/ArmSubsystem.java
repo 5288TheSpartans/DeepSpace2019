@@ -69,7 +69,7 @@ public class ArmSubsystem extends Subsystem {
 
   // get the current angle of the arm.
   public double getRotationAngle() {
-    return ((getDistanceTicks() / encoderUnit)/ ( gearRatio)) * 360;
+    return ((getDistanceTicks() / encoderUnit)* (1/gearRatio)) * 360;
   }
 
   public boolean isArmAtBottom() {
