@@ -79,6 +79,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Arm Lower I", RobotMap.ArmLowerI);
     SmartDashboard.putNumber("Arm Lower D", RobotMap.ArmLowerD);
 
+
+    SmartDashboard.putNumber("Horizontal Arm Counter Value", 0.1);
+
   }
 
   /**

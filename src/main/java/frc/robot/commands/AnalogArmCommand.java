@@ -37,7 +37,7 @@ public class AnalogArmCommand extends Command {
   @Override
   protected void execute() {
 
-    armGravityPID = new SpartanPID(SmartDashboard.getNumber("Arm Gravity P", RobotMap.ArmGravityP), SmartDashboard.getNumber("Arm Gravity I", RobotMap.ArmGravityI), SmartDashboard.getNumber("Arm Gravity D", RobotMap.ArmGravityD), RobotMap.ArmGravityFF);
+    //armGravityPID = new SpartanPID(SmartDashboard.getNumber("Arm Gravity P", RobotMap.ArmGravityP), SmartDashboard.getNumber("Arm Gravity I", RobotMap.ArmGravityI), SmartDashboard.getNumber("Arm Gravity D", RobotMap.ArmGravityD), RobotMap.ArmGravityFF);
     // FOR LOGITECHCONTROLLER/XBOXCONTROLLER2 CLASS
     // Robot.arm.setArmPower(-Robot.m_oi.secondaryController.getLeftAnalogTrigger()
     // + Robot.m_oi.secondaryController.getRightAnalogTrigger());
@@ -46,12 +46,11 @@ public class AnalogArmCommand extends Command {
     rightTrigger = Robot.m_oi.getSecondaryControllerRightTrigger();
 
     error = Robot.arm.getRotationAngle() - lastArmAngle;
-    
-    System.out.println("Error: " + error );
-    System.out.println(armGravityPID.getPIDConstants());
     lastArmAngle = Robot.arm.getRotationAngle();
-    System.out.println("Left trigger: " + leftTrigger);
-    System.out.println("Right trigger: " + rightTrigger);
+    //System.out.println("Error: " + error );
+    //System.out.println(armGravityPID.getPIDConstants());
+   // System.out.println("Left trigger: " + leftTrigger);
+   // System.out.println("Right trigger: " + rightTrigger);
 
     if (leftTrigger < RobotMap.triggerDeadzone)
      leftTrigger = 0;
@@ -60,8 +59,7 @@ public class AnalogArmCommand extends Command {
 
     if (leftTrigger < RobotMap.triggerDeadzone && rightTrigger < RobotMap.triggerDeadzone) {
 
-      armGravityPID.update(error);
-      Robot.arm.setArmPower(armGravityPID.getOutput());
+      Robot.arm.setArmPower(SmartDashboard.getNumber("Horizontal Arm Counter Value", 0.1));
 
     } else {
       // Left for lowering, right for raising
