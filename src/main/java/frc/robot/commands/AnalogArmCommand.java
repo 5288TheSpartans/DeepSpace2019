@@ -41,12 +41,15 @@ public class AnalogArmCommand extends Command {
     // FOR LOGITECHCONTROLLER/XBOXCONTROLLER2 CLASS
     // Robot.arm.setArmPower(-Robot.m_oi.secondaryController.getLeftAnalogTrigger()
     // + Robot.m_oi.secondaryController.getRightAnalogTrigger());
-
+  
     leftTrigger = Robot.m_oi.getSecondaryControllerLeftTrigger();
     rightTrigger = Robot.m_oi.getSecondaryControllerRightTrigger();
 
-    error = Robot.wrist.getRotationAngle() - lastArmAngle;
-    lastArmAngle = Robot.wrist.getRotationAngle();
+    error = Robot.arm.getRotationAngle() - lastArmAngle;
+    
+    System.out.println("Error: " + error );
+    System.out.println(armGravityPID.getPIDConstants());
+    lastArmAngle = Robot.arm.getRotationAngle();
 
     if (leftTrigger < RobotMap.triggerDeadzone || rightTrigger < RobotMap.triggerDeadzone) {
 

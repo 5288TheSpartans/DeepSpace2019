@@ -58,6 +58,9 @@ public class SpartanPID {
     public double getOutput() {
         return output;
     }
+    public String getPIDConstants() {
+        return  (String) ("PID: " "P: "+ P_GAIN + " I: " + I_GAIN + " D: " + D_GAIN);  
+    }
 
     public void resetPID() {
         // kP = 0;
