@@ -40,7 +40,7 @@ public class ArmRotateDegrees extends Command {
   protected void initialize() {
     startingAngle = Robot.arm.getRotationAngle();
     currentAngle = Robot.arm.getRotationAngle();
-    armRaisePID = new SpartanPID(RobotMap.ArmRaiseP,RobotMap.ArmRaiseI,RobotMap.ArmRaiseD,RobotMap.ArmRaiseD);
+    armRaisePID = new SpartanPID(SmartDashboard.getNumber("Arm Raise P", RobotMap.ArmRaiseP),  SmartDashboard.getNumber("Arm Raise I", RobotMap.ArmRaiseI),  SmartDashboard.getNumber("Arm Raise D", RobotMap.ArmRaiseD), RobotMap.ArmRaiseFF);
    // armLowerPID = new SpartanPID(RobotMap.ArmLowerP, RobotMap.ArmLowerI,RobotMap.ArmLowerD,RobotMap.ArmLowerD);
     
     armRaisePID.setTarget(angleToTurnTo);
@@ -53,9 +53,9 @@ public class ArmRotateDegrees extends Command {
   @Override
   protected void execute() {
     currentAngle = Robot.arm.getRotationAngle();
-    //  if(currentAngle < angleToTurnTo && currentAngle <  )
+    
     // update armRotatePID with the current angle of the arm
-    armRaisePID.update(Robot.arm.getRotationAngle() - angleToTurnTo);
+    armRaisePID.update(Robot.arm.getRotationAngle());
 
     armOutput = armRaisePID.getOutput();
 
@@ -66,7 +66,7 @@ public class ArmRotateDegrees extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if ((angleToTurnTo - 2.5) <= Robot.arm.getRotationAngle() && Robot.arm.getRotationAngle() <= (angleToTurnTo + 2.5))
+    if ((angleToTurnTo - 2) <= Robot.arm.getRotationAngle() && Robot.arm.getRotationAngle() <= (angleToTurnTo + 2))
       return true;
     else
       return false;
@@ -82,7 +82,6 @@ public class ArmRotateDegrees extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.arm.setArmPower(0.0);
 
   }
 }

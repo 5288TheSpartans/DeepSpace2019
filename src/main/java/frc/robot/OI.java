@@ -37,30 +37,30 @@ public class OI {
   public Joystick primaryController = new Joystick(0);
   public Joystick secondaryController = new Joystick(1);
 
-  private JoystickButton xboxA = new JoystickButton(primaryController, 1), // Coloured buttons
-      xboxB = new JoystickButton(primaryController, 2), // Coloured buttons
-      xboxY = new JoystickButton(primaryController, 4), // Coloured buttons
-      xboxX = new JoystickButton(primaryController, 3), // Coloured buttons
-      xboxLB = new JoystickButton(primaryController, 5), // Left Bumper
-      xboxRB = new JoystickButton(primaryController, 6), // Right Bumper
-      xboxStart = new JoystickButton(primaryController, 8), // XboxStart buttons
-      xboxBack = new JoystickButton(primaryController, 7), // XboxBack buttons
-      xboxLStickButton = new JoystickButton(primaryController, 9),
-      xboxRStickButton = new JoystickButton(primaryController, 10);
+  private JoystickButton xboxA = new JoystickButton(secondaryController, 1), // Coloured buttons
+      xboxB = new JoystickButton(secondaryController, 2), // Coloured buttons
+      xboxY = new JoystickButton(secondaryController, 4), // Coloured buttons
+      xboxX = new JoystickButton(secondaryController, 3), // Coloured buttons
+      xboxLB = new JoystickButton(secondaryController, 5), // Left Bumper
+      xboxRB = new JoystickButton(secondaryController, 6), // Right Bumper
+      xboxStart = new JoystickButton(secondaryController, 8), // XboxStart buttons
+      xboxBack = new JoystickButton(secondaryController, 7), // XboxBack buttons
+      xboxLStickButton = new JoystickButton(secondaryController, 9),
+      xboxRStickButton = new JoystickButton(secondaryController, 10);
 
   // private POVButton
   // xboxUp = new POVButton(primaryController, 270),
 
-  private JoystickButton logitechA = new JoystickButton(secondaryController, 1), // Coloured buttons
-      logitechB = new JoystickButton(secondaryController, 2), // Coloured buttons
-      logitechY = new JoystickButton(secondaryController, 4), // Coloured buttons
-      logitechX = new JoystickButton(secondaryController, 3), // Coloured buttons
-      logitechLB = new JoystickButton(secondaryController, 5), // Left Bumper
-      logitechRB = new JoystickButton(secondaryController, 6), // Right Bumper
-      logitechStart = new JoystickButton(secondaryController, 8), // XboxStart buttons
-      logitechBack = new JoystickButton(secondaryController, 7), // XboxBack buttons
-      logitechLStickButton = new JoystickButton(secondaryController, 9),
-      logitechRStickButton = new JoystickButton(secondaryController, 10);
+  private JoystickButton logitechA = new JoystickButton(primaryController, 1), // Coloured buttons
+      logitechB = new JoystickButton(primaryController, 2), // Coloured buttons
+      logitechY = new JoystickButton(primaryController, 4), // Coloured buttons
+      logitechX = new JoystickButton(primaryController, 3), // Coloured buttons
+      logitechLB = new JoystickButton(primaryController, 5), // Left Bumper
+      logitechRB = new JoystickButton(primaryController, 6), // Right Bumper
+      logitechStart = new JoystickButton(primaryController, 8), // XboxStart buttons
+      logitechBack = new JoystickButton(primaryController, 7), // XboxBack buttons
+      logitechLStickButton = new JoystickButton(primaryController, 9),
+      logitechRStickButton = new JoystickButton(primaryController, 10);
 
   POVButton xboxUp = new POVButton(secondaryController, 0), xboxDown = new POVButton(secondaryController, 180);
 

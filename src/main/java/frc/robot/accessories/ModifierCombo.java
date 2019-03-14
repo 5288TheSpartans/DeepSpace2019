@@ -18,23 +18,22 @@ import edu.wpi.first.wpilibj.buttons.POVButton;
  */
 public class ModifierCombo extends Button {
 
-    JoystickButton modifierButton;
-    Button activator;
+    JoystickButton m_modifierButton;
+    Button m_activator;
 
     public ModifierCombo(JoystickButton modifierButton, POVButton activator) {
-        this.modifierButton = modifierButton;
-        this.activator = activator;
+        m_modifierButton = modifierButton;
+        m_activator = activator;
 
     }
     public ModifierCombo(JoystickButton modifierButton, JoystickButton activator) {
-        this.modifierButton = modifierButton;
-        this.activator = activator;
+        m_modifierButton = modifierButton;
+        m_activator = activator;
 
     }
 
-    @Override
     public boolean get() {
-        return modifierButton.get() && activator.get();
+        return m_modifierButton.get() && m_activator.get();
     }
 
 }

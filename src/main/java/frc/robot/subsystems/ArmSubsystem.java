@@ -71,7 +71,7 @@ public class ArmSubsystem extends Subsystem {
 
   // get the current angle of the arm.
   public double getRotationAngle() {
-    return (getDistanceTicks()/106)*-360;
+    return (getDistanceTicks()/108)*-360;
     //return ((getDistanceTicks() / encoderUnit)* (1/gearRatio)) * 360;
   }
 
@@ -116,7 +116,7 @@ public class ArmSubsystem extends Subsystem {
 
   }
   public double getGravityFightingValue() {
-    return -0.1*Math.sin(getRotationAngle()+24);
+    return -0.1*Math.sin(getRotationAngle()+25);
   }
 
 }

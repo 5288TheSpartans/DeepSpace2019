@@ -67,9 +67,10 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Spot turn", new SpotTurnDegrees(180));
     SmartDashboard.putData("Auto mode", m_chooser);
 
-    SmartDashboard.putNumber("Arm Gravity P", RobotMap.ArmGravityP);
+    /*SmartDashboard.putNumber("Arm Gravity P", RobotMap.ArmGravityP);
     SmartDashboard.putNumber("Arm Gravity I", RobotMap.ArmGravityI);
     SmartDashboard.putNumber("Arm Gravity D", RobotMap.ArmGravityD);
+    */
 
     SmartDashboard.putNumber("Arm Raise P", RobotMap.ArmRaiseP);
     SmartDashboard.putNumber("Arm Raise I", RobotMap.ArmRaiseI);
@@ -78,9 +79,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Arm Lower P", RobotMap.ArmLowerP);
     SmartDashboard.putNumber("Arm Lower I", RobotMap.ArmLowerI);
     SmartDashboard.putNumber("Arm Lower D", RobotMap.ArmLowerD);
-
-
-    SmartDashboard.putNumber("Horizontal Arm Counter Value", 0.1);
 
   }
 
@@ -95,7 +93,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    System.out.println(m_oi.mod1AndDPadDown.get());
+    System.out.println("Mod 1 and DPad Down: " + m_oi.mod1AndDPadDown.get());
+    System.out.println("Secondary controller POV: " + m_oi.secondaryController.getPOV());
    /* System.out.println("D-Pad Value: " + Robot.m_oi.primaryController.getDPadValue());
     System.out.println("Arm encoder 1: " + Robot.arm.getArmMotor1Pos());
     System.out.println("Arm encoder 2: " + Robot.arm.getArmMotor2Pos());
