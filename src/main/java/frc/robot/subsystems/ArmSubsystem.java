@@ -80,7 +80,7 @@ public class ArmSubsystem extends Subsystem {
     //return ((getDistanceTicks() / encoderUnit)* (1/gearRatio)) * 360;
   }
   public void updateBottomLimit() {
-    if(bottomLimitSwitch.get()) armBottomLimit = getRotationAngle();
+    if(!bottomLimitSwitch.get()) armBottomLimit = getRotationAngle();
   }
   public boolean isArmAtBottom() {
      updateBottomLimit(); 
@@ -94,7 +94,7 @@ public class ArmSubsystem extends Subsystem {
   }
 
   public boolean getLimitSwitch() {
-    return bottomLimitSwitch.get();
+    return !bottomLimitSwitch.get();
   }
 
   public void setArmPower(double power) {
