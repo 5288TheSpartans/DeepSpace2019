@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.ArcadeDriveCommand;
 
@@ -83,6 +84,12 @@ public class DrivetrainSubsystem extends Subsystem {
     rightDriveMotor1.set(rightPower);
     rightDriveMotor2.set(rightPower);
     // rightDriveMotor3.set(rightPower);
+  }
+  public void putEncoderValues() {
+    SmartDashboard.putNumber("Left Encoder Raw", leftEncoder.getRaw());
+    SmartDashboard.putNumber("Right Encoder Raw",rightEncoder.getRaw());
+    SmartDashboard.putNumber("Left Encoder Dist Per Pulse",leftEncoder.getDistancePerPulse());
+    SmartDashboard.putNumber("Right Encoder Dist Per Pulse", rightEncoder.getDistancePerPulse());
   }
 
   public double getLeftDistanceInches() {
