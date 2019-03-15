@@ -49,12 +49,14 @@ public class WristRotateDegrees extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
-    /*  if ((angleToTurnTo - 3) <= Robot.wrist.getRotationAngle() && Robot.wrist.getRotationAngle() <= (angleToTurnTo + 3))
+    // return true when at (or in range of) the specified angle
+    if ((angleToTurnTo - 2) <= Robot.wrist.getRotationAngle() && Robot.wrist.getRotationAngle() <= (angleToTurnTo + 2))
+      return true;
+    // return true when the wrist controller joystick receives input outside of its deadzones
+    else if(!(Robot.m_oi.getSecondaryControllerLeftStickY() >= -RobotMap.joystickDeadzone && Robot.m_oi.getPrimaryControllerLeftStickY() <= RobotMap.joystickDeadzone) )
       return true;
     else
       return false;
-  */
     }
 
   // Called once after isFinished returns true
