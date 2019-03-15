@@ -62,6 +62,8 @@ public class ArcadeDriveCommand extends Command {
     else if (rightJoyX == 0 && leftJoyY != 0) {
       straightPID.update(error);
       gain = straightPID.getOutput();
+      // REMOVE ONCE PID IS TUNED
+      gain = 0;
       Robot.drivetrain.setLeftPower(leftJoyY - gain);
       Robot.drivetrain.setRightPower(leftJoyY + gain);
     }

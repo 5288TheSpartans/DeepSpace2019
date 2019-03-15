@@ -105,6 +105,8 @@ public class OI {
     mod2AndB.whenPressed(new ModifierButtonCombination(0, 20));
     mod2AndY.whenPressed(new ModifierButtonCombination(0, 20));
 
+    xboxStart.whenPressed(new PneumaticsActivate());
+
     // IF USING XboxController2 AND LogitechController CLASSES, USE THIS CODE
     /*
      * secondaryController.yButton.toggleWhenPressed(new IntakeCommand(0.3));

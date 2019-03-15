@@ -42,10 +42,10 @@ public class RobotMap {
   public static final int intakeRight = 5;
 
   // D I/O - Digital Input/Output Ports
-  public static final int leftDriveEncoder1 = 0; // white
-  public static final int leftDriveEncoder2 = 1; // green
-  public static final int rightDriveEncoder1 = 2; // white
-  public static final int rightDriveEncoder2 = 3; // green
+  public static final int leftDriveEncoder1 = 0; // white - channel A
+  public static final int leftDriveEncoder2 = 1; // brown - channel B
+  public static final int rightDriveEncoder1 = 2; // white - channel A
+  public static final int rightDriveEncoder2 = 3; // brown - channel B
   public static final int bottomArmLimitSwitch = 9;
 
   // DEADZONES

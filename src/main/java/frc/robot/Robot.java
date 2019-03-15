@@ -51,28 +51,28 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
+    // Instantiate subsystems
     drivetrain = new DrivetrainSubsystem();
     pneumatics = new PneumaticsSubsystem();
     arm = new ArmSubsystem();
     wrist = new WristSubsystem();
     intake = new IntakeSubsystem();
     m_oi = new OI();
-
+    
+    // Define jetson distance getter
     inst = NetworkTableInstance.getDefault();
     table = inst.getTable("visionData1");
     distEntry = table.getEntry("distance");
     distance = distEntry.getNumber(-1).doubleValue();
-    arm.setResetValue();
 
+    arm.setResetValue();
     pneumatics.mainCompressor.start();
+    
+    // Choose auto
     m_chooser.addOption("Spot turn", new SpotTurnDegrees(180));
     SmartDashboard.putData("Auto mode", m_chooser);
 
-    /*SmartDashboard.putNumber("Arm Gravity P", RobotMap.ArmGravityP);
-    SmartDashboard.putNumber("Arm Gravity I", RobotMap.ArmGravityI);
-    SmartDashboard.putNumber("Arm Gravity D", RobotMap.ArmGravityD);
-    */
-
+    // Put constants on SmartDashboard for PID tuning
     SmartDashboard.putNumber("Arm Raise P", RobotMap.ArmRaiseP);
     SmartDashboard.putNumber("Arm Raise I", RobotMap.ArmRaiseI);
     SmartDashboard.putNumber("Arm Raise D", RobotMap.ArmRaiseD);
@@ -96,28 +96,27 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     distance = distEntry.getNumber(-1).doubleValue();
-    SmartDashboard.putNumber("Jetson Recorded-Distance",distance);
-    System.out.println("Mod 1 and DPad Down: " + m_oi.mod1AndDPadDown.get());
-    System.out.println("Secondary controller POV: " + m_oi.secondaryController.getPOV());
-   /* System.out.println("D-Pad Value: " + Robot.m_oi.primaryController.getDPadValue());
-    System.out.println("Arm encoder 1: " + Robot.arm.getArmMotor1Pos());
-    System.out.println("Arm encoder 2: " + Robot.arm.getArmMotor2Pos());
-    System.out.println("Drive encoder 1 (inches): " + drivetrain.getLeftDistanceInches());
-    System.out.println("Drive encoder 2 (inches):" + drivetrain.getRightDistanceInches());
-   */ 
     drivetrain.updateOutputs();
     arm.updateOutputs();
     wrist.updateOutput();
-    // pneumatics.mainCompressor.start();
-    // SmartDashboard.putNumber("TEST", 123123);
-    //SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
-    //SmartDashboard.putNumber("D-Pad Value: ",Robot.m_oi.primaryController.getDPadValue());
+
     updateSmartDashboard();
     RobotMap.setArmMultiplier(SmartDashboard.getNumber("Arm Speed Multiplier",1.0));
     
     // arm.updateOutputs();
     // System.out.println(inst.isConnected());
     // System.out.println(distEntry.getNumber(-1).doubleValue());
+
+    /* System.out.println("D-Pad Value: " + Robot.m_oi.primaryController.getDPadValue());
+    System.out.println("Arm encoder 1: " + Robot.arm.getArmMotor1Pos());
+    System.out.println("Arm encoder 2: " + Robot.arm.getArmMotor2Pos());
+    System.out.println("Drive encoder 1 (inches): " + drivetrain.getLeftDistanceInches());
+    System.out.println("Drive encoder 2 (inches):" + drivetrain.getRightDistanceInches());
+   */ 
+  
+    /*System.out.println("Mod 1 and DPad Down: " + m_oi.mod1AndDPadDown.get());
+    System.out.println("Secondary controller POV: " + m_oi.secondaryController.getPOV());
+   */    
   }
 
   /**
@@ -200,6 +199,8 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
   private void updateSmartDashboard() {
+    SmartDashboard.putNumber("D-Pad Value: ",Robot.m_oi.primaryController.getPOV());
+    SmartDashboard.putNumber("Jetson Recorded-Distance",distance);
     SmartDashboard.putNumber("Arm encoder 1: ",Robot.arm.getArmMotor1Pos());
     SmartDashboard.putNumber("Arm encoder 2: ", Robot.arm.getArmMotor2Pos());
     SmartDashboard.putNumber("Arm angle: ", Robot.arm.getRotationAngle());
@@ -208,9 +209,10 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Drive encoder 2 (inches):", drivetrain.getRightDistanceInches());
     SmartDashboard.putNumber("Wrist Distance", wrist.getWristDistanceTicks());
     SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
-    SmartDashboard.putNumber("LeftJoyY", m_oi.getSecondaryControllerLeftStickY());
-    SmartDashboard.putNumber("RightStickX", m_oi.getSecondaryControllerRightStickX());
+    SmartDashboard.putNumber("Secondary LeftJoyY", m_oi.getSecondaryControllerLeftStickY());
+    SmartDashboard.putNumber("Secondary RightStickX", m_oi.getSecondaryControllerRightStickX());
     SmartDashboard.putBoolean("Arm Limit Switch", arm.getLimitSwitch());
+    SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
     drivetrain.putEncoderValues();
   }
 }
