@@ -68,8 +68,9 @@ public class ArmRotateDegrees extends Command {
   protected boolean isFinished() {
     if ((angleToTurnTo - 2) <= Robot.arm.getRotationAngle() && Robot.arm.getRotationAngle() <= (angleToTurnTo + 2))
       return true;
-    else
-      return false;
+    else if (Robot.m_oi.getSecondaryControllerLeftTrigger() > RobotMap.triggerDeadzone || Robot.m_oi.getSecondaryControllerRightTrigger() > RobotMap.triggerDeadzone)
+      return true;
+    else return false;
   }
 
   // Called once after isFinished returns true
