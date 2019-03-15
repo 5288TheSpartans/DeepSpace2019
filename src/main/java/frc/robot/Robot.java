@@ -62,6 +62,7 @@ public class Robot extends TimedRobot {
     table = inst.getTable("visionData1");
     distEntry = table.getEntry("distance");
     distance = distEntry.getNumber(-1).doubleValue();
+    arm.setResetValue();
 
     pneumatics.mainCompressor.start();
     m_chooser.addOption("Spot turn", new SpotTurnDegrees(180));
@@ -93,6 +94,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+
     System.out.println("Mod 1 and DPad Down: " + m_oi.mod1AndDPadDown.get());
     System.out.println("Secondary controller POV: " + m_oi.secondaryController.getPOV());
    /* System.out.println("D-Pad Value: " + Robot.m_oi.primaryController.getDPadValue());
@@ -118,6 +120,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
     SmartDashboard.putNumber("LeftJoyY", m_oi.getSecondaryControllerLeftStickY());
     SmartDashboard.putNumber("RightStickX", m_oi.getSecondaryControllerRightStickX());
+    SmartDashboard.putBoolean("Arm Limit Switch", arm.getLimitSwitch());
     
     // arm.updateOutputs();
     // System.out.println(inst.isConnected());

@@ -93,6 +93,10 @@ public class ArmSubsystem extends Subsystem {
      */ return false;
   }
 
+  public boolean getLimitSwitch() {
+    return bottomLimitSwitch.get();
+  }
+
   public void setArmPower(double power) {
     // if the arm is at the top and you're trying to push it further, do nothing
     // if the arm is at the bottom and you're trying to push it further, do nothing
