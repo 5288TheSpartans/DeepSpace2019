@@ -27,8 +27,10 @@ public class ArmSubsystem extends Subsystem {
   private double encoderUnit = 4096;
   private double gearRatio = 93.33;
   // The arm's limit angles (in degrees)
-  private final double armBottomLimit = 0;
-  private final double armTopLimit = 200;
+  private double armBottomLimit = 5;
+  private double armTopLimit = 200;
+
+  private double resetValue = 0;
 
   private DigitalInput bottomLimitSwitch = new DigitalInput(RobotMap.bottomArmLimitSwitch);
 
@@ -49,16 +51,19 @@ public class ArmSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     setDefaultCommand(new AnalogArmCommand());
+    
 
   }
-
+  public void setResetValue() {
+    resetValue = (armEncoder1.getPosition() + armEncoder2.getPosition()) / 2; 
+  }
   public double getDistanceTicks() {
     // System.out.println("Arm encoder 1: " + armEncoder1.getPosition());
     // System.out.println("Arm encoder 2: " + armEncoder2.getPosition());
     // return (armEncoder1.getPosition() + armEncoder2.getPosition() +
     // armEncoder3.getPosition()) / 3;
 
-    return (armEncoder1.getPosition() + armEncoder2.getPosition()) / 2;
+    return ((armEncoder1.getPosition() + armEncoder2.getPosition()) / 2) - resetValue;
   }
 
   public double getArmMotor1Pos() {
@@ -74,13 +79,12 @@ public class ArmSubsystem extends Subsystem {
     return (getDistanceTicks()/108)*-360;
     //return ((getDistanceTicks() / encoderUnit)* (1/gearRatio)) * 360;
   }
-
+  public void updateBottomLimit() {
+    if(bottomLimitSwitch.get()) armBottomLimit = getRotationAngle();
+  }
   public boolean isArmAtBottom() {
-    /*
-     * if (getRotationAngle() <= armBottomLimit) return true; else return false;
-     */
-
-    return false;
+     updateBottomLimit(); 
+     if (getRotationAngle() <= armBottomLimit) return true; else return false;
   }
 
   public boolean isArmAtTop() {
@@ -92,11 +96,13 @@ public class ArmSubsystem extends Subsystem {
   public void setArmPower(double power) {
     // if the arm is at the top and you're trying to push it further, do nothing
     // if the arm is at the bottom and you're trying to push it further, do nothing
-    /*
-     * if ((isArmAtTop() & power > 0) || (isArmAtBottom() & power < 0))
-     * System.out.println("At limits. Do nothing."); else { currentArmPower = power;
-     * }
-     */
+    
+     if (isArmAtBottom() & power > 0)
+     System.out.println("At limits. Do nothing.");
+    else { 
+       currentArmPower = power;
+     }
+     
     currentArmPower = power;
     // System.out.println("isArmAtBottom: " + isArmAtBottom());
     // System.out.println("IsArmAtTop: " + isArmAtTop());
@@ -116,7 +122,8 @@ public class ArmSubsystem extends Subsystem {
 
   }
   public double getGravityFightingValue() {
-    return -0.1*Math.sin(getRotationAngle()+25);
+    if (getRotationAngle() <= 5) return 0;
+    else return -0.1*Math.sin(getRotationAngle()+25);
   }
 
 }

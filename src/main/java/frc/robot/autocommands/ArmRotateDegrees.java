@@ -59,7 +59,7 @@ public class ArmRotateDegrees extends Command {
 
     armOutput = armRaisePID.getOutput();
 
-    Robot.arm.setArmPower(armOutput);
+    Robot.arm.setArmPower(-armOutput);
 
   }
 
