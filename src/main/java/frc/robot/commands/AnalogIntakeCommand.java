@@ -13,9 +13,8 @@ import frc.robot.RobotMap;
 
 public class AnalogIntakeCommand extends Command {
   double rightJoyY = 0.0;
+
   public AnalogIntakeCommand() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.intake);
   }
 
@@ -28,13 +27,19 @@ public class AnalogIntakeCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    // For LogitechController class use Robot.m_oi.secondaryController.getRightStickY()
+    // For LogitechController class use
+    // Robot.m_oi.secondaryController.getRightStickY()
     // get the left joystick Y value
+
+    // When value is positive, intake out. When value is negative, intake in.
     rightJoyY = Robot.m_oi.getSecondaryControllerRightStickY();
+
+    // When in deadzone, intake power is 0.
     if (rightJoyY > -RobotMap.joystickDeadzone && rightJoyY < RobotMap.joystickDeadzone) {
       rightJoyY = 0;
     }
 
+    // Set power.
     Robot.intake.setIntakePower(rightJoyY);
   }
 

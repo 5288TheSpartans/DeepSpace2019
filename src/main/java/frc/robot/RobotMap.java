@@ -48,12 +48,12 @@ public class RobotMap {
   public static final double joystickDeadzone = 0.05;
   public static final double triggerDeadzone = 0.05;
 
-  // CAN
-  // ARM
+  // ARM MOTORS
   public static final int armBaseMotor1 = 3;
   public static final int armBaseMotor2 = 4;
   public static final int armBaseMotor3 = 8;
 
+  // ARM ENCODERS
   public static final int armEncoder1 = 0;
   public static final int armEncoder2 = 0;
   public static final int armEncoder3 = 0;
@@ -80,8 +80,6 @@ public class RobotMap {
   // ARM POWER CONSTANTS
   public static final double armPowerFast = 0.8;
   public static final double armPowerSlow = -0.3;
-
-  // PID CONSTANTS
 
   // DRIVE STRAIGHT
   public static final double DriveStraightP = 0.00;

@@ -88,6 +88,7 @@ public class OI {
     // modifier 2 (hatch)
     // primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
 
+    // Defining button combinations for modifier 1.
     mod1AndDPadDown.whenPressed(new ModifierButtonCombination(66, 0));
     mod1AndDPadUp.whenPressed(new ModifierButtonCombination(0, 20));
     mod1AndA.whenPressed(new ModifierButtonCombination(0, 20));
@@ -96,6 +97,7 @@ public class OI {
     mod1AndY.whenPressed(new ModifierButtonCombination(0, 20));
     // xboxBack.whenPressed(new PneumaticsActivate());
 
+    // Defining button combinations for modifier 2.
     mod2AndDPadDown.whenPressed(new ModifierButtonCombination(0, 20));
     mod2AndDPadUp.whenPressed(new ModifierButtonCombination(0, 20));
     mod2AndA.whenPressed(new ModifierButtonCombination(0, 20));
@@ -141,27 +143,26 @@ public class OI {
 
   public double getPrimaryControllerLeftStickY() {
     return primaryController.getRawAxis(1);
-    //return primaryController.getY(Hand.kLeft);
+    // return primaryController.getY(Hand.kLeft);
     // return primaryController.getLeftStickY();
   }
 
   public double getPrimaryControllerRightStickX() {
     return primaryController.getRawAxis(4);
-    //return primaryController.getX(Hand.kRight);
+    // return primaryController.getX(Hand.kRight);
 
     // return primaryController.getRightStickX();
   }
 
   public double getSecondaryControllerLeftStickY() {
     return secondaryController.getRawAxis(1);
-    //return secondaryController.getY(Hand.kLeft);
+    // return secondaryController.getY(Hand.kLeft);
     // return secondaryController.getLeftStickY();
   }
 
   public double getSecondaryControllerRightStickY() {
-    return secondaryController.getRawAxis(5)
-;  //  return secondaryController.getY(Hand.kRight);
-    // return secondaryController.getLeftStickY();
+    return secondaryController.getRawAxis(5); // return secondaryController.getY(Hand.kRight);
+                                              // return secondaryController.getLeftStickY();
   }
 
   public double getSecondaryControllerRightStickX() {

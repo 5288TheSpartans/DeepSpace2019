@@ -18,8 +18,6 @@ public class ArcadeDriveCommand extends Command {
   SpartanPID straightPID;
 
   public ArcadeDriveCommand() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.drivetrain);
   }
 

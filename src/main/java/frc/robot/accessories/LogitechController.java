@@ -9,7 +9,8 @@ public class LogitechController extends Joystick {
 	public JoystickButton xButton,yButton,aButton,bButton,
 	rightBumper,leftBumper,startButton,selectButton
 	,leftStickButton, rightStickButton;
-	
+
+	// Creation of // PID CONSTANTS
 	public LogitechController(int port) {
 		super(port);
 		xButton = new JoystickButton(this, 3);	

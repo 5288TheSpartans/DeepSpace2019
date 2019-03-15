@@ -19,14 +19,14 @@ public class AnalogArmCommand extends Command {
   SpartanPID armGravityPID;
 
   public AnalogArmCommand() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.arm);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
+    // Setting PID values
     System.out.println("Initializing AnalogArmCommand.");
     armGravityPID = new SpartanPID(RobotMap.ArmGravityP, RobotMap.ArmGravityI, RobotMap.ArmGravityD,
         RobotMap.ArmGravityFF);
@@ -38,30 +38,38 @@ public class AnalogArmCommand extends Command {
   @Override
   protected void execute() {
 
-    //armGravityPID = new SpartanPID(SmartDashboard.getNumber("Arm Gravity P", RobotMap.ArmGravityP), SmartDashboard.getNumber("Arm Gravity I", RobotMap.ArmGravityI), SmartDashboard.getNumber("Arm Gravity D", RobotMap.ArmGravityD), RobotMap.ArmGravityFF);
+    // armGravityPID = new SpartanPID(SmartDashboard.getNumber("Arm Gravity P",
+    // RobotMap.ArmGravityP), SmartDashboard.getNumber("Arm Gravity I",
+    // RobotMap.ArmGravityI), SmartDashboard.getNumber("Arm Gravity D",
+    // RobotMap.ArmGravityD), RobotMap.ArmGravityFF);
     // FOR LOGITECHCONTROLLER/XBOXCONTROLLER2 CLASS
     // Robot.arm.setArmPower(-Robot.m_oi.secondaryController.getLeftAnalogTrigger()
     // + Robot.m_oi.secondaryController.getRightAnalogTrigger());
-  
+
+    // Setting robot power values (0.0-1.0) depending on controller triggers.
     leftTrigger = Robot.m_oi.getSecondaryControllerLeftTrigger();
     rightTrigger = Robot.m_oi.getSecondaryControllerRightTrigger();
 
+    // Getting the difference in degrees of the last code cycle (Feeds to PID).
     error = Robot.arm.getRotationAngle() - lastArmAngle;
     lastArmAngle = Robot.arm.getRotationAngle();
-    //System.out.println("Error: " + error );
-    //System.out.println(armGravityPID.getPIDConstants());
-   // System.out.println("Left trigger: " + leftTrigger);
-   // System.out.println("Right trigger: " + rightTrigger);
+    // System.out.println("Error: " + error );
+    // System.out.println(armGravityPID.getPIDConstants());
+    // System.out.println("Left trigger: " + leftTrigger);
+    // System.out.println("Right trigger: " + rightTrigger);
 
+    // If triggers within deadzone, power is 0.
     if (leftTrigger < RobotMap.triggerDeadzone)
-     leftTrigger = 0;
+      leftTrigger = 0;
     if (rightTrigger < RobotMap.triggerDeadzone)
-     rightTrigger = 0;
+      rightTrigger = 0;
 
+    // If both triggers within deadzone, active passive PID to counteract gravity.
     if (leftTrigger < RobotMap.triggerDeadzone && rightTrigger < RobotMap.triggerDeadzone) {
 
       Robot.arm.setArmPower(Robot.arm.getGravityFightingValue());
 
+      // Otherwise, set power depending of trigger values.
     } else {
       // Left for lowering, right for raising
       Robot.arm.setArmPower(leftTrigger - rightTrigger);
