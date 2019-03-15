@@ -19,6 +19,10 @@ public class RobotMap {
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
 
+  public static double armSpeedMultiplier = 1;
+  public static double driveSpeedMultiplier = 1;
+  public static double wristSpeedMultiplier = 1;
+
   // PWM
   // DRIVETRAIN
   // PWM - Pulse Width Modulation Ports
@@ -146,5 +150,9 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
+
+  public static void setArmMultiplier(double multiplier) {
+    armSpeedMultiplier = multiplier;
+  }
 
 }

@@ -81,6 +81,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Arm Lower I", RobotMap.ArmLowerI);
     SmartDashboard.putNumber("Arm Lower D", RobotMap.ArmLowerD);
 
+    SmartDashboard.putNumber("Arm Speed Multiplier", RobotMap.armSpeedMultiplier);
   }
 
   /**
@@ -121,6 +122,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LeftJoyY", m_oi.getSecondaryControllerLeftStickY());
     SmartDashboard.putNumber("RightStickX", m_oi.getSecondaryControllerRightStickX());
     SmartDashboard.putBoolean("Arm Limit Switch", arm.getLimitSwitch());
+
+    RobotMap.setArmMultiplier(SmartDashboard.getNumber("Arm Speed Multiplier",1.0));
     
     // arm.updateOutputs();
     // System.out.println(inst.isConnected());

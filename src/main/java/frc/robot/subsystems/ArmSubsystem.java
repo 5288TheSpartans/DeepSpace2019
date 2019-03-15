@@ -26,6 +26,7 @@ public class ArmSubsystem extends Subsystem {
 
   private double encoderUnit = 4096;
   private double gearRatio = 93.33;
+  public double armSpeedMultiplier = 1.0;
   // The arm's limit angles (in degrees)
   private double armBottomLimit = 5;
   private double armTopLimit = 200;
@@ -119,8 +120,8 @@ public class ArmSubsystem extends Subsystem {
   }
 
   public void updateOutputs() {
-    armMotor1.set(currentArmPower);
-    armMotor2.set(currentArmPower);
+    armMotor1.set(currentArmPower*RobotMap.armSpeedMultiplier);
+    armMotor2.set(currentArmPower*RobotMap.armSpeedMultiplier);
     // armMotor3.set(currentArmPower);
 
   }

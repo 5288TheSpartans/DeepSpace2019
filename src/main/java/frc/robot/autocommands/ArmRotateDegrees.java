@@ -55,7 +55,7 @@ public class ArmRotateDegrees extends Command {
     currentAngle = Robot.arm.getRotationAngle();
     
     // update armRotatePID with the current angle of the arm
-    armRaisePID.update(Robot.arm.getRotationAngle());
+    armRaisePID.update(Robot.arm.getRotationAngle() - startingAngle);
 
     armOutput = armRaisePID.getOutput();
 
