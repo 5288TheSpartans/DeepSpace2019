@@ -95,7 +95,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-
+    distance = distEntry.getNumber(-1).doubleValue();
+    SmartDashboard.putNumber("Jetson Recorded-Distance",distance);
     System.out.println("Mod 1 and DPad Down: " + m_oi.mod1AndDPadDown.get());
     System.out.println("Secondary controller POV: " + m_oi.secondaryController.getPOV());
    /* System.out.println("D-Pad Value: " + Robot.m_oi.primaryController.getDPadValue());

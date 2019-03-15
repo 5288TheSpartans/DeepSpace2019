@@ -59,6 +59,7 @@ public class ArmRotateDegrees extends Command {
 
     armOutput = armRaisePID.getOutput();
 
+    if(armOutput > Robot.arm.getGravityFightingValue() && Robot.arm.getGravityFightingValue() < 0) armOutput = Robot.arm.getGravityFightingValue();
     Robot.arm.setArmPower(-armOutput + Robot.arm.getGravityFightingValue());
 
   }
