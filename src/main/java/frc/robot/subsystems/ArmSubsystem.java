@@ -84,7 +84,7 @@ public class ArmSubsystem extends Subsystem {
   }
   public boolean isArmAtBottom() {
      updateBottomLimit(); 
-     if (getRotationAngle() <= armBottomLimit) return true; else return false;
+     if (getRotationAngle() >= armBottomLimit -2 && getRotationAngle() <= armBottomLimit + 2 ) return true; else return false;
   }
 
   public boolean isArmAtTop() {
@@ -101,13 +101,12 @@ public class ArmSubsystem extends Subsystem {
     // if the arm is at the top and you're trying to push it further, do nothing
     // if the arm is at the bottom and you're trying to push it further, do nothing
     
-     if (isArmAtBottom() & power > 0)
-     System.out.println("At limits. Do nothing.");
+     if (isArmAtBottom() & power > 0){
+     currentArmPower = 0;
+     }
     else { 
        currentArmPower = power;
      }
-     
-    currentArmPower = power;
     // System.out.println("isArmAtBottom: " + isArmAtBottom());
     // System.out.println("IsArmAtTop: " + isArmAtTop());
     // System.out.println("Power to set: " + power);
