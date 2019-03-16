@@ -22,8 +22,8 @@ public class RobotMap {
   public static double armSpeedMultiplier = 1;
   public static double driveSpeedMultiplier = 1;
   public static double wristSpeedMultiplier = 1;
+  public static double intakeSpeedMultiplier = 1;
 
-  // PWM
   // DRIVETRAIN
   // PWM - Pulse Width Modulation Ports
   public static final int leftDriveMotor1 = 8;

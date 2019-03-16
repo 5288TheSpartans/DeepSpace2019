@@ -78,6 +78,8 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("Arm Speed Multiplier", RobotMap.armSpeedMultiplier);
     SmartDashboard.putNumber("Wrist Speed Multiplier", RobotMap.wristSpeedMultiplier);
+    SmartDashboard.putNumber("Intake Speed Multiplier", RobotMap.intakeSpeedMultiplier);
+    SmartDashboard.putNumber("Drive Speed Multiplier", RobotMap.driveSpeedMultiplier);
   }
 
   /**
