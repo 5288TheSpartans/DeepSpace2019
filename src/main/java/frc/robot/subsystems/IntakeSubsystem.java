@@ -18,6 +18,7 @@ import frc.robot.commands.AnalogIntakeCommand;
  * Add your docs here.
  */
 public class IntakeSubsystem extends Subsystem {
+  private double intakePower = 0;
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -34,15 +35,15 @@ public class IntakeSubsystem extends Subsystem {
   private VictorSP intakeRight = new VictorSP(RobotMap.intakeRight);
 
   public void setIntakePower(double power) {
-    intakeLeft.set(power);
-    intakeRight.set(-power);
+    intakePower = power;
+  }
+  
+  public void updateOutputs() {
+    intakeLeft.set(intakePower*RobotMap.intakeSpeedMultiplier);
+    intakeRight.set(-intakePower*RobotMap.intakeSpeedMultiplier);
     
   }
   
-
-
-
 {
-
 }
 }

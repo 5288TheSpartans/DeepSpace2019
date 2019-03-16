@@ -81,8 +81,15 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Arm Lower I", RobotMap.ArmLowerI);
     SmartDashboard.putNumber("Arm Lower D", RobotMap.ArmLowerD);
 
+    SmartDashboard.putNumber("Wrist Rotate P", RobotMap.WristRotateP);
+    SmartDashboard.putNumber("Wrist Rotate I", RobotMap.WristRotateI);
+    SmartDashboard.putNumber("Wrist Rotate D", RobotMap.WristRotateD);
+
     SmartDashboard.putNumber("Arm Speed Multiplier", RobotMap.armSpeedMultiplier);
     SmartDashboard.putNumber("Wrist Speed Multiplier", RobotMap.wristSpeedMultiplier);
+    SmartDashboard.putNumber("Intake Speed Multiplier", RobotMap.intakeSpeedMultiplier);
+    SmartDashboard.putNumber("Drive Speed Multiplier", RobotMap.driveSpeedMultiplier);
+
   }
 
   /**
@@ -100,10 +107,13 @@ public class Robot extends TimedRobot {
     drivetrain.updateOutputs();
     arm.updateOutputs();
     wrist.updateOutput();
+    intake.updateOutputs();
 
     updateSmartDashboard();
     RobotMap.setArmMultiplier(SmartDashboard.getNumber("Arm Speed Multiplier",1.0));
     RobotMap.setWristMultiplier(SmartDashboard.getNumber("Wrist Speed Multiplier",1.0));
+    RobotMap.setDriveMultiplier(SmartDashboard.getNumber("Arm Speed Multiplier",1.0));
+    RobotMap.setIntakeMultiplier(SmartDashboard.getNumber("Wrist Speed Multiplier",1.0));
 
     
     // arm.updateOutputs();

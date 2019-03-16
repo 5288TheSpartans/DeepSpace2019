@@ -22,6 +22,7 @@ public class RobotMap {
   public static double armSpeedMultiplier = 1;
   public static double driveSpeedMultiplier = 1;
   public static double wristSpeedMultiplier = 1;
+  public static double intakeSpeedMultiplier = 1;
 
   // PWM
   // DRIVETRAIN
@@ -159,4 +160,11 @@ public class RobotMap {
     wristSpeedMultiplier = multiplier;
   }
 
+  public static void setIntakeMultiplier(double multiplier) {
+    intakeSpeedMultiplier = multiplier;
+  }
+
+  public static void setDriveMultiplier(double multiplier) {
+    driveSpeedMultiplier = multiplier;
+  }
 }
