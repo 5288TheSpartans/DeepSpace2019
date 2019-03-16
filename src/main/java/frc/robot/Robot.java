@@ -41,7 +41,7 @@ public class Robot extends TimedRobot {
   public static PneumaticsSubsystem pneumatics;
   public static NetworkTableEntry angleToTurn, distEntry;
   double distance;
-  Command m_autonomousCommand;
+  public static Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**
@@ -181,7 +181,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (m_autonomousCommand != null || Robot.m_oi.AutonomousOveride()) {
+    if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
   }
