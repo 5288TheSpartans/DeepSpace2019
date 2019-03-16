@@ -78,12 +78,12 @@ public class DrivetrainSubsystem extends Subsystem {
   }
 
   public void updateOutputs() {
-    leftDriveMotor1.set(-leftPower*RobotMap.driveSpeedMultiplier);
-    leftDriveMotor2.set(-leftPower*RobotMap.driveSpeedMultiplier);
-    // leftDriveMotor3.set(-leftPower*RobotMap.driveSpeedMultiplier);
-    rightDriveMotor1.set(rightPower*RobotMap.driveSpeedMultiplier);
-    rightDriveMotor2.set(rightPower*RobotMap.driveSpeedMultiplier);
-    // rightDriveMotor3.set(rightPower*RobotMap.driveSpeedMultiplier);
+    leftDriveMotor1.set(-leftPower);
+    leftDriveMotor2.set(-leftPower);
+    // leftDriveMotor3.set(-leftPower);
+    rightDriveMotor1.set(rightPower);
+    rightDriveMotor2.set(rightPower);
+    // rightDriveMotor3.set(rightPower);
   }
   public void putEncoderValues() {
     SmartDashboard.putNumber("Left Encoder Raw", leftEncoder.getRaw());
