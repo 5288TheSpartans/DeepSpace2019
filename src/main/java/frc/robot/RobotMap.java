@@ -155,4 +155,8 @@ public class RobotMap {
     armSpeedMultiplier = multiplier;
   }
 
+  public static void setWristMultiplier(double multiplier) {
+    wristSpeedMultiplier = multiplier;
+  }
+
 }

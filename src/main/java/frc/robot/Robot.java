@@ -82,6 +82,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Arm Lower D", RobotMap.ArmLowerD);
 
     SmartDashboard.putNumber("Arm Speed Multiplier", RobotMap.armSpeedMultiplier);
+    SmartDashboard.putNumber("Wrist Speed Multiplier", RobotMap.wristSpeedMultiplier);
   }
 
   /**
@@ -102,6 +103,8 @@ public class Robot extends TimedRobot {
 
     updateSmartDashboard();
     RobotMap.setArmMultiplier(SmartDashboard.getNumber("Arm Speed Multiplier",1.0));
+    RobotMap.setWristMultiplier(SmartDashboard.getNumber("Wrist Speed Multiplier",1.0));
+
     
     // arm.updateOutputs();
     // System.out.println(inst.isConnected());

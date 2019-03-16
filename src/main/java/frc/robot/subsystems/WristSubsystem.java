@@ -74,7 +74,8 @@ public class WristSubsystem extends Subsystem {
   }
 
   public void updateOutput() {
-    wristMotor.set(ControlMode.PercentOutput, wristPower);
+    wristMotor.set(ControlMode.PercentOutput, wristPower*RobotMap.wristSpeedMultiplier);
+    
   }
 
   public void resetEncoders() {
