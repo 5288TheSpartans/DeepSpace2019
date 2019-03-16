@@ -59,11 +59,6 @@ public class Robot extends TimedRobot {
     intake = new IntakeSubsystem();
     m_oi = new OI();
     
-    // Define jetson distance getter
-    inst = NetworkTableInstance.getDefault();
-    table = inst.getTable("visionData1");
-    distEntry = table.getEntry("distance");
-    distance = distEntry.getNumber(-1).doubleValue();
 
     arm.setResetValue();
     pneumatics.mainCompressor.start();
@@ -96,7 +91,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    distance = distEntry.getNumber(-1).doubleValue();
+    distance = SmartDashboard.getNumber("YES!",-1);
     drivetrain.updateOutputs();
     arm.updateOutputs();
     wrist.updateOutput();
