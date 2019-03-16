@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
 import frc.robot.accessories.ModifierCombo;
 import frc.robot.autoCommandGroups.ModifierButtonCombination;
+import frc.robot.commands.AutonomousOveride;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.PneumaticsActivate;
 import frc.robot.commands.WristCommand;
@@ -106,7 +107,7 @@ public class OI {
     mod2AndY.whenPressed(new ModifierButtonCombination(0, 20));
 
     xboxStart.whenPressed(new PneumaticsActivate());
-
+    logitechStart.whenPressed(new AutonomousOveride());
     // IF USING XboxController2 AND LogitechController CLASSES, USE THIS CODE
     /*
      * secondaryController.yButton.toggleWhenPressed(new IntakeCommand(0.3));
@@ -181,6 +182,9 @@ public class OI {
     return secondaryController.getRawAxis(3);
   }
 
+  public boolean AutonomousOveride() {
+    return true;
+  }
   /*
    * USED FOR XboxController2 and LogitechController CLASSES INSTEAD OF USING
    * THIS, JUST USE Robot.m_oi.secondaryController.getRightBumperStatus() DIRECTLY
