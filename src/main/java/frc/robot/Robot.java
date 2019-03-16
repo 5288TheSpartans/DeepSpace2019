@@ -99,6 +99,8 @@ public class Robot extends TimedRobot {
     updateSmartDashboard();
     RobotMap.setArmMultiplier(SmartDashboard.getNumber("Arm Speed Multiplier",1.0));
     RobotMap.setWristMultiplier(SmartDashboard.getNumber("Wrist Speed Multiplier",1.0));
+    RobotMap.setIntakeMultiplier(SmartDashboard.getNumber("Intake Speed Multiplier",1.0));
+    RobotMap.setDriveMultiplier(SmartDashboard.getNumber("Drive Speed Multiplier",1.0));
 
     
     // arm.updateOutputs();
