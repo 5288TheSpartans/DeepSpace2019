@@ -21,6 +21,8 @@ public class ArmRotateDegrees extends Command {
   double angleToTurnTo;
   double startingAngle;
   double currentAngle;
+  final double armPowerMinimum = 0.1;
+  final double armPowerLimit = 0.7;
   SpartanPID armRaisePID;
   SpartanPID armLowerPID;
 
@@ -59,7 +61,24 @@ public class ArmRotateDegrees extends Command {
 
     armOutput = armRaisePID.getOutput();
 
-    if(armOutput > Robot.arm.getGravityFightingValue() && Robot.arm.getGravityFightingValue() < 0) armOutput = Robot.arm.getGravityFightingValue();
+
+    if(Math.abs(armOutput) > armPowerLimit && armOutput > 0) {
+      System.out.println("Arm set to limit.");
+      armOutput = armPowerLimit;
+    }
+    else if(Math.abs(armOutput) > armPowerLimit && armOutput < 0) {
+      System.out.println("Arm set to limit.");
+      armOutput = -armPowerLimit;
+    }
+    
+    if(Math.abs(armOutput) < armPowerMinimum && armOutput > 0) {
+      System.out.println("Arm set to minimum.");
+      armOutput = armPowerMinimum;
+    }
+    else if(Math.abs(armOutput) < armPowerMinimum && armOutput < 0) {
+      System.out.println("Arm set to minimum.");
+      armOutput = -armPowerMinimum;
+    }
     Robot.arm.setArmPower(-armOutput + Robot.arm.getGravityFightingValue());
 
   }

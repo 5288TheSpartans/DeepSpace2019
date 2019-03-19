@@ -91,7 +91,7 @@ public class OI {
 
     // Defining button combinations for modifier 1.
     mod1AndDPadDown.whenPressed(new ModifierButtonCombination(66, 0));
-    mod1AndDPadUp.whenPressed(new ModifierButtonCombination(0, 20));
+    mod1AndDPadUp.whenPressed(new ModifierButtonCombination(175, 0));
     mod1AndA.whenPressed(new ModifierButtonCombination(0, 20));
     mod1AndX.whenPressed(new ModifierButtonCombination(0, 20));
     mod1AndB.whenPressed(new ModifierButtonCombination(0, 20));
