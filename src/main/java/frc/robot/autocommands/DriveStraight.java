@@ -9,6 +9,7 @@
 package frc.robot.autocommands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.accessories.SpartanPID;
@@ -48,6 +49,10 @@ public class DriveStraight extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   protected void execute() {
+
+    straightPID = new SpartanPID(SmartDashboard.getNumber("Drive Straight P", RobotMap.DriveStraightD),
+    SmartDashboard.getNumber("Drive Straight I", RobotMap.DriveStraightI),
+    SmartDashboard.getNumber("Drive Straight D", RobotMap.DriveStraightD), RobotMap.DriveStraightFF);
 
     // Calculate how much one side is spinning more than the other
     error = Robot.drivetrain.getLeftDistanceInches() - Robot.drivetrain.getRightDistanceInches();

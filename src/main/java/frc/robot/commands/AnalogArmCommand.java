@@ -38,10 +38,10 @@ public class AnalogArmCommand extends Command {
   @Override
   protected void execute() {
 
-    // armGravityPID = new SpartanPID(SmartDashboard.getNumber("Arm Gravity P",
-    // RobotMap.ArmGravityP), SmartDashboard.getNumber("Arm Gravity I",
-    // RobotMap.ArmGravityI), SmartDashboard.getNumber("Arm Gravity D",
-    // RobotMap.ArmGravityD), RobotMap.ArmGravityFF);
+     armGravityPID = new SpartanPID(SmartDashboard.getNumber("Arm Gravity P",
+     RobotMap.ArmGravityP), SmartDashboard.getNumber("Arm Gravity I",
+     RobotMap.ArmGravityI), SmartDashboard.getNumber("Arm Gravity D",
+     RobotMap.ArmGravityD), RobotMap.ArmGravityFF);
     // FOR LOGITECHCONTROLLER/XBOXCONTROLLER2 CLASS
     // Robot.arm.setArmPower(-Robot.m_oi.secondaryController.getLeftAnalogTrigger()
     // + Robot.m_oi.secondaryController.getRightAnalogTrigger());

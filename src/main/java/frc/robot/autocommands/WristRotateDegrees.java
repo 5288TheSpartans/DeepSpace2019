@@ -8,6 +8,7 @@
 package frc.robot.autocommands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.accessories.SpartanPID;
@@ -37,6 +38,10 @@ public class WristRotateDegrees extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
+    wristRotatePID = new SpartanPID(SmartDashboard.getNumber("Wrist P", RobotMap.WristRotateP),
+    SmartDashboard.getNumber("Wrist I", RobotMap.WristRotateI),
+    SmartDashboard.getNumber("Wrist D", RobotMap.WristRotateD), RobotMap.WristRotateFF);
 
     wristRotatePID.update(Robot.wrist.getRotationAngle() - Robot.wrist.getRotationAngle());
 
