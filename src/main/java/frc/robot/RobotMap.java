@@ -173,6 +173,7 @@ public class RobotMap {
     wristSpeedMultiplier = multiplier;
   }
 
+<<<<<<< HEAD
   public static void setDriveMultiplier(double multiplier) {
     wristSpeedMultiplier = multiplier;
   }
@@ -192,4 +193,6 @@ public class RobotMap {
   public void setSpeedMultiplier(double speedMultiplier) {
     driveSpeedMultiplier = speedMultiplier;
   }
+=======
+>>>>>>> parent of 2a8313e... Updated jetson distance getter and added speed multipliers to SmartDashboard.
 }
