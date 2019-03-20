@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.ArcadeDriveCommand;
 
@@ -113,4 +114,10 @@ public class DrivetrainSubsystem extends Subsystem {
     rightEncoder.reset();
   }
 
+  public double accelerateDriveSpeed() {
+    if(Robot.m_oi.getPrimaryControllerLeftStickY() > 0)
+      return Math.pow(Robot.m_oi.getPrimaryControllerLeftStickY(), 2);
+    else
+      return -Math.pow(Robot.m_oi.getPrimaryControllerLeftStickY(),2);
+  }
 }

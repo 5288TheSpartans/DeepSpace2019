@@ -123,11 +123,10 @@ public class ArmSubsystem extends Subsystem {
     armMotor1.set(currentArmPower*RobotMap.armSpeedMultiplier);
     armMotor2.set(currentArmPower*RobotMap.armSpeedMultiplier);
     // armMotor3.set(currentArmPower);
-
   }
   public double getGravityFightingValue() {
     if (getRotationAngle() <= 3) return 0;
     else return -0.1*Math.sin(getRotationAngle()+25);
   }
-
+  
 }
