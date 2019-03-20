@@ -25,6 +25,7 @@ public class ModifierCombo extends Button {
         m_modifierButton = modifierButton;
         m_activator = activator;
 
+        
     }
     public ModifierCombo(JoystickButton modifierButton, JoystickButton activator) {
         m_modifierButton = modifierButton;

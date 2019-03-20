@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
 import frc.robot.accessories.ModifierCombo;
 import frc.robot.autoCommandGroups.ModifierButtonCombination;
+import frc.robot.commands.SpeedModifierCommand;
 import frc.robot.commands.AutonomousOveride;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.PneumaticsActivate;
@@ -63,6 +64,8 @@ public class OI {
       logitechLStickButton = new JoystickButton(primaryController, 9),
       logitechRStickButton = new JoystickButton(primaryController, 10);
 
+  POVButton logitechUp = new POVButton(primaryController, 0), logitechDown = new POVButton(primaryController, 180);
+
   POVButton xboxUp = new POVButton(secondaryController, 0), xboxDown = new POVButton(secondaryController, 180);
 
   public ModifierCombo mod1AndX = new ModifierCombo(xboxRB, xboxX), mod1AndY = new ModifierCombo(xboxRB, xboxY),
@@ -108,6 +111,11 @@ public class OI {
 
     xboxStart.whenPressed(new PneumaticsActivate());
     logitechStart.whenPressed(new AutonomousOveride());
+
+    // Speed modifiers.
+    xboxUp.whenPressed(new SpeedModifierCommand(0.1));
+    xboxDown.whenPressed(new SpeedModifierCommand(0.1));
+
     // IF USING XboxController2 AND LogitechController CLASSES, USE THIS CODE
     /*
      * secondaryController.yButton.toggleWhenPressed(new IntakeCommand(0.3));

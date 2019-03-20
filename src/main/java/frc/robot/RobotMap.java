@@ -26,13 +26,13 @@ public class RobotMap {
 
   // DRIVETRAIN
   // PWM - Pulse Width Modulation Ports
-  public static final int leftDriveMotor1 = 8;
-  public static final int leftDriveMotor2 = 9;
-  public static final int leftDriveMotor3 = 800;
+  public static final int leftDriveMotor1 = 7;
+  public static final int leftDriveMotor2 = 8;
+  public static final int leftDriveMotor3 = 9;
 
   public static final int rightDriveMotor1 = 0;
   public static final int rightDriveMotor2 = 1;
-  public static final int rightDriveMotor3 = 900;
+  public static final int rightDriveMotor3 = 2;
 
   // wristMotor - Talon SRX
   public static final int wristMotor = 9;
@@ -108,7 +108,7 @@ public class RobotMap {
   public static final double ArmLowerI = 0;
   public static final double ArmLowerD = 0;
   public static final double ArmLowerFF = 0;
-
+  
   // ARM GRAVITY RESIST
   public static final double ArmGravityP = 0;
   public static final double ArmGravityI = 0;
@@ -166,4 +166,13 @@ public class RobotMap {
   public static void setIntakeMultiplier(double multiplier) {
     wristSpeedMultiplier = multiplier;
   }
+
+  public static void IncreaseSpeedModifier() {
+    RobotMap.driveSpeedMultiplier += 0.1;
+}
+
+  public void DecreaseModifierCommand () {
+    RobotMap.driveSpeedMultiplier += 0.1;
+}
+
 }
