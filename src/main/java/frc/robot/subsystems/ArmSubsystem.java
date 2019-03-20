@@ -33,7 +33,7 @@ public class ArmSubsystem extends Subsystem {
 
   private double resetValue = 0;
 
-  private DigitalInput bottomLimitSwitch = new DigitalInput(RobotMap.bottomArmLimitSwitch);
+  private DigitalInput bottoomLimitSwitch = new DigitalInput(RobotMap.bottomArmLimitSwitch);
 
   private CANSparkMax armMotor1 = new CANSparkMax(RobotMap.armBaseMotor1, MotorType.kBrushless);
   private CANSparkMax armMotor2 = new CANSparkMax(RobotMap.armBaseMotor2, MotorType.kBrushless);

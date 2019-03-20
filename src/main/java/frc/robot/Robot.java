@@ -76,15 +76,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Arm Lower I", RobotMap.ArmLowerI);
     SmartDashboard.putNumber("Arm Lower D", RobotMap.ArmLowerD);
 
-    SmartDashboard.putNumber("Wrist P", RobotMap.WristRotateP);
-    SmartDashboard.putNumber("Wrist I", RobotMap.WristRotateI);
-    SmartDashboard.putNumber("Wrist D", RobotMap.WristRotateD);
-
-    SmartDashboard.putNumber("Drive Straight P", RobotMap.DriveStraightD);
-    SmartDashboard.putNumber("Drive Straight I", RobotMap.DriveStraightI);
-    SmartDashboard.putNumber("Drive Straight D", RobotMap.DriveStraightD);
-
-
     SmartDashboard.putNumber("Arm Speed Multiplier", RobotMap.armSpeedMultiplier);
     SmartDashboard.putNumber("Wrist Speed Multiplier", RobotMap.wristSpeedMultiplier);
     SmartDashboard.putNumber("Intake Speed Multiplier", RobotMap.intakeSpeedMultiplier);
@@ -96,7 +87,7 @@ public class Robot extends TimedRobot {
    * items like diagnostics that you want ran during disabled, autonomous,
    * teleoperated and test.
    *
-   * <p>
+   * 
    * This runs after the mode specific periodic functions, but before LiveWindow
    * and SmartDashboard integrated updating.
    */
