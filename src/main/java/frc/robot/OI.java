@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.buttons.POVButton;
 import frc.robot.accessories.ModifierCombo;
 import frc.robot.autoCommandGroups.ModifierButtonCombination;
 import frc.robot.commands.SpeedModifierCommand;
+import frc.robot.commands.SpeedModifierPresetCommand;
 import frc.robot.commands.AutonomousOveride;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.PneumaticsActivate;
@@ -115,6 +116,12 @@ public class OI {
     // Speed modifiers.
     xboxUp.whenPressed(new SpeedModifierCommand(0.1));
     xboxDown.whenPressed(new SpeedModifierCommand(0.1));
+
+    // Speed modifier presets.
+    logitechA.whenPressed(new SpeedModifierPresetCommand(RobotMap.lowDriveSpeed));
+    logitechB.whenPressed(new SpeedModifierPresetCommand(RobotMap.defaultDriveSpeedMultiplier));
+    logitechX.whenPressed(new SpeedModifierPresetCommand(RobotMap.moderateDriveSpeed));
+    logitechY.whenPressed(new SpeedModifierPresetCommand(RobotMap.highDriveSpeed));
 
     // IF USING XboxController2 AND LogitechController CLASSES, USE THIS CODE
     /*

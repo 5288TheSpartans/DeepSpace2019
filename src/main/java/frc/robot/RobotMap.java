@@ -24,6 +24,8 @@ public class RobotMap {
   public static double wristSpeedMultiplier = 1;
   public static double intakeSpeedMultiplier = 1;
 
+  public static double defaultDriveSpeedMultiplier = 1;
+
   // DRIVETRAIN
   // PWM - Pulse Width Modulation Ports
   public static final int leftDriveMotor1 = 7;
@@ -144,7 +146,14 @@ public class RobotMap {
   public static final double intakeSpeed = 0.2;
   public static final double tossBallSpeed = -0.2;
   public static final double blastBallSpeed = -0.7;
-  public static String RocketLevel2;
+
+  // DRIVETRAIN SPEED PRESETS
+  public static final double lowDriveSpeed = 0.8;
+  public static final double moderateDriveSpeed = 1.2;
+  public static final double highDriveSpeed = 1.4;
+
+
+  
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
@@ -168,11 +177,14 @@ public class RobotMap {
   }
 
   public static void IncreaseSpeedModifier() {
-    RobotMap.driveSpeedMultiplier += 0.1;
+    driveSpeedMultiplier += 0.1;
 }
 
-  public void DecreaseModifierCommand () {
-    RobotMap.driveSpeedMultiplier += 0.1;
+  public void DecreaseModifierCommand() {
+    driveSpeedMultiplier += 0.1;
 }
 
+  public void setSpeedMultiplier(double speedMultiplier) {
+    driveSpeedMultiplier = speedMultiplier;
+  }
 }
