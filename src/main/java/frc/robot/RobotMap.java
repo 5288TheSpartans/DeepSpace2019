@@ -23,12 +23,7 @@ public class RobotMap {
   public static double driveSpeedMultiplier = 1;
   public static double wristSpeedMultiplier = 1;
 
-<<<<<<< HEAD
-  public static double defaultDriveSpeedMultiplier = 1;
-
-=======
   // PWM
->>>>>>> parent of c233e8f... yamaan = best programmer but for real, the wrist code is updated
   // DRIVETRAIN
   // PWM - Pulse Width Modulation Ports
   public static final int leftDriveMotor1 = 7;
@@ -50,15 +45,10 @@ public class RobotMap {
   public static final int leftDriveEncoder1 = 0; // white - channel A
   public static final int leftDriveEncoder2 = 1; // brown - channel B
   public static final int rightDriveEncoder1 = 2; // white - channel A
-<<<<<<< HEAD
   public static final int rightDriveEncoder2 = 3; // brown - channel B\
   // oliver wanted a space from the encoders
   public static final int ArmLimitSwitch = 9;
  // public static final int WristLimitSwitch = 8;
-=======
-  public static final int rightDriveEncoder2 = 3; // brown - channel B
-  public static final int bottomArmLimitSwitch = 9;
->>>>>>> parent of 955de44... yamaan added limit wrist limit switch
 
   // DEADZONES
   public static final double joystickDeadzone = 0.05;
@@ -178,26 +168,4 @@ public class RobotMap {
     wristSpeedMultiplier = multiplier;
   }
 
-<<<<<<< HEAD
-  public static void setDriveMultiplier(double multiplier) {
-    wristSpeedMultiplier = multiplier;
-  }
-
-  public static void setIntakeMultiplier(double multiplier) {
-    wristSpeedMultiplier = multiplier;
-  }
-
-  public static void IncreaseSpeedModifier() {
-    driveSpeedMultiplier += 0.1;
-}
-
-  public void DecreaseModifierCommand() {
-    driveSpeedMultiplier += 0.1;
-}
-
-  public void setSpeedMultiplier(double speedMultiplier) {
-    driveSpeedMultiplier = speedMultiplier;
-  }
-=======
->>>>>>> parent of 2a8313e... Updated jetson distance getter and added speed multipliers to SmartDashboard.
 }
