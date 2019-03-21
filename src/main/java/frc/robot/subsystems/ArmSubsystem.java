@@ -77,11 +77,11 @@ public class ArmSubsystem extends Subsystem {
 
   // get the current angle of the arm.
   public double getRotationAngle() {
-    return (getDistanceTicks()/108)*-360;
+    return (getDistanceTicks()/108)*-360 - resetValue;
     //return ((getDistanceTicks() / encoderUnit)* (1/gearRatio)) * 360;
   }
   public void updateBottomLimit() {
-    if(!bottomLimitSwitch.get()) armBottomLimit = getRotationAngle();
+    if(getLimitSwitch()) resetValue = getRotationAngle();
   }
   public boolean isArmAtBottom() {
      updateBottomLimit(); 
