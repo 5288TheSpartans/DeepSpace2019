@@ -20,7 +20,10 @@ public class AutonomousOveride extends Command {
   @Override
   protected void initialize() {
     System.out.println("AUTONOMOUS OVERIDE ACTIVATED");
-    Robot.m_autonomousCommand.cancel();
+
+    if(Robot.m_autonomousCommand != null) {
+      Robot.m_autonomousCommand.cancel();
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
