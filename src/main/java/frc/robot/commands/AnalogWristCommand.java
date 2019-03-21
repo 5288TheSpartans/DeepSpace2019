@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.accessories.SpartanPID;
@@ -33,6 +34,9 @@ public class AnalogWristCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    wristGravityPID = new SpartanPID(SmartDashboard.getNumber("Wrist Gravity P", RobotMap.WristGravityP),
+        SmartDashboard.getNumber("Wrist Gravity I", RobotMap.WristGravityI),
+        SmartDashboard.getNumber("Wrist Gravity D", RobotMap.WristGravityD), RobotMap.WristGravityFF);
 
     // For LogitechController class use
     // Robot.m_oi.secondaryController.getLeftStickY()

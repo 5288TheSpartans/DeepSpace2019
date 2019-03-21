@@ -45,10 +45,11 @@ public class RobotMap {
   public static final int leftDriveEncoder1 = 0; // white - channel A
   public static final int leftDriveEncoder2 = 1; // brown - channel B
   public static final int rightDriveEncoder1 = 2; // white - channel A
-  public static final int rightDriveEncoder2 = 3; // brown - channel B\
-  // oliver wanted a space from the encoders
+  public static final int rightDriveEncoder2 = 3; // brown - channel B
+
+  // Limit Switch Ports
   public static final int ArmLimitSwitch = 9;
- // public static final int WristLimitSwitch = 8;
+  // public static final int WristLimitSwitch = 8;
 
   // DEADZONES
   public static final double joystickDeadzone = 0.05;
@@ -110,7 +111,7 @@ public class RobotMap {
   public static final double ArmLowerI = 0;
   public static final double ArmLowerD = 0;
   public static final double ArmLowerFF = 0;
-  
+
   // ARM GRAVITY RESIST
   public static final double ArmGravityP = 0;
   public static final double ArmGravityI = 0;
@@ -152,9 +153,6 @@ public class RobotMap {
   public static final double moderateDriveSpeed = 1.2;
   public static final double highDriveSpeed = 1.4;
 
-
-  
-
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
@@ -168,4 +166,7 @@ public class RobotMap {
     wristSpeedMultiplier = multiplier;
   }
 
+  public static void setDriveMultiplier(double multiplier) {
+    driveSpeedMultiplier = multiplier;
+  }
 }
