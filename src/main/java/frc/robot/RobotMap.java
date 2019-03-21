@@ -140,7 +140,7 @@ public class RobotMap {
   public static final int PCMID = 0;
 
   // PCM device IDs
-  public static final int intakeSolenoidChannel = 7;
+  public static final int intakeSolenoidChannel = 0;
 
   // SPEED CONSTANTS
   public static final double intakeSpeed = 0.2;
