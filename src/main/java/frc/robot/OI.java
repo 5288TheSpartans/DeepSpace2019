@@ -119,7 +119,7 @@ public class OI {
 
     // Speed modifier presets.
     logitechA.whenPressed(new SpeedModifierPresetCommand(RobotMap.lowDriveSpeed));
-    logitechB.whenPressed(new SpeedModifierPresetCommand(RobotMap.defaultDriveSpeedMultiplier));
+    logitechB.whenPressed(new SpeedModifierPresetCommand(RobotMap.driveSpeedMultiplier));
     logitechX.whenPressed(new SpeedModifierPresetCommand(RobotMap.moderateDriveSpeed));
     logitechY.whenPressed(new SpeedModifierPresetCommand(RobotMap.highDriveSpeed));
 

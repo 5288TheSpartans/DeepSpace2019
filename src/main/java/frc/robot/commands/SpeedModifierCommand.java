@@ -11,12 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotMap;
 
 public class SpeedModifierCommand extends Command {
-  double increaseSpeed;
+  private double increaseSpeed = 0;
 
   public SpeedModifierCommand(double speedValue) {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-
+    increaseSpeed = speedValue;
   }
 
   // Called just before this Command runs the first time
@@ -33,7 +31,10 @@ public class SpeedModifierCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    if (RobotMap.driveSpeedMultiplier == increaseSpeed)
+      return true;
+    else
+      return false;
   }
 
   // Called once after isFinished returns true

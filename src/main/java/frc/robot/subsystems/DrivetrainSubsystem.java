@@ -86,10 +86,11 @@ public class DrivetrainSubsystem extends Subsystem {
     rightDriveMotor2.set(rightPower);
     rightDriveMotor3.set(rightPower);
   }
+
   public void putEncoderValues() {
     SmartDashboard.putNumber("Left Encoder Raw", leftEncoder.getRaw());
-    SmartDashboard.putNumber("Right Encoder Raw",rightEncoder.getRaw());
-    SmartDashboard.putNumber("Left Encoder Dist Per Pulse",leftEncoder.getDistancePerPulse());
+    SmartDashboard.putNumber("Right Encoder Raw", rightEncoder.getRaw());
+    SmartDashboard.putNumber("Left Encoder Dist Per Pulse", leftEncoder.getDistancePerPulse());
     SmartDashboard.putNumber("Right Encoder Dist Per Pulse", rightEncoder.getDistancePerPulse());
   }
 
@@ -115,9 +116,9 @@ public class DrivetrainSubsystem extends Subsystem {
   }
 
   public double accelerateDriveSpeed() {
-    if(Robot.m_oi.getPrimaryControllerLeftStickY() > 0)
+    if (Robot.m_oi.getPrimaryControllerLeftStickY() > 0)
       return Math.pow(Robot.m_oi.getPrimaryControllerLeftStickY(), 2);
     else
-      return -Math.pow(Robot.m_oi.getPrimaryControllerLeftStickY(),2);
+      return -Math.pow(Robot.m_oi.getPrimaryControllerLeftStickY(), 2);
   }
 }

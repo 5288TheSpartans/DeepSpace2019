@@ -111,7 +111,7 @@ public class RobotMap {
   public static final double ArmLowerI = 0;
   public static final double ArmLowerD = 0;
   public static final double ArmLowerFF = 0;
-  
+
   // ARM GRAVITY RESIST
   public static final double ArmGravityP = 0;
   public static final double ArmGravityI = 0;
@@ -153,9 +153,6 @@ public class RobotMap {
   public static final double moderateDriveSpeed = 1.2;
   public static final double highDriveSpeed = 1.4;
 
-
-  
-
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
@@ -170,20 +167,20 @@ public class RobotMap {
   }
 
   public static void setDriveMultiplier(double multiplier) {
-    wristSpeedMultiplier = multiplier;
+    driveSpeedMultiplier = multiplier;
   }
 
   public static void setIntakeMultiplier(double multiplier) {
-    wristSpeedMultiplier = multiplier;
+    intakeSpeedMultiplier = multiplier;
   }
 
   public static void IncreaseSpeedModifier() {
     driveSpeedMultiplier += 0.1;
-}
+  }
 
   public void DecreaseModifierCommand() {
     driveSpeedMultiplier += 0.1;
-}
+  }
 
   public void setSpeedMultiplier(double speedMultiplier) {
     driveSpeedMultiplier = speedMultiplier;

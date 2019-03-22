@@ -12,12 +12,10 @@ import frc.robot.RobotMap;
 
 public class SpeedModifierPresetCommand extends Command {
 
-double deltaTime = 0;
-double startingTime = 0;
-double lastTime = 0;
-double currentTime = 0;
-double finalTime = 0;
-double speedMultiplierValue = 0;
+  private double deltaTime = 0;
+  private double startingTime = 0;
+  private double currentTime = 0;
+  private double speedMultiplierValue = 0;
 
   public SpeedModifierPresetCommand(double speedMultiplier) {
     // Use requires() here to declare subsystem dependencies
@@ -29,6 +27,7 @@ double speedMultiplierValue = 0;
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    startingTime = System.currentTimeMillis();
     System.out.println("Set Speed Preset Activated!");
   }
 
@@ -42,12 +41,11 @@ double speedMultiplierValue = 0;
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(deltaTime > 3) {
+    if (deltaTime > 3000) {
       RobotMap.driveSpeedMultiplier = speedMultiplierValue;
       System.out.println("Speed preset set!");
       return true;
-    }
-    else
+    } else
       return false;
   }
 
