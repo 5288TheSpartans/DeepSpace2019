@@ -223,6 +223,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Secondary LeftJoyY", m_oi.getSecondaryControllerLeftStickY());
     SmartDashboard.putNumber("Secondary RightStickX", m_oi.getSecondaryControllerRightStickX());
     SmartDashboard.putBoolean("Arm Limit Switch", arm.getLimitSwitch());
+    SmartDashboard.putBoolean("Wrist Limit Switch", wrist.getLimitSwitch());
     SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
     drivetrain.putEncoderValues();
   }

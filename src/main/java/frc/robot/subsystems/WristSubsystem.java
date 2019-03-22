@@ -81,11 +81,12 @@ public class WristSubsystem extends Subsystem {
     // lowerAngleLimit)
     // wristPower = 0;
     // else
-    wristPower = power;
+    if(getLimitSwitch() && power < 0) wristPower = 0;
+    else wristPower = power;
   }
 
   public void updateOutput() {
-    if(isWristAtTop() && wristPower > 0) wristMotor.set(ControlMode.PercentOutput, 0);
+    if(getLimitSwitch() & wristPower < 0) wristMotor.set(ControlMode.PercentOutput, 0);
     else wristMotor.set(ControlMode.PercentOutput, wristPower*RobotMap.wristSpeedMultiplier);
     
   }
