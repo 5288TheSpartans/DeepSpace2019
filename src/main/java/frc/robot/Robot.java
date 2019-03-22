@@ -71,9 +71,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Arm Raise I", RobotMap.ArmRaiseI);
     SmartDashboard.putNumber("Arm Raise D", RobotMap.ArmRaiseD);
 
-    SmartDashboard.putNumber("Arm Lower P", RobotMap.ArmLowerP);
-    SmartDashboard.putNumber("Arm Lower I", RobotMap.ArmLowerI);
-    SmartDashboard.putNumber("Arm Lower D", RobotMap.ArmLowerD);
+//    SmartDashboard.putNumber("Arm Lower P", RobotMap.ArmLowerP);
+//    SmartDashboard.putNumber("Arm Lower I", RobotMap.ArmLowerI);
+//    SmartDashboard.putNumber("Arm Lower D", RobotMap.ArmLowerD);
 
     SmartDashboard.putNumber("Wrist P", RobotMap.WristRotateP);
     SmartDashboard.putNumber("Wrist I", RobotMap.WristRotateI);
@@ -219,17 +219,17 @@ public class Robot extends TimedRobot {
 
   private void updateSmartDashboard() {
     SmartDashboard.putNumber("D-Pad Value: ", Robot.m_oi.primaryController.getPOV());
-    SmartDashboard.putNumber("Jetson Recorded-Distance", distance);
-    SmartDashboard.putNumber("Arm encoder 1: ", Robot.arm.getArmMotor1Pos());
-    SmartDashboard.putNumber("Arm encoder 2: ", Robot.arm.getArmMotor2Pos());
+//    SmartDashboard.putNumber("Jetson Recorded-Distance", distance);
+//    SmartDashboard.putNumber("Arm encoder 1: ", Robot.arm.getArmMotor1Pos());
+//    SmartDashboard.putNumber("Arm encoder 2: ", Robot.arm.getArmMotor2Pos());
     SmartDashboard.putNumber("Arm angle: ", Robot.arm.getRotationAngle());
     SmartDashboard.putNumber("Wrist angle: ", Robot.wrist.getRotationAngle());
     SmartDashboard.putNumber("Drive encoder 1 (inches): ", drivetrain.getLeftDistanceInches());
     SmartDashboard.putNumber("Drive encoder 2 (inches):", drivetrain.getRightDistanceInches());
     SmartDashboard.putNumber("Wrist Distance", wrist.getWristDistanceTicks());
-    SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
-    SmartDashboard.putNumber("Secondary LeftJoyY", m_oi.getSecondaryControllerLeftStickY());
-    SmartDashboard.putNumber("Secondary RightStickX", m_oi.getSecondaryControllerRightStickX());
+//    SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
+//    SmartDashboard.putNumber("Secondary LeftJoyY", m_oi.getSecondaryControllerLeftStickY());
+//    SmartDashboard.putNumber("Secondary RightStickX", m_oi.getSecondaryControllerRightStickX());
     SmartDashboard.putBoolean("Arm Limit Switch", arm.getLimitSwitch());
     SmartDashboard.putBoolean("Wrist Limit Switch", wrist.getLimitSwitch());
     SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());

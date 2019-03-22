@@ -90,8 +90,8 @@ public class DrivetrainSubsystem extends Subsystem {
   public void putEncoderValues() {
     SmartDashboard.putNumber("Left Encoder Raw", leftEncoder.getRaw());
     SmartDashboard.putNumber("Right Encoder Raw", rightEncoder.getRaw());
-    SmartDashboard.putNumber("Left Encoder Dist Per Pulse", leftEncoder.getDistancePerPulse());
-    SmartDashboard.putNumber("Right Encoder Dist Per Pulse", rightEncoder.getDistancePerPulse());
+ //   SmartDashboard.putNumber("Left Encoder Dist Per Pulse", leftEncoder.getDistancePerPulse());
+ //   SmartDashboard.putNumber("Right Encoder Dist Per Pulse", rightEncoder.getDistancePerPulse());
   }
 
   public double getLeftDistanceInches() {
