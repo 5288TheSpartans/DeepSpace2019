@@ -49,6 +49,7 @@ public class ArmRotateDegrees extends Command {
    // armLowerPID.setTarget(angleToTurnTo);
     // System.out.println(m_basePower);
 
+
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -57,7 +58,7 @@ public class ArmRotateDegrees extends Command {
     currentAngle = Robot.arm.getRotationAngle();
     
     // update armRotatePID with the current angle of the arm
-    armRaisePID.update(currentAngle - startingAngle);
+    armRaisePID.update(currentAngle);
 
     armOutput = armRaisePID.getOutput();
 

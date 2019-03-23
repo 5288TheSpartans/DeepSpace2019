@@ -94,7 +94,9 @@ public class OI {
     // primaryController.leftBumper.whileHeld(new Modifier2ButtonCombination());
 
     // Defining button combinations for modifier 1.
-    mod1AndDPadDown.whenPressed(new ModifierButtonCombination(66, 0));
+    // ARM ANGLE, THEN WRIST ANGLE
+    // MOD 1 == RIGHT BUMPER
+    mod1AndDPadDown.whenPressed(new ModifierButtonCombination(55,210));
     mod1AndDPadUp.whenPressed(new ModifierButtonCombination(175, 0));
     mod1AndA.whenPressed(new ModifierButtonCombination(0, 20));
     mod1AndX.whenPressed(new ModifierButtonCombination(0, 20));
@@ -103,6 +105,7 @@ public class OI {
     // xboxBack.whenPressed(new PneumaticsActivate());
 
     // Defining button combinations for modifier 2.
+    // MOD 2 == LEFT BUMPER
     mod2AndDPadDown.whenPressed(new ModifierButtonCombination(0, 20));
     mod2AndDPadUp.whenPressed(new ModifierButtonCombination(0, 20));
     mod2AndA.whenPressed(new ModifierButtonCombination(0, 20));

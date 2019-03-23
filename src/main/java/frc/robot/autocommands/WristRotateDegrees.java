@@ -48,7 +48,7 @@ public class WristRotateDegrees extends Command {
     SmartDashboard.getNumber("Wrist D", RobotMap.WristRotateD), RobotMap.WristRotateFF);
     currentAngle = Robot.wrist.getRotationAngle();
 
-    wristRotatePID.update(currentAngle - startingAngle);
+    wristRotatePID.update(currentAngle);
 
     wristOutput = wristRotatePID.getOutput();
 
