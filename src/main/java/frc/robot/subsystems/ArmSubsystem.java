@@ -86,7 +86,8 @@ public class ArmSubsystem extends Subsystem {
   }
 
   public boolean canMove() {
-    if(Robot.wrist.getRotationAngle() <= RobotMap.wristResetAngle && getRotationAngle() )
+    if(Robot.wrist.getRotationAngle() <= RobotMap.wristResetAngle) return false;
+    else return false;
   }
 
   public void setArmPower(double power) {
@@ -111,7 +112,7 @@ public class ArmSubsystem extends Subsystem {
   }
 
   public void updateOutputs() {
-    if(getLimitSwitch() & currentArmPower > 0 || isArmAtBottom() & currentArmPower > 0 || isArmAtTop() & currentArmPower < 0)  {
+    if((getLimitSwitch() & currentArmPower > 0) || (isArmAtTop() & currentArmPower < 0))  {
       currentArmPower = 0;
     }
     armMotor1.set(currentArmPower*RobotMap.armSpeedMultiplier);
@@ -119,7 +120,7 @@ public class ArmSubsystem extends Subsystem {
     // armMotor3.set(currentArmPower*RobotMap.armSpeedMultiplier);
   }
   public double getGravityFightingValue() {
-    if (getRotationAngle() <= RobotMap.armResetAngle + 5) return 0;
+    if (getRotationAngle() <= RobotMap.armResetAngle +1) return 0;
     else return -0.1*Math.sin(getRotationAngle());
   }
   

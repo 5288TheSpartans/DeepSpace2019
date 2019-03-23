@@ -114,8 +114,8 @@ public class OI {
     logitechStart.whenPressed(new AutonomousOveride());
 
     // Speed modifiers.
-    xboxUp.whenPressed(new SpeedModifierCommand(0.1));
-    xboxDown.whenPressed(new SpeedModifierCommand(0.1));
+    logitechUp.whenPressed(new SpeedModifierCommand(0.1));
+    logitechDown.whenPressed(new SpeedModifierCommand(-0.1));
 
     // Speed modifier presets.
     logitechA.whenPressed(new SpeedModifierPresetCommand(RobotMap.lowDriveSpeed));

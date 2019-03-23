@@ -63,6 +63,7 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
 
     arm.setResetValue();
+    wrist.resetEncoders();
     pneumatics.mainCompressor.start();
 
     // Choose auto
