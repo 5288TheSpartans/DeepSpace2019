@@ -35,7 +35,7 @@ public class AnalogIntakeCommand extends Command {
     rightJoyY = Robot.m_oi.getSecondaryControllerRightStickY();
 
     // When in deadzone, intake power is 0.
-    if (rightJoyY > -RobotMap.joystickDeadzone && rightJoyY < RobotMap.joystickDeadzone) {
+    if (rightJoyY >= -RobotMap.joystickDeadzone && rightJoyY <= RobotMap.joystickDeadzone) {
       rightJoyY = 0;
     }
 

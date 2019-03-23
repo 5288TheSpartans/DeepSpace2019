@@ -57,7 +57,7 @@ public class ArmRotateDegrees extends Command {
     currentAngle = Robot.arm.getRotationAngle();
     
     // update armRotatePID with the current angle of the arm
-    armRaisePID.update(Robot.arm.getRotationAngle() - startingAngle);
+    armRaisePID.update(currentAngle - startingAngle);
 
     armOutput = armRaisePID.getOutput();
 
@@ -87,7 +87,7 @@ public class ArmRotateDegrees extends Command {
   @Override
   protected boolean isFinished() {
     // return true if we're at (or within range) of the desired angle
-    if ((angleToTurnTo - 2) <= Robot.arm.getRotationAngle() && Robot.arm.getRotationAngle() <= (angleToTurnTo + 2))
+    if ((angleToTurnTo - 3) <= Robot.arm.getRotationAngle() && Robot.arm.getRotationAngle() <= (angleToTurnTo + 3))
       return true;
     // return true if triggers receive input
     else if (Robot.m_oi.getSecondaryControllerLeftTrigger() > RobotMap.triggerDeadzone || Robot.m_oi.getSecondaryControllerRightTrigger() > RobotMap.triggerDeadzone)

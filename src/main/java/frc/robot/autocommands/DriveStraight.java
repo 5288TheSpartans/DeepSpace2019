@@ -50,7 +50,7 @@ public class DriveStraight extends Command {
   // Called repeatedly when this Command is scheduled to run
   protected void execute() {
 
-    straightPID = new SpartanPID(SmartDashboard.getNumber("Drive Straight P", RobotMap.DriveStraightD),
+    straightPID = new SpartanPID(SmartDashboard.getNumber("Drive Straight P", RobotMap.DriveStraightP),
     SmartDashboard.getNumber("Drive Straight I", RobotMap.DriveStraightI),
     SmartDashboard.getNumber("Drive Straight D", RobotMap.DriveStraightD), RobotMap.DriveStraightFF);
 

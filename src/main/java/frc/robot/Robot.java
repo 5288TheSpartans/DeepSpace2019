@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.autocommands.DoNothingTime;
+import frc.robot.autocommands.DriveStraight;
 import frc.robot.autocommands.SpotTurnDegrees;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.DrivetrainSubsystem;
@@ -63,7 +65,7 @@ public class Robot extends TimedRobot {
     pneumatics.mainCompressor.start();
 
     // Choose auto
-    m_chooser.addOption("Spot turn", new SpotTurnDegrees(180));
+    m_chooser.addOption("Default Nothing", new DoNothingTime(1000));
     SmartDashboard.putData("Auto mode", m_chooser);
 
     // Put constants on SmartDashboard for PID tuning
