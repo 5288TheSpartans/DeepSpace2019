@@ -24,7 +24,7 @@ public class WristSubsystem extends Subsystem {
   private double encoderUnit = 4096;
   private double gearRatio = 183.33333333;
   private double resetValue = 0;
-  private double lowerAngleLimit = -10;
+  private double lowerAngleLimit = 0;
   private double topAngleLimit = 170;
   private double wristPower = 0;
   private TalonSRX wristMotor;

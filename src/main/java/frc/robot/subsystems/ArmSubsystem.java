@@ -110,6 +110,9 @@ public class ArmSubsystem extends Subsystem {
     if (isOverride)
       currentArmPower = power;
   }
+  public boolean canArmMoveToOrigin() {
+    if(Robot.wrist.getRotationAngle() >= `
+  }
 
   public void updateOutputs() {
     if((getLimitSwitch() & currentArmPower > 0) || (isArmAtTop() & currentArmPower < 0))  {
