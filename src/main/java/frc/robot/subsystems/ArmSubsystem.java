@@ -85,6 +85,10 @@ public class ArmSubsystem extends Subsystem {
     return !bottomLimitSwitch.get();
   }
 
+  public boolean canMove() {
+    if(Robot.wrist.getRotationAngle() <= RobotMap.wristResetAngle && getRotationAngle() )
+  }
+
   public void setArmPower(double power) {
     // if the arm is at the top and you're trying to push it further, do nothing
     // if the arm is at the bottom and you're trying to push it further, do nothing

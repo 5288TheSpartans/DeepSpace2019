@@ -21,7 +21,10 @@ public class RobotMap {
 
   // DEGREES
   public static double armResetAngle = 28.5;
-  
+  public static double wristResetAngle = 0;
+
+  public static double wristRestAngle = 85;
+
   public static double armSpeedMultiplier = 1;
   public static double driveSpeedMultiplier = 1;
   public static double wristSpeedMultiplier = 1;

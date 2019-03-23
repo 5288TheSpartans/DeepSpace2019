@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -93,6 +94,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Wrist Speed Multiplier", RobotMap.wristSpeedMultiplier);
     SmartDashboard.putNumber("Intake Speed Multiplier", RobotMap.intakeSpeedMultiplier);
     SmartDashboard.putNumber("Drive Speed Multiplier", RobotMap.driveSpeedMultiplier);
+    
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
