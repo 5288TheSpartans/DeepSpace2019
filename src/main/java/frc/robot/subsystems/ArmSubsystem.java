@@ -28,10 +28,10 @@ public class ArmSubsystem extends Subsystem {
   private double gearRatio = 93.33;
   public double armSpeedMultiplier = 1.0;
   // The arm's limit angles (in degrees)
-  private double armBottomLimit = 5;
-  private double armTopLimit = 200;
+  private double armBottomLimit = 30;
+  private double armTopLimit = 210;
 
-  private double resetValue = 0;
+  private double limitResetDegrees = 0;
 
   private DigitalInput bottomLimitSwitch = new DigitalInput(RobotMap.bottomArmLimitSwitch);
 
@@ -52,33 +52,19 @@ public class ArmSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     setDefaultCommand(new AnalogArmCommand());
-    
-
   }
+
   public void setResetValue() {
-    resetValue = (armEncoder1.getPosition() + armEncoder2.getPosition()) / 2; 
+    limitResetDegrees = -1*((getDistanceTicks()/108)*-360)  + RobotMap.armResetAngle; 
   }
+
   public double getDistanceTicks() {
-    // System.out.println("Arm encoder 1: " + armEncoder1.getPosition());
-    // System.out.println("Arm encoder 2: " + armEncoder2.getPosition());
-    // return (armEncoder1.getPosition() + armEncoder2.getPosition() +
-    // armEncoder3.getPosition()) / 3;
-
     return ((armEncoder1.getPosition() + armEncoder2.getPosition()) / 2);
-  }
-
-  public double getArmMotor1Pos() {
-    return armEncoder1.getPosition();
-  }
-
-  public double getArmMotor2Pos() {
-
-    return armEncoder2.getPosition();
   }
 
   // get the current angle of the arm.
   public double getRotationAngle() {
-    return (getDistanceTicks()/108)*-360 - resetValue;
+    return (getDistanceTicks()/108)*-360 + limitResetDegrees;
     //return ((getDistanceTicks() / encoderUnit)* (1/gearRatio)) * 360;
   }
   public void updateBottomLimit() {
@@ -86,7 +72,7 @@ public class ArmSubsystem extends Subsystem {
   }
   public boolean isArmAtBottom() {
      updateBottomLimit(); 
-     if ((getRotationAngle() >= armBottomLimit -2 && getRotationAngle() <= armBottomLimit + 2) || getLimitSwitch()) return true; else return false;
+     if ((getRotationAngle() >= armBottomLimit -3 && getRotationAngle() <= armBottomLimit + 3) || getLimitSwitch()) return true; else return false;
   }
 
   public boolean isArmAtTop() {
@@ -121,7 +107,7 @@ public class ArmSubsystem extends Subsystem {
   }
 
   public void updateOutputs() {
-    if(getLimitSwitch() & currentArmPower > 0 || isArmAtBottom() || isArmAtTop())  {
+    if(getLimitSwitch() & currentArmPower > 0 || isArmAtBottom() & currentArmPower > 0 || isArmAtTop() & currentArmPower < 0)  {
       currentArmPower = 0;
     }
     armMotor1.set(currentArmPower*RobotMap.armSpeedMultiplier);
@@ -129,8 +115,8 @@ public class ArmSubsystem extends Subsystem {
     // armMotor3.set(currentArmPower*RobotMap.armSpeedMultiplier);
   }
   public double getGravityFightingValue() {
-    if (getRotationAngle() <= 5) return 0;
-    else return -0.1*Math.sin(getRotationAngle()+25);
+    if (getRotationAngle() <= RobotMap.armResetAngle + 5) return 0;
+    else return -0.1*Math.sin(getRotationAngle());
   }
   
 }

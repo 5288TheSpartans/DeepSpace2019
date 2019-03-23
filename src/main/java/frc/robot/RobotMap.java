@@ -19,6 +19,9 @@ public class RobotMap {
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
 
+  // DEGREES
+  public static double armResetAngle = 28.5;
+  
   public static double armSpeedMultiplier = 1;
   public static double driveSpeedMultiplier = 1;
   public static double wristSpeedMultiplier = 1;
