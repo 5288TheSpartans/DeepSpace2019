@@ -111,7 +111,7 @@ public class ArmSubsystem extends Subsystem {
       currentArmPower = power;
   }
   public boolean canArmMoveToOrigin() {
-    if(Robot.wrist.getRotationAngle() >= `
+    return false;
   }
 
   public void updateOutputs() {

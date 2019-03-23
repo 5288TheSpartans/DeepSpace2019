@@ -23,7 +23,8 @@ public class WristSubsystem extends Subsystem {
   // here. Call these from Commands.
   private double encoderUnit = 4096;
   private double gearRatio = 183.33333333;
-  private double resetValue = 0;
+  private double angleToTickRatio = -21.2;
+  private double resetValue = 73;
   private double lowerAngleLimit = 0;
   private double topAngleLimit = 170;
   private double wristPower = 0;
@@ -54,7 +55,7 @@ public class WristSubsystem extends Subsystem {
 
    // get the current angle of the wrist
   public double getRotationAngle() {
-    return ((wristMotor.getSelectedSensorPosition()/encoderUnit)*(1/gearRatio))*360 - resetValue;
+    return wristMotor.getSelectedSensorPosition()/angleToTickRatio + resetValue;
   }
 
   public boolean isWristAtTop() {

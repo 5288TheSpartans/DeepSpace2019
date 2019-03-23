@@ -20,8 +20,9 @@ public class ModifierButtonCombination extends CommandGroup {
   // Takes in the values to rotate to and does this in parallel
   public ModifierButtonCombination(double armAngle, double wristAngle) {
     System.out.println("ModifierButtonCombination called. ArmAngle: " + armAngle + " WristAngle: " + wristAngle);
-    addParallel(new ArmRotateDegrees(armAngle));
-    addParallel(new WristRotateDegrees(wristAngle));
+    addSequential(new WristRotateDegrees(wristAngle));
+    addSequential(new ArmRotateDegrees(armAngle));
+
 
     // TO DO: Wrist commands need testing. (For now default is
     // RobotMap.raisedWrist())
