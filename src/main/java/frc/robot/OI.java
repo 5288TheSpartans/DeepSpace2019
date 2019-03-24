@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
 import frc.robot.accessories.ModifierCombo;
 import frc.robot.autoCommandGroups.ModifierButtonCombination;
+import frc.robot.autoCommandGroups.ResetArmWrist;
 import frc.robot.commands.SpeedModifierCommand;
 import frc.robot.commands.SpeedModifierPresetCommand;
 import frc.robot.commands.AutonomousOveride;
@@ -96,16 +97,16 @@ public class OI {
     // Defining button combinations for modifier 1.
     // ARM ANGLE, THEN WRIST ANGLE
     // MOD 1 == RIGHT BUMPER
-    mod1AndDPadDown.whenPressed(new ModifierButtonCombination(55,210));
-    mod1AndDPadUp.whenPressed(new ModifierButtonCombination(175, 0));
-    mod1AndA.whenPressed(new ModifierButtonCombination(0, 20));
-    mod1AndX.whenPressed(new ModifierButtonCombination(0, 20));
-    mod1AndB.whenPressed(new ModifierButtonCombination(0, 20));
-    mod1AndY.whenPressed(new ModifierButtonCombination(0, 20));
+    mod1AndDPadDown.whenPressed(new  ModifierButtonCombination(59,173)); // bottom rocket score
+    mod1AndDPadUp.whenPressed(new  ModifierButtonCombination(135, 150)); // top rocket score
+    mod1AndA.whenPressed(new ModifierButtonCombination(50, 190));  // cargo pickup angle
+    mod1AndX.whenPressed(new ResetArmWrist(RobotMap.armResetAngle, RobotMap.wristResetAngle));
+    mod1AndB.whenPressed(new ModifierButtonCombination(124, 255)); // mid rocket score
+    mod1AndY.whenPressed(new ModifierButtonCombination(70, 110)); // cargo loading station
     // xboxBack.whenPressed(new PneumaticsActivate());
 
     // Defining button combinations for modifier 2.
-    // MOD 2 == LEFT BUMPER
+    // MOD 2 == LEFT BUMPER -> ALL HATCHES
     mod2AndDPadDown.whenPressed(new ModifierButtonCombination(0, 20));
     mod2AndDPadUp.whenPressed(new ModifierButtonCombination(0, 20));
     mod2AndA.whenPressed(new ModifierButtonCombination(0, 20));

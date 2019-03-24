@@ -11,17 +11,18 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.autocommands.ArmRotateDegrees;
 import frc.robot.autocommands.WristRotateDegrees;
 
-public class ModifierButtonCombination extends CommandGroup {
+public class ResetArmWrist extends CommandGroup {
   /**
    * OBJECTIVE: CARGO This command group is called while the program still detects
    * that modifier 2 (left bumper) is held.
    */
 
   // Takes in the values to rotate to and does this in parallel
-  public ModifierButtonCombination(double armAngle, double wristAngle) {
+  public ResetArmWrist(double armAngle, double wristAngle) {
     System.out.println("ModifierButtonCombination called. ArmAngle: " + armAngle + " WristAngle: " + wristAngle);
-    addSequential(new ArmRotateDegrees(armAngle));
     addSequential(new WristRotateDegrees(wristAngle));
+    addSequential(new ArmRotateDegrees(armAngle));
+
 
 
     // TO DO: Wrist commands need testing. (For now default is

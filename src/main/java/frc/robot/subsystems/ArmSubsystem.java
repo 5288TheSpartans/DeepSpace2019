@@ -82,7 +82,7 @@ public class ArmSubsystem extends Subsystem {
   }
 
   public boolean getLimitSwitch() {
-    return !bottomLimitSwitch.get();
+    return bottomLimitSwitch.get();
   }
 
   public boolean canMove() {

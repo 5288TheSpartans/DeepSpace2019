@@ -22,7 +22,7 @@ public class ArmRotateDegrees extends Command {
   double startingAngle;
   double currentAngle;
   final double armPowerMinimum = 0.2;
-  final double armPowerLimit = 0.7;
+  final double armPowerLimit = 0.6;
   SpartanPID armRaisePID;
   SpartanPID armLowerPID;
 

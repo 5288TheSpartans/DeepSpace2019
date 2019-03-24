@@ -20,14 +20,12 @@ public class RobotMap {
   // public static int rightMotor = 2;
 
   // DEGREES
-  public static double armResetAngle = 28.5;
-  public static double wristResetAngle = 0;
-
-  public static double wristRestAngle = 85;
+  public static double armResetAngle = 28.5; // Arm at starting config
+  public static double wristResetAngle = 73; // Wrist at starting config
 
   public static double armSpeedMultiplier = 1;
   public static double driveSpeedMultiplier = 1;
-  public static double wristSpeedMultiplier = 1;
+  public static double wristSpeedMultiplier = 0.7;
   public static double intakeSpeedMultiplier = 1;
 
   public static double defaultDriveSpeedMultiplier = 1;
@@ -80,6 +78,8 @@ public class RobotMap {
   public static final double shootBallSlow = -0.5;
 
   // ARM ANGLE LEVEL CONSTANTS (needs angle values)
+  public static final double armCargoPickupAngle = 55;
+  public static final double armCargoShipAngle = 90;
   public static final double groundLevelAngle = 0;
   public static final double cargoShipAngle = 0;
   public static final double rocketLevel1Angle = 0;
@@ -107,8 +107,8 @@ public class RobotMap {
   public static final double DistanceFF = 0;
 
   // ARM RAISE
-  public static final double ArmRaiseP = 0.001;
-  public static final double ArmRaiseI = 0;
+  public static final double ArmRaiseP = 0.01;
+  public static final double ArmRaiseI = 0.001;
   public static final double ArmRaiseD = 0.;
   public static final double ArmRaiseFF = 0;
 
@@ -131,8 +131,8 @@ public class RobotMap {
   public static final double WristGravityFF = 0;
 
   // WRIST ROTATE
-  public static final double WristRotateP = 0;
-  public static final double WristRotateI = 0;
+  public static final double WristRotateP = 0.01;
+  public static final double WristRotateI = 0.001;
   public static final double WristRotateD = 0;
   public static final double WristRotateFF = 0;
 

@@ -36,7 +36,7 @@ public class WristRotateDegrees extends Command {
     SmartDashboard.getNumber("Wrist I", RobotMap.WristRotateI),
     SmartDashboard.getNumber("Wrist D", RobotMap.WristRotateD), RobotMap.WristRotateFF);
     wristRotatePID.setTarget(angleToTurnTo);
-    startingAngle = angleToTurnTo;
+    startingAngle = Robot.wrist.getRotationAngle();
   }
 
   // Called repeatedly when this Command is scheduled to run

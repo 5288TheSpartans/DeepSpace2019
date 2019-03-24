@@ -68,7 +68,7 @@ public class WristSubsystem extends Subsystem {
     
   }
   public boolean getLimitSwitch() {
-    return !bottomLimitSwitch.get();
+    return bottomLimitSwitch.get();
   }
   public boolean isWristAtBottom() {
     // if (getRotationAngle() <= lowerAngleLimit)
