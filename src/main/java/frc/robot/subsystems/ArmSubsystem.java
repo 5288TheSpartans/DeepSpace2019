@@ -115,6 +115,7 @@ public class ArmSubsystem extends Subsystem {
   }
 
   public void updateOutputs() {
+    updateBottomLimit();
     if((getLimitSwitch() & currentArmPower > 0) || (isArmAtTop() & currentArmPower < 0))  {
       currentArmPower = 0;
     }

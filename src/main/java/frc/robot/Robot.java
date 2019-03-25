@@ -241,4 +241,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
     drivetrain.putEncoderValues();
   }
+  private void updateResets() {
+    
+
+  }
 }

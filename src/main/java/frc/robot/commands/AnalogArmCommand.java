@@ -94,6 +94,5 @@ public class AnalogArmCommand extends Command {
   @Override
   protected void interrupted() {
     System.out.println("AnalogArmCommand interrupted.");
-    Robot.arm.setArmPower(0.0);
   }
 }

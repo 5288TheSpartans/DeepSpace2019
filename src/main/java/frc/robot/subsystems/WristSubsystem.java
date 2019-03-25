@@ -43,8 +43,7 @@ public class WristSubsystem extends Subsystem {
   public WristSubsystem() {
     wristMotor = new TalonSRX(RobotMap.wristMotor);
     bottomLimitSwitch = new DigitalInput(RobotMap.bottomWristLimitSwitch);
-    wristMotor.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.CTRE_MagEncoder_Relative, 0,
-        0);
+    wristMotor.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.CTRE_MagEncoder_Relative, 0,0);
     wristMotor.setSensorPhase(false);
 
   }
@@ -55,7 +54,8 @@ public class WristSubsystem extends Subsystem {
 
    // get the current angle of the wrist
   public double getRotationAngle() {
-    return wristMotor.getSelectedSensorPosition()/angleToTickRatio + resetValue;
+    updateLimitSwitch();
+    return wristMotor.getSelectedSensorPosition()/angleToTickRatio;
   }
 
   public boolean isWristAtTop() {
@@ -64,11 +64,14 @@ public class WristSubsystem extends Subsystem {
     return getLimitSwitch();
   }
   public void updateLimitSwitch() {
-    if(getLimitSwitch()) resetValue = getRotationAngle();
+    if(getLimitSwitch()) {
+      resetEncoders();
+    }
     
   }
   public boolean getLimitSwitch() {
-    return bottomLimitSwitch.get();
+    return false;
+    // bottomLimitSwitch.get();
   }
   public boolean isWristAtBottom() {
     // if (getRotationAngle() <= lowerAngleLimit)

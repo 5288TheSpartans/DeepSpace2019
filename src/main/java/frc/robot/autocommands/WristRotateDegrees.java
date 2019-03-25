@@ -16,7 +16,7 @@ import frc.robot.accessories.SpartanPID;
 public class WristRotateDegrees extends Command {
   double m_basePower = 0.0;
   double startingAngle = 0, currentAngle = 0;
-  double wristPowerMinimum = 0.1, wristPowerLimit = 0.7;
+  double wristPowerMinimum = 0.05, wristPowerLimit = 0.4;
   double error = 0;
   double wristOutput = 0.0;
   double angleToTurnTo;
@@ -70,7 +70,7 @@ public class WristRotateDegrees extends Command {
       wristOutput = -wristPowerMinimum;
     }
 
-    Robot.wrist.setWristPower(wristOutput);
+    Robot.wrist.setWristPower(-wristOutput);
   }
 
   // Make this return true when this Command no longer needs to run execute()
