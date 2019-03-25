@@ -101,8 +101,7 @@ public class OI {
     mod1AndDPadUp.whenPressed(new  ModifierButtonCombination(135, 150)); // top rocket score
     mod1AndA.whenPressed(new ModifierButtonCombination(50, 190));  // cargo pickup angle
     mod1AndX.whenPressed(new ResetArmWrist(RobotMap.armResetAngle, RobotMap.wristResetAngle));
-    mod1AndB.whenPressed(new ModifierButtonCombination(12
-    4, 255)); // mid rocket score
+    mod1AndB.whenPressed(new ModifierButtonCombination(124, 255)); // mid rocket score
     mod1AndY.whenPressed(new ModifierButtonCombination(70, 110)); // cargo loading station
     // xboxBack.whenPressed(new PneumaticsActivate());
 
