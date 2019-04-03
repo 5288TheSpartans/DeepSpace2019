@@ -93,6 +93,7 @@ public class AnalogArmCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.arm.setArmPower(0.0);
     System.out.println("AnalogArmCommand interrupted.");
   }
 }

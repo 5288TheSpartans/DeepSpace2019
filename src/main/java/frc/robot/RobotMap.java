@@ -54,6 +54,8 @@ public class RobotMap {
   public static final int rightDriveEncoder2 = 3; // brown - channel B
   public static final int bottomArmLimitSwitch = 9;
   public static final int bottomWristLimitSwitch = 8;
+  public static final int wristEncoder1 = 4; // white - channel A
+  public static final int wristEncoder2 = 5; // brown - channel B; 
 
   // DEADZONES
   public static final double joystickDeadzone = 0.05;

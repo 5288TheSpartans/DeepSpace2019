@@ -11,6 +11,8 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.AnalogWristCommand;
@@ -30,6 +32,7 @@ public class WristSubsystem extends Subsystem {
   private double wristPower = 0;
   private TalonSRX wristMotor;
   private DigitalInput bottomLimitSwitch;
+  private Encoder wristEncoder;
 
   @Override
   public void initDefaultCommand() {
@@ -41,6 +44,9 @@ public class WristSubsystem extends Subsystem {
   // connecting the Wristmotor to a wristmoror subsystem.
 
   public WristSubsystem() {
+    
+  wristEncoder = new Encoder(RobotMap.wristEncoder1, RobotMap.wristEncoder2, false,
+  EncodingType.k4X);
     wristMotor = new TalonSRX(RobotMap.wristMotor);
     bottomLimitSwitch = new DigitalInput(RobotMap.bottomWristLimitSwitch);
     wristMotor.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.CTRE_MagEncoder_Relative, 0,0);
@@ -49,13 +55,13 @@ public class WristSubsystem extends Subsystem {
   }
 
   public double getWristDistanceTicks() {
-    return wristMotor.getSelectedSensorPosition();
+    return wristEncoder.getRaw();
   }
 
    // get the current angle of the wrist
   public double getRotationAngle() {
     updateLimitSwitch();
-    return wristMotor.getSelectedSensorPosition()/angleToTickRatio;
+    return (wristEncoder.getDistance()/angleToTickRatio)*360;
   }
 
   public boolean isWristAtTop() {
@@ -96,6 +102,6 @@ public class WristSubsystem extends Subsystem {
   }
 
   public void resetEncoders() {
-    wristMotor.setSelectedSensorPosition(0);
+    wristEncoder.reset();
   }
 }
