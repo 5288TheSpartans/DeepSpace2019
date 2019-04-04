@@ -97,6 +97,9 @@ public class WristSubsystem extends Subsystem {
   }
 
   public void updateOutput() {
+    
+
+
     if(getLimitSwitch() & wristPower < 0 || isWristAtBottom() & wristPower > 0) wristMotor.set(ControlMode.PercentOutput, 0);
     else wristMotor.set(ControlMode.PercentOutput, wristPower*RobotMap.wristSpeedMultiplier);
     

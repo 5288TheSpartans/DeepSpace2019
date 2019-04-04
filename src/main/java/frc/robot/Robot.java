@@ -43,6 +43,7 @@ public class Robot extends TimedRobot {
   public static IntakeSubsystem intake;
   public static PneumaticsSubsystem pneumatics;
   public static NetworkTableEntry angleToTurn, distEntry;
+  public static boolean isArmPresetRunning = false;
   double distance;
   public static Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -53,6 +54,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+
+    isArmPresetRunning = false;
 
     // Instantiate subsystems
     drivetrain = new DrivetrainSubsystem();

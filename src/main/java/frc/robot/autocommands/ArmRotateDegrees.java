@@ -40,6 +40,8 @@ public class ArmRotateDegrees extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.isArmPresetRunning = true;
+
     startingAngle = Robot.arm.getRotationAngle();
     currentAngle = startingAngle;
     armRaisePID = new SpartanPID(SmartDashboard.getNumber("Arm Raise P", RobotMap.ArmRaiseP),
@@ -86,6 +88,11 @@ public class ArmRotateDegrees extends Command {
       armOutput = -armPowerMinimum;
     }
     */
+    if ((angleToTurnTo - 3) <= Robot.arm.getRotationAngle() && Robot.arm.getRotationAngle() <= (angleToTurnTo + 3)) {
+      Robot.isArmPresetRunning = false;
+      armOutput = Robot.arm.getGravityFightingValue();
+    }
+
     Robot.arm.setArmPower(-armOutput);
 
   }
@@ -95,14 +102,14 @@ public class ArmRotateDegrees extends Command {
   protected boolean isFinished() {
     // return true if we're at (or within range) of the desired angle
     if ((angleToTurnTo - 3) <= Robot.arm.getRotationAngle() && Robot.arm.getRotationAngle() <= (angleToTurnTo + 3)) {
-      Robot.arm.setArmPower(Robot.arm.getGravityFightingValue());
+      Robot.isArmPresetRunning = false;
       System.out.println("ArmRotateDegrees finished.");
       return true;
     }
     // return true if triggers receive input
     else if (Robot.m_oi.getSecondaryControllerLeftTrigger() > RobotMap.triggerDeadzone
         || Robot.m_oi.getSecondaryControllerRightTrigger() > RobotMap.triggerDeadzone) {
-          Robot.arm.setArmPower(Robot.arm.getGravityFightingValue());
+        Robot.isArmPresetRunning = false;
       System.out.println("ArmRotateDegrees finished.");
       return true;
     }
@@ -112,6 +119,7 @@ public class ArmRotateDegrees extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.isArmPresetRunning = false;
     Robot.arm.setArmPower(Robot.arm.getGravityFightingValue());
     System.out.println("ArmRotateDegrees finished. at " + currentAngle);  
 
@@ -121,6 +129,7 @@ public class ArmRotateDegrees extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.isArmPresetRunning = false;
     Robot.arm.setArmPower(Robot.arm.getGravityFightingValue());
   }
 }

@@ -116,6 +116,9 @@ public class ArmSubsystem extends Subsystem {
 
   public void updateOutputs() {
     updateBottomLimit();
+    if(!Robot.isArmPresetRunning) {
+      currentArmPower = getGravityFightingValue();
+    }
     if((getLimitSwitch() & currentArmPower > 0) || (isArmAtTop() & currentArmPower < 0))  {
       currentArmPower = 0;
     }
