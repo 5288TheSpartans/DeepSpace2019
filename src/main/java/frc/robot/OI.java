@@ -83,10 +83,7 @@ public class OI {
   public OI() {
 
     // modifier button combinations
-      xboxY.whenPressed(new WristRotateDegrees(190));
-      xboxA.whenPressed(new WristRotateDegrees(110));
-      xboxX.whenPressed(new ArmRotateDegrees(90));
-      xboxB.whenPressed(new ArmRotateDegrees(150));
+
     // setting up the intake
     // primaryController.xButton.toggleWhenPressed(new IntakeBallCommand(0.3));
 
@@ -104,20 +101,20 @@ public class OI {
     // MOD 1 == RIGHT BUMPER
     mod1AndDPadDown.whenPressed(new  ModifierButtonCombination(70,140)); // bottom rocket score
     mod1AndDPadUp.whenPressed(new  ModifierButtonCombination(135, 150)); // top rocket score
-    mod1AndA.whenPressed(new ModifierButtonCombination(50, 190));  // cargo pickup angle
+    mod1AndA.whenPressed(new ModifierButtonCombination(50, 165));  // cargo pickup angle
     mod1AndX.whenPressed(new ResetArmWrist(RobotMap.armResetAngle, RobotMap.wristResetAngle));
-    mod1AndB.whenPressed(new ModifierButtonCombination(124, 255)); // mid rocket score
+    mod1AndB.whenPressed(new ModifierButtonCombination(124, 140)); // mid rocket score
     mod1AndY.whenPressed(new ModifierButtonCombination(70, 110)); // cargo loading station
     // xboxBack.whenPressed(new PneumaticsActivate());
 
     // Defining button combinations for modifier 2.
     // MOD 2 == LEFT BUMPER -> ALL HATCHES
-    mod2AndDPadDown.whenPressed(new ModifierButtonCombination(0, 20));
-    mod2AndDPadUp.whenPressed(new ModifierButtonCombination(0, 20));
-    mod2AndA.whenPressed(new ModifierButtonCombination(0, 20));
-    mod2AndX.whenPressed(new ModifierButtonCombination(0, 20));
-    mod2AndB.whenPressed(new ModifierButtonCombination(0, 20));
-    mod2AndY.whenPressed(new ModifierButtonCombination(0, 20));
+    mod2AndDPadDown.whenPressed(new ModifierButtonCombination(60, 50));
+    mod2AndDPadUp.whenPressed(new ModifierButtonCombination(40, 40));
+    mod2AndA.whenPressed(new ModifierButtonCombination(60, 40));
+    mod2AndX.whenPressed(new ModifierButtonCombination(80,60));
+    mod2AndB.whenPressed(new ModifierButtonCombination(100, 80));
+    mod2AndY.whenPressed(new ModifierButtonCombination(120, 100));
 
     xboxStart.whenPressed(new PneumaticsActivate());
     logitechStart.whenPressed(new AutonomousOveride());
