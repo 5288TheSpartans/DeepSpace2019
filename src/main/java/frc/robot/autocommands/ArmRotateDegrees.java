@@ -95,12 +95,14 @@ public class ArmRotateDegrees extends Command {
   protected boolean isFinished() {
     // return true if we're at (or within range) of the desired angle
     if ((angleToTurnTo - 3) <= Robot.arm.getRotationAngle() && Robot.arm.getRotationAngle() <= (angleToTurnTo + 3)) {
+      Robot.arm.setArmPower(Robot.arm.getGravityFightingValue());
       System.out.println("ArmRotateDegrees finished.");
       return true;
     }
     // return true if triggers receive input
     else if (Robot.m_oi.getSecondaryControllerLeftTrigger() > RobotMap.triggerDeadzone
         || Robot.m_oi.getSecondaryControllerRightTrigger() > RobotMap.triggerDeadzone) {
+          Robot.arm.setArmPower(Robot.arm.getGravityFightingValue());
       System.out.println("ArmRotateDegrees finished.");
       return true;
     }
