@@ -64,12 +64,18 @@ public class ArmRotateDegrees extends Command {
 
     armOutput = armRaisePID.getOutput();
 
+
+
     if (Math.abs(armOutput) > armPowerLimit && armOutput > 0) {
       System.out.println("Arm set to limit.");
       armOutput = armPowerLimit;
     } else if (Math.abs(armOutput) > armPowerLimit && armOutput < 0) {
       System.out.println("Arm set limit.");
       armOutput = -armPowerLimit;
+    }
+
+    if(angleToTurnTo < currentAngle && angleToTurnTo < 90) {
+      armOutput = armOutput*(5/8); // 5 eighths of 0.6
     }
 
 /*    if (Math.abs(armOutput) < armPowerMinimum && armOutput > 0) {
