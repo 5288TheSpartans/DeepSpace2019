@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.buttons.POVButton;
 import frc.robot.accessories.ModifierCombo;
 import frc.robot.autoCommandGroups.ModifierButtonCombination;
 import frc.robot.autoCommandGroups.ResetArmWrist;
+import frc.robot.autocommands.ArmRotateDegrees;
+import frc.robot.autocommands.WristRotateDegrees;
 import frc.robot.commands.SpeedModifierCommand;
 import frc.robot.commands.SpeedModifierPresetCommand;
 import frc.robot.commands.AutonomousOveride;
@@ -81,7 +83,10 @@ public class OI {
   public OI() {
 
     // modifier button combinations
-
+      xboxY.whenPressed(new WristRotateDegrees(190));
+      xboxA.whenPressed(new WristRotateDegrees(110));
+      xboxX.whenPressed(new ArmRotateDegrees(90));
+      xboxB.whenPressed(new ArmRotateDegrees(150));
     // setting up the intake
     // primaryController.xButton.toggleWhenPressed(new IntakeBallCommand(0.3));
 

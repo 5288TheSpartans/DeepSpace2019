@@ -36,47 +36,32 @@ public class WristRotateDegrees extends Command {
     SmartDashboard.getNumber("Wrist I", RobotMap.WristRotateI),
     SmartDashboard.getNumber("Wrist D", RobotMap.WristRotateD), RobotMap.WristRotateFF);
     wristRotatePID.setTarget(angleToTurnTo);
+    wristRotatePID.resetPID();
     startingAngle = Robot.wrist.getRotationAngle();
+    System.out.println("Starting angle: " + startingAngle);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    wristRotatePID = new SpartanPID(SmartDashboard.getNumber("Wrist P", RobotMap.WristRotateP),
-    SmartDashboard.getNumber("Wrist I", RobotMap.WristRotateI),
-    SmartDashboard.getNumber("Wrist D", RobotMap.WristRotateD), RobotMap.WristRotateFF);
     currentAngle = Robot.wrist.getRotationAngle();
 
     wristRotatePID.update(currentAngle);
 
     wristOutput = wristRotatePID.getOutput();
-
-    if(Math.abs(wristOutput) > wristPowerLimit && wristOutput > 0) {
-      System.out.println("Wrist set to limit.");
-      wristOutput = wristPowerLimit;
-    }
-    else if(Math.abs(wristOutput) > wristPowerLimit && wristOutput < 0) {
-      System.out.println("Wrist set to limit.");
-      wristOutput = -wristPowerLimit;
-    }
-    
-    if(Math.abs(wristOutput) < wristPowerMinimum && wristOutput > 0) {
-      System.out.println("Wrist set to minimum.");
-      wristOutput = wristPowerMinimum;
-    }
-    else if(Math.abs(wristOutput) < wristPowerMinimum && wristOutput < 0) {
-      System.out.println("Wrist set to minimum.");
-      wristOutput = -wristPowerMinimum;
-    }
-
-    Robot.wrist.setWristPower(-wristOutput);
+    Robot.wrist.setWristPower(wristOutput);
+    System.out.println("Current angle: " + currentAngle);
+    System.out.println("Wrist output: " + wristOutput);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     // return true when at (or in range of) the specified angle
+    if(angleToTurnTo <= 21) {
+      System.out.println("Incorrect value!");
+      return true;
+    }
     if ((angleToTurnTo - 2) <= Robot.wrist.getRotationAngle() && Robot.wrist.getRotationAngle() <= (angleToTurnTo + 2))
       return true;
     // return true when the wrist controller joystick receives input outside of its deadzones

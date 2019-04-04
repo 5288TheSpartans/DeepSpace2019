@@ -25,7 +25,7 @@ public class RobotMap {
 
   public static double armSpeedMultiplier = 1;
   public static double driveSpeedMultiplier = 1;
-  public static double wristSpeedMultiplier = 0.7;
+  public static double wristSpeedMultiplier = 1;
   public static double intakeSpeedMultiplier = 1;
 
   public static double defaultDriveSpeedMultiplier = 1;
@@ -109,9 +109,9 @@ public class RobotMap {
   public static final double DistanceFF = 0;
 
   // ARM RAISE
-  public static final double ArmRaiseP = 0.01;
-  public static final double ArmRaiseI = 0.001;
-  public static final double ArmRaiseD = 0.;
+  public static final double ArmRaiseP = 0.02;
+  public static final double ArmRaiseI = 0.0015;
+  public static final double ArmRaiseD = 0.01;
   public static final double ArmRaiseFF = 0;
 
   // ARM LOWER
@@ -133,9 +133,9 @@ public class RobotMap {
   public static final double WristGravityFF = 0;
 
   // WRIST ROTATE
-  public static final double WristRotateP = 0.01;
-  public static final double WristRotateI = 0.001;
-  public static final double WristRotateD = 0;
+  public static final double WristRotateP = 0.02;
+  public static final double WristRotateI = 0.002;
+  public static final double WristRotateD = 0.01;
   public static final double WristRotateFF = 0;
 
   // TURN

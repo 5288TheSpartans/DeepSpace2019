@@ -27,12 +27,13 @@ public class WristSubsystem extends Subsystem {
   private double gearRatio = 183.33333333;
   private double angleToTickRatio = -21.2;
   private double resetValue = 73;
-  private double lowerAngleLimit = 0;
+  private double lowerAngleLimit = 200;
   private double topAngleLimit = 170;
   private double wristPower = 0;
   private TalonSRX wristMotor;
   private DigitalInput bottomLimitSwitch;
-  private Encoder wristEncoder;
+  public Encoder wristEncoder;
+  private double angleTickScaleFactor = 0.00013453518;
 
   @Override
   public void initDefaultCommand() {
@@ -56,12 +57,13 @@ public class WristSubsystem extends Subsystem {
 
   public double getWristDistanceTicks() {
     return wristEncoder.getRaw();
+
   }
 
    // get the current angle of the wrist
   public double getRotationAngle() {
     updateLimitSwitch();
-    return (wristEncoder.getDistance()/angleToTickRatio)*360;
+    return (wristEncoder.getRaw())*angleTickScaleFactor + 21.2;
   }
 
   public boolean isWristAtTop() {
@@ -76,13 +78,12 @@ public class WristSubsystem extends Subsystem {
     
   }
   public boolean getLimitSwitch() {
-    return false;
-    // bottomLimitSwitch.get();
+    return bottomLimitSwitch.get();
   }
   public boolean isWristAtBottom() {
-    // if (getRotationAngle() <= lowerAngleLimit)
-    // return true;
-    return false;
+    if (getRotationAngle() >= lowerAngleLimit)
+    return true;
+    else return false;
     
   }
 
@@ -96,12 +97,12 @@ public class WristSubsystem extends Subsystem {
   }
 
   public void updateOutput() {
-    if(getLimitSwitch() & wristPower < 0) wristMotor.set(ControlMode.PercentOutput, 0);
+    if(getLimitSwitch() & wristPower < 0 || isWristAtBottom() & wristPower > 0) wristMotor.set(ControlMode.PercentOutput, 0);
     else wristMotor.set(ControlMode.PercentOutput, wristPower*RobotMap.wristSpeedMultiplier);
     
   }
 
   public void resetEncoders() {
-    wristEncoder.reset();
+   wristEncoder.reset();
   }
 }

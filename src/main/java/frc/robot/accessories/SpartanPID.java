@@ -36,7 +36,6 @@ public class SpartanPID {
         I_GAIN = iGain;
         D_GAIN = dGain;
         F_GAIN = fGain;
-        target = 0;
     }
 
     public void setTarget(double newtarget) {
@@ -63,8 +62,8 @@ public class SpartanPID {
     }
 
     public void resetPID() {
-        // kP = 0;
-        // kI = 0;
-        // kD = 0;
+        kP = 0;
+        kI = 0;
+        kD = 0;
     }
 }
