@@ -27,7 +27,7 @@ public class WristSubsystem extends Subsystem {
   private double gearRatio = 183.33333333;
   private double angleToTickRatio = -21.2;
   private double resetValue = 73;
-  private double lowerAngleLimit = 200;
+  private double lowerAngleLimit = 180;
   private double topAngleLimit = 170;
   private double wristPower = 0;
   private TalonSRX wristMotor;
@@ -63,7 +63,7 @@ public class WristSubsystem extends Subsystem {
    // get the current angle of the wrist
   public double getRotationAngle() {
     updateLimitSwitch();
-    return (wristEncoder.getRaw())*angleTickScaleFactor + 21.2;
+    return (wristEncoder.getRaw())*angleTickScaleFactor + RobotMap.wristResetAngle;
   }
 
   public boolean isWristAtTop() {

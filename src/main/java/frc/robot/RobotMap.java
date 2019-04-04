@@ -21,7 +21,7 @@ public class RobotMap {
 
   // DEGREES
   public static double armResetAngle = 28.5; // Arm at starting config
-  public static double wristResetAngle = 73; // Wrist at starting config
+  public static double wristResetAngle = 21.2; // Wrist at starting config
 
   public static double armSpeedMultiplier = 1;
   public static double driveSpeedMultiplier = 1;

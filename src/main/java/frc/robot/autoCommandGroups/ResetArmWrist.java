@@ -19,7 +19,7 @@ public class ResetArmWrist extends CommandGroup {
 
   // Takes in the values to rotate to and does this in parallel
   public ResetArmWrist(double armAngle, double wristAngle) {
-    System.out.println("ModifierButtonCombination called. ArmAngle: " + armAngle + " WristAngle: " + wristAngle);
+    System.out.println("ResetArmWrist called. ArmAngle: " + armAngle + " WristAngle: " + wristAngle);
     addSequential(new WristRotateDegrees(wristAngle));
     addSequential(new ArmRotateDegrees(armAngle));
 
