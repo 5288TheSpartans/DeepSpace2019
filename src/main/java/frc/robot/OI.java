@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.accessories.ModifierCombo;
 import frc.robot.autoCommandGroups.ModifierButtonCombination;
 import frc.robot.autoCommandGroups.ResetArmWrist;
@@ -18,11 +19,11 @@ import frc.robot.autocommands.ArmRotateDegrees;
 import frc.robot.autocommands.WristRotateDegrees;
 import frc.robot.commands.SpeedModifierCommand;
 import frc.robot.commands.SpeedModifierPresetCommand;
+import frc.robot.commands.ToggleThirdDriveMotor;
 import frc.robot.commands.AutonomousOveride;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.PneumaticsActivate;
 import frc.robot.commands.WristCommand;
-import frc.robot.commands.ToggleThirdDriveMotor;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -121,7 +122,7 @@ public class OI {
     xboxStart.whenPressed(new PneumaticsActivate());
     logitechStart.whenPressed(new AutonomousOveride());
     
-    logitechSelect.whenPressed(new ToggleThirdDriveMotor());
+    logitechBack.whenPressed(new ToggleThirdDriveMotor());
 
     // Speed modifiers.
     logitechUp.whenPressed(new SpeedModifierCommand(0.1));
