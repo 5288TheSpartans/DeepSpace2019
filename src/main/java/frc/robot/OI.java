@@ -22,6 +22,7 @@ import frc.robot.commands.AutonomousOveride;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.PneumaticsActivate;
 import frc.robot.commands.WristCommand;
+import frc.robot.commands.ToggleThirdDriveMotor;
 
 /**
  * This class is the glue that binds the controls on the physical operator

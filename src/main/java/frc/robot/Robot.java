@@ -231,7 +231,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Drive encoder 1 (inches): ", drivetrain.getLeftDistanceInches());
     SmartDashboard.putNumber("Drive encoder 2 (inches):", drivetrain.getRightDistanceInches());
     SmartDashboard.putNumber("Wrist Distance", wrist.getWristDistanceTicks());
-//    SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
+    SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
 //    SmartDashboard.putNumber("Secondary LeftJoyY", m_oi.getSecondaryControllerLeftStickY());
 //    SmartDashboard.putNumber("Secondary RightStickX", m_oi.getSecondaryControllerRightStickX());
     SmartDashboard.putBoolean("Arm Limit Switch", arm.getLimitSwitch());
