@@ -99,17 +99,18 @@ public class OI {
     // Defining button combinations for modifier 1.
     // ARM ANGLE, THEN WRIST ANGLE
     // MOD 1 == RIGHT BUMPER
-    mod1AndDPadDown.whenPressed(new  ModifierButtonCombination(70,140)); // bottom rocket score
+    mod1AndDPadDown.whenPressed(new  ModifierButtonCombination(60,100)); // bottom rocket score
     mod1AndDPadUp.whenPressed(new  ModifierButtonCombination(135, 150)); // top rocket score
-    mod1AndA.whenPressed(new ModifierButtonCombination(50, 165));  // cargo pickup angle
+    mod1AndA.whenPressed(new ModifierButtonCombination(60, 163));  // cargo pickup angle
     mod1AndX.whenPressed(new ResetArmWrist(RobotMap.armResetAngle, RobotMap.wristResetAngle));
-    mod1AndB.whenPressed(new ModifierButtonCombination(124, 140)); // mid rocket score
+    mod1AndB.whenPressed(new ModifierButtonCombination(90, 120)); // mid rocket score
     mod1AndY.whenPressed(new ModifierButtonCombination(70, 110)); // cargo loading station
     // xboxBack.whenPressed(new PneumaticsActivate());
 
     // Defining button combinations for modifier 2.
     // MOD 2 == LEFT BUMPER -> ALL HATCHES
     mod2AndDPadDown.whenPressed(new ModifierButtonCombination(60, 50));
+
     mod2AndDPadUp.whenPressed(new ModifierButtonCombination(40, 40));
     mod2AndA.whenPressed(new ModifierButtonCombination(60, 40));
     mod2AndX.whenPressed(new ModifierButtonCombination(80,60));

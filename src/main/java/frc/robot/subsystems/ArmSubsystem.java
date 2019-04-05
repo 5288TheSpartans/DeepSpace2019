@@ -116,12 +116,13 @@ public class ArmSubsystem extends Subsystem {
 
   public void updateOutputs() {
     updateBottomLimit();
-    if(!Robot.isArmPresetRunning) {
+    if(!Robot.isArmPresetRunning & (Robot.m_oi.getSecondaryControllerRightTrigger() < RobotMap.triggerDeadzone)& (Robot.m_oi.getSecondaryControllerLeftTrigger() < RobotMap.triggerDeadzone)) {
       currentArmPower = getGravityFightingValue();
     }
     if((getLimitSwitch() & currentArmPower > 0) || (isArmAtTop() & currentArmPower < 0))  {
       currentArmPower = 0;
     }
+    SmartDashboard.putNumber("Arm Output",currentArmPower*RobotMap.armSpeedMultiplier);
     armMotor1.set(currentArmPower*RobotMap.armSpeedMultiplier);
     armMotor2.set(currentArmPower*RobotMap.armSpeedMultiplier);
     // armMotor3.set(currentArmPower*RobotMap.armSpeedMultiplier);

@@ -77,8 +77,9 @@ public class ArmRotateDegrees extends Command {
     }
 
     if(angleToTurnTo < currentAngle && angleToTurnTo < 90) {
-      armOutput = armOutput*(5/8); // 5 eighths of 0.6
+      armOutput = armOutput*(7/8); // 13 sixteenths of 0.6
     }
+    
 
 /*    if (Math.abs(armOutput) < armPowerMinimum && armOutput > 0) {
       System.out.println("Arm set to minimum.");
