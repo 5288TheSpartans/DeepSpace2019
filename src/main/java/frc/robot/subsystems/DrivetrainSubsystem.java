@@ -29,6 +29,7 @@ public class DrivetrainSubsystem extends Subsystem {
   private double leftPower, rightPower;
   private final double numberOfTicks = 2048;
   private final double wheelCircumference = (6 * Math.PI);
+  public boolean useThirdDriveMotor = true;
 
   private Encoder leftEncoder = new Encoder(RobotMap.leftDriveEncoder1, RobotMap.leftDriveEncoder2, false,
       EncodingType.k4X);

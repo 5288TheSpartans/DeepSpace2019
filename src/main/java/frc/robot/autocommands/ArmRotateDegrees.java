@@ -23,7 +23,7 @@ public class ArmRotateDegrees extends Command {
   double currentAngle;
   final double armPowerMinimum = 0;
   final double armPowerLimit = 0.6;
-  SpartanPID armRaisePID;
+  SpartanPID armPID;
   SpartanPID armLowerPID;
 
   public ArmRotateDegrees(double angle) {
@@ -44,13 +44,20 @@ public class ArmRotateDegrees extends Command {
 
     startingAngle = Robot.arm.getRotationAngle();
     currentAngle = startingAngle;
-    armRaisePID = new SpartanPID(SmartDashboard.getNumber("Arm Raise P", RobotMap.ArmRaiseP),
+    if(startingAngle < angleToTurnTo) {
+    armPID = new SpartanPID(SmartDashboard.getNumber("Arm Raise P", RobotMap.ArmRaiseP),
         SmartDashboard.getNumber("Arm Raise I", RobotMap.ArmRaiseI),
         SmartDashboard.getNumber("Arm Raise D", RobotMap.ArmRaiseD), RobotMap.ArmRaiseFF);
-    // armLowerPID = new SpartanPID(RobotMap.ArmLowerP,
-    // RobotMap.ArmLowerI,RobotMap.ArmLowerD,RobotMap.ArmLowerD);
+    } else {
+      armPID = new SpartanPID(SmartDashboard.getNumber("Arm Lower P", RobotMap.ArmLowerP),
+      SmartDashboard.getNumber("Arm Lower I", RobotMap.ArmLowerI),
+      SmartDashboard.getNumber("Arm Lower D", RobotMap.ArmLowerD), RobotMap.ArmLowerFF);
 
-    armRaisePID.setTarget(angleToTurnTo);
+
+    }
+
+
+    armPID.setTarget(angleToTurnTo);
     // armLowerPID.setTarget(angleToTurnTo);
     // System.out.println(m_basePower);
 
@@ -62,9 +69,9 @@ public class ArmRotateDegrees extends Command {
     currentAngle = Robot.arm.getRotationAngle();
 
     // update armRotatePID with the current angle of the arm
-    armRaisePID.update(currentAngle);
+    armPID.update(currentAngle);
 
-    armOutput = armRaisePID.getOutput();
+    armOutput = armPID.getOutput();
 
 
 
