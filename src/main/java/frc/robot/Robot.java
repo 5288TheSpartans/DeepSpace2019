@@ -59,7 +59,7 @@ public class Robot extends TimedRobot {
 
     // Instantiate subsystems
     drivetrain = new DrivetrainSubsystem();
-    pneumatics = new PneumaticsSubsystem();
+   // pneumatics = new PneumaticsSubsystem();
     arm = new ArmSubsystem();
     wrist = new WristSubsystem();
     intake = new IntakeSubsystem();
@@ -67,7 +67,7 @@ public class Robot extends TimedRobot {
 
     arm.setResetValue();
     wrist.resetEncoders();
-    pneumatics.mainCompressor.start();
+  //  pneumatics.mainCompressor.start();
 
     // Choose auto
     m_chooser.addOption("Default Nothing", new DoNothingTime(1000));
@@ -113,16 +113,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    distance = SmartDashboard.getNumber("YES!", -1);
     drivetrain.updateOutputs();
     arm.updateOutputs();
     wrist.updateOutput();
 
     updateSmartDashboard();
-    RobotMap.setArmMultiplier(SmartDashboard.getNumber("Arm Speed Multiplier", 1.0));
-    RobotMap.setWristMultiplier(SmartDashboard.getNumber("Wrist Speed Multiplier", 1.0));
-    RobotMap.setIntakeMultiplier(SmartDashboard.getNumber("Intake Speed Multiplier", 1.0));
-    RobotMap.setDriveMultiplier(SmartDashboard.getNumber("Drive Speed Multiplier", 1.0));
 
     // arm.updateOutputs();
     // System.out.println(inst.isConnected());
