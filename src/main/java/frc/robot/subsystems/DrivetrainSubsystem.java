@@ -80,12 +80,24 @@ public class DrivetrainSubsystem extends Subsystem {
   }
 
   public void updateOutputs() {
-    leftDriveMotor1.set(-leftPower*RobotMap.driveSpeedMultiplier);
-    leftDriveMotor2.set(-leftPower*RobotMap.driveSpeedMultiplier);
-    leftDriveMotor3.set(-leftPower*RobotMap.driveSpeedMultiplier);
-    rightDriveMotor1.set(rightPower*RobotMap.driveSpeedMultiplier);
-    rightDriveMotor2.set(rightPower*RobotMap.driveSpeedMultiplier);
-    rightDriveMotor3.set(rightPower*RobotMap.driveSpeedMultiplier);
+    if(useThirdDriveMotor) {
+      leftDriveMotor1.set(-leftPower*RobotMap.driveSpeedMultiplier);
+      leftDriveMotor2.set(-leftPower*RobotMap.driveSpeedMultiplier);
+      leftDriveMotor3.set(-leftPower*RobotMap.driveSpeedMultiplier);
+      rightDriveMotor1.set(rightPower*RobotMap.driveSpeedMultiplier);
+      rightDriveMotor2.set(rightPower*RobotMap.driveSpeedMultiplier);
+      rightDriveMotor3.set(rightPower*RobotMap.driveSpeedMultiplier);
+    } 
+    else {
+      leftDriveMotor1.set(-leftPower*RobotMap.driveSpeedMultiplier);
+      leftDriveMotor2.set(-leftPower*RobotMap.driveSpeedMultiplier);
+      leftDriveMotor3.set(0);
+      rightDriveMotor1.set(rightPower*RobotMap.driveSpeedMultiplier);
+      rightDriveMotor2.set(rightPower*RobotMap.driveSpeedMultiplier);
+      rightDriveMotor3.set(0);
+
+    }
+  
   }
 
   public void putEncoderValues() {

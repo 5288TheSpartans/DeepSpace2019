@@ -119,6 +119,8 @@ public class OI {
 
     xboxStart.whenPressed(new PneumaticsActivate());
     logitechStart.whenPressed(new AutonomousOveride());
+    
+    logitechSelect.whenPressed(new ToggleThirdDriveMotor());
 
     // Speed modifiers.
     logitechUp.whenPressed(new SpeedModifierCommand(0.1));
