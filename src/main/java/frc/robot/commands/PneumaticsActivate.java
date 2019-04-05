@@ -14,7 +14,7 @@ public class PneumaticsActivate extends Command {
   public PneumaticsActivate() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.pneumatics);
+   // requires(Robot.pneumatics);
 
   }
 
@@ -23,7 +23,7 @@ public class PneumaticsActivate extends Command {
   protected void initialize() {
     System.out.println("Initializing PneumaticsActivate.");
 
-    Robot.pneumatics.flipSolenoid();
+    //Robot.pneumatics.flipSolenoid();
 
   }
 

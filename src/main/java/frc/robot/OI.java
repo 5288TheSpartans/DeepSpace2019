@@ -119,7 +119,6 @@ public class OI {
     mod2AndB.whenPressed(new ModifierButtonCombination(100, 80));
     mod2AndY.whenPressed(new ModifierButtonCombination(120, 100));
 
-    xboxStart.whenPressed(new PneumaticsActivate());
     logitechStart.whenPressed(new AutonomousOveride());
     
     logitechBack.whenPressed(new ToggleThirdDriveMotor());
