@@ -76,8 +76,8 @@ public class ArmRotateDegrees extends Command {
       armOutput = -armPowerLimit;
     }
 
-    if(angleToTurnTo < currentAngle && angleToTurnTo < 90) {
-      armOutput = armOutput*(7/8); // 13 sixteenths of 0.6
+    if(angleToTurnTo < currentAngle && angleToTurnTo < 140) {
+      armOutput = armOutput*0.6; // 13 sixteenths of 0.6
     }
     
 
