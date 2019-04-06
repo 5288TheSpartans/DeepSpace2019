@@ -48,11 +48,13 @@ public class ArmRotateDegrees extends Command {
     armPID = new SpartanPID(SmartDashboard.getNumber("Arm Raise P", RobotMap.ArmRaiseP),
         SmartDashboard.getNumber("Arm Raise I", RobotMap.ArmRaiseI),
         SmartDashboard.getNumber("Arm Raise D", RobotMap.ArmRaiseD), RobotMap.ArmRaiseFF);
+
+        System.out.println("Running RAISE ARM PID.");
     } else {
       armPID = new SpartanPID(SmartDashboard.getNumber("Arm Lower P", RobotMap.ArmLowerP),
       SmartDashboard.getNumber("Arm Lower I", RobotMap.ArmLowerI),
       SmartDashboard.getNumber("Arm Lower D", RobotMap.ArmLowerD), RobotMap.ArmLowerFF);
-
+      System.out.println("Running LOWER ARM PID.");
 
     }
 
