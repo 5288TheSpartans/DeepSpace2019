@@ -90,10 +90,10 @@ public class DrivetrainSubsystem extends Subsystem {
     } 
     else {
       leftDriveMotor1.set(-leftPower*RobotMap.driveSpeedMultiplier);
-      leftDriveMotor2.set(-leftPower*RobotMap.driveSpeedMultiplier);
+      leftDriveMotor2.set(0);
       leftDriveMotor3.set(0);
       rightDriveMotor1.set(rightPower*RobotMap.driveSpeedMultiplier);
-      rightDriveMotor2.set(rightPower*RobotMap.driveSpeedMultiplier);
+      rightDriveMotor2.set(0);
       rightDriveMotor3.set(0);
 
     }
