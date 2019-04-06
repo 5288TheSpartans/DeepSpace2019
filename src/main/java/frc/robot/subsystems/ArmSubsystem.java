@@ -28,6 +28,7 @@ public class ArmSubsystem extends Subsystem {
   private double encoderUnit = 4096;
   private double gearRatio = 93.33;
   public double armSpeedMultiplier = 1.0;
+  private double tickToAngleRatio = 3.323102083756007;
   // The arm's limit angles (in degrees)
   private double armBottomLimit = 30;
   private double armTopLimit = 210;
@@ -65,7 +66,8 @@ public class ArmSubsystem extends Subsystem {
 
   // get the current angle of the arm.
   public double getRotationAngle() {
-    return (getDistanceTicks()/108)*-360 + limitResetDegrees;
+    return getDistanceTicks()*tickToAngleRatio;
+    //return (getDistanceTicks()/108)*-360 + limitResetDegrees;
     //return ((getDistanceTicks() / encoderUnit)* (1/gearRatio)) * 360;
   }
   public void updateBottomLimit() {
