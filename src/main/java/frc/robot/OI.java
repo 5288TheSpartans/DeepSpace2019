@@ -101,7 +101,7 @@ public class OI {
 
     // Defining button combinations for modifier 1.
     // ARM ANGLE, THEN WRIST ANGLE
-    // MOD 1 == RIGHT BUMPER
+    // MOD 1 == RIGHT BUMPER+
     mod1AndDPadDown.whenPressed(new  ModifierButtonCombination(60,100)); // bottom rocket score
     mod1AndDPadUp.whenPressed(new  ModifierButtonCombination(135, 150)); // top rocket score
     mod1AndA.whenPressed(new ModifierButtonCombination(45, 141));  // cargo pickup angle
