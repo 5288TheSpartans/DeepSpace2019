@@ -33,6 +33,7 @@ public class ArmSubsystem extends Subsystem {
   // The arm's limit angles (in degrees)
   private double armBottomLimit = 30;
   private double armTopLimit = 210;
+  private double gravityFightingValue = 0;
 
   private double limitResetDegrees = 0;
 
@@ -67,7 +68,7 @@ public class ArmSubsystem extends Subsystem {
 
   // get the current angle of the arm.
   public double getRotationAngle() {
-    return getDistanceTicks()*tickToAngleRatio;
+    return getDistanceTicks()*-tickToAngleRatio;
     //return (getDistanceTicks()/108)*-360 + limitResetDegrees;
     //return ((getDistanceTicks() / encoderUnit)* (1/gearRatio)) * 360;
   }
@@ -116,25 +117,26 @@ public class ArmSubsystem extends Subsystem {
   }
   public boolean canArmMoveToOrigin() {
     return false;
+  
   }
 
   public void updateOutputs() {
     updateBottomLimit();
+    gravityFightingValue = getGravityFightingValue();
     if(!Robot.isArmPresetRunning & (Robot.m_oi.getSecondaryControllerRightTrigger() < RobotMap.triggerDeadzone)& (Robot.m_oi.getSecondaryControllerLeftTrigger() < RobotMap.triggerDeadzone)) {
-      currentArmPower = getGravityFightingValue();
+      currentArmPower = gravityFightingValue;
     }
-    if((getLimitSwitch() & currentArmPower > 0) || (isArmAtTop() & currentArmPower < 0))  {
+    if((getLimitSwitch() & currentArmPower > 0) || (isArmAtTop() & currentArmPower < 0) )  {
       currentArmPower = 0;
     }
     SmartDashboard.putNumber("Arm Output",currentArmPower*RobotMap.armSpeedMultiplier);
-    SmartDashboard.putBoolean("Gravity fighting",!Robot.isArmPresetRunning & (Robot.m_oi.getSecondaryControllerRightTrigger() < RobotMap.triggerDeadzone)& (Robot.m_oi.getSecondaryControllerLeftTrigger() < RobotMap.triggerDeadzone));
     armMotor1.set(currentArmPower*RobotMap.armSpeedMultiplier);
     armMotor2.set(currentArmPower*RobotMap.armSpeedMultiplier);
     // armMotor3.set(currentArmPower*RobotMap.armSpeedMultiplier);
   }
   public double getGravityFightingValue() {
     if (getRotationAngle() <= RobotMap.armResetAngle +1) return 0;
-    else return -0.1*Math.sin(getRotationAngle());
+    else return 0.1*Math.sin(getRotationAngle()+5);
   }
   
 }
