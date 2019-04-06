@@ -34,6 +34,7 @@ public class WristSubsystem extends Subsystem {
   private DigitalInput bottomLimitSwitch;
   public Encoder wristEncoder;
   private double angleTickScaleFactor = 0.00013453518;
+  public boolean isOverride = false;
 
   @Override
   public void initDefaultCommand() {
@@ -99,8 +100,8 @@ public class WristSubsystem extends Subsystem {
   public void updateOutput() {
     
 
-
-    if(getLimitSwitch() & wristPower < 0 || isWristAtBottom() & wristPower > 0) wristMotor.set(ControlMode.PercentOutput, 0);
+    if(isOverride) wristMotor.set(ControlMode.PercentOutput,wristPower*RobotMap.wristSpeedMultiplier);
+    else if(getLimitSwitch() & wristPower < 0 || isWristAtBottom() & wristPower > 0) wristMotor.set(ControlMode.PercentOutput, 0);
     else wristMotor.set(ControlMode.PercentOutput, wristPower*RobotMap.wristSpeedMultiplier);
     
   }

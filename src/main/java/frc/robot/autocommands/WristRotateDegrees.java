@@ -67,6 +67,8 @@ public class WristRotateDegrees extends Command {
     // return true when the wrist controller joystick receives input outside of its deadzones
     else if(!(Robot.m_oi.getSecondaryControllerLeftStickY() >= -RobotMap.joystickDeadzone && Robot.m_oi.getPrimaryControllerLeftStickY() <= RobotMap.joystickDeadzone) )
       return true;
+
+    else if(Robot.wrist.isOverride) return true;
     else
       return false;
     

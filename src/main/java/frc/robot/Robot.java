@@ -239,6 +239,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Third Drive Motor", drivetrain.useThirdDriveMotor);
    // SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
     SmartDashboard.putNumber("Wrist Distance Altered", Robot.wrist.wristEncoder.getDistance());
+    SmartDashboard.putBoolean("Wrist Override", Robot.wrist.isOverride);
     drivetrain.putEncoderValues();
   }
   private void updateResets() {
