@@ -127,7 +127,7 @@ public class ArmSubsystem extends Subsystem {
       currentArmPower = 0;
     }
     SmartDashboard.putNumber("Arm Output",currentArmPower*RobotMap.armSpeedMultiplier);
-    SmartDashboard.putNumber("Gravity fighting",!Robot.isArmPresetRunning & (Robot.m_oi.getSecondaryControllerRightTrigger() < RobotMap.triggerDeadzone)& (Robot.m_oi.getSecondaryControllerLeftTrigger() < RobotMap.triggerDeadzone));
+    SmartDashboard.putBoolean("Gravity fighting",!Robot.isArmPresetRunning & (Robot.m_oi.getSecondaryControllerRightTrigger() < RobotMap.triggerDeadzone)& (Robot.m_oi.getSecondaryControllerLeftTrigger() < RobotMap.triggerDeadzone));
     armMotor1.set(currentArmPower*RobotMap.armSpeedMultiplier);
     armMotor2.set(currentArmPower*RobotMap.armSpeedMultiplier);
     // armMotor3.set(currentArmPower*RobotMap.armSpeedMultiplier);
