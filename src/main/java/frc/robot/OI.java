@@ -104,10 +104,10 @@ public class OI {
     // MOD 1 == RIGHT BUMPER+
     mod1AndDPadDown.whenPressed(new  ModifierButtonCombination(60,100)); // bottom rocket score
     mod1AndDPadUp.whenPressed(new  ModifierButtonCombination(135, 150)); // top rocket score
-    mod1AndA.whenPressed(new ModifierButtonCombination(45, 141));  // cargo pickup angle
+    mod1AndA.whenPressed(new ModifierButtonCombination(38, 150));  // cargo pickup angle
     mod1AndX.whenPressed(new ResetArmWrist(RobotMap.armResetAngle, RobotMap.wristResetAngle));
-    mod1AndB.whenPressed(new ModifierButtonCombination(120, 120)); // mid rocket score
-    mod1AndY.whenPressed(new ModifierButtonCombination(70, 110)); // cargo loading station
+    mod1AndB.whenPressed(new ModifierButtonCombination(110, 140)); // cargo ship score
+    mod1AndY.whenPressed(new ModifierButtonCombination(126, 180)); // cargo loading station
     xboxBack.whenPressed(new ToggleWristOverride());
 
     // Defining button combinations for modifier 2.
