@@ -45,6 +45,7 @@ public class Robot extends TimedRobot {
   public static NetworkTableEntry angleToTurn, distEntry;
   public static boolean isArmPresetRunning = false;
   double distance;
+  public static boolean safetyMode = true;
   public static Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -228,8 +229,8 @@ public class Robot extends TimedRobot {
 //    SmartDashboard.putNumber("Arm encoder 2: ", Robot.arm.getArmMotor2Pos());
     SmartDashboard.putNumber("Arm angle: ", Robot.arm.getRotationAngle());
     SmartDashboard.putNumber("Wrist angle: ", Robot.wrist.getRotationAngle());
-    SmartDashboard.putNumber("Drive encoder 1 (inches): ", drivetrain.getLeftDistanceInches());
-    SmartDashboard.putNumber("Drive encoder 2 (inches):", drivetrain.getRightDistanceInches());
+  //  SmartDashboard.putNumber("Drive encoder 1 (inches): ", drivetrain.getLeftDistanceInches());
+  //  SmartDashboard.putNumber("Drive encoder 2 (inches):", drivetrain.getRightDistanceInches());
     SmartDashboard.putNumber("Wrist Distance", wrist.getWristDistanceTicks());
     SmartDashboard.putNumber("Arm Distance", arm.getDistanceTicks());
 //    SmartDashboard.putNumber("Secondary LeftJoyY", m_oi.getSecondaryControllerLeftStickY());
@@ -238,7 +239,10 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Wrist Limit Switch", wrist.getLimitSwitch());
     SmartDashboard.putBoolean("Third Drive Motor", drivetrain.useThirdDriveMotor);
    // SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
-    SmartDashboard.putNumber("Wrist Distance Altered", Robot.wrist.wristEncoder.getDistance());
+  //  SmartDashboard.putNumber("Wrist Distance Altered", Robot.wrist.wristEncoder.getDistance());
+    SmartDashboard.putNumber("Drive Multiplier",RobotMap.driveSpeedMultiplier);
+    SmartDashboard.putNumber("Arm Multiplier", Robot.arm.armSpeedMultiplier);
+    SmartDashboard.putNumber("Wrist Multiplier", RobotMap.wristSpeedMultiplier);
     SmartDashboard.putBoolean("Wrist Override", Robot.wrist.isOverride);
     drivetrain.putEncoderValues();
   }

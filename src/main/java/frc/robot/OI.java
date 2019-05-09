@@ -16,6 +16,7 @@ import frc.robot.accessories.ModifierCombo;
 import frc.robot.autoCommandGroups.ModifierButtonCombination;
 import frc.robot.autoCommandGroups.ResetArmWrist;
 import frc.robot.autocommands.ArmRotateDegrees;
+import frc.robot.autocommands.TriggerSafetyMode;
 import frc.robot.autocommands.WristRotateDegrees;
 import frc.robot.commands.SpeedModifierCommand;
 import frc.robot.commands.SpeedModifierPresetCommand;
@@ -101,14 +102,14 @@ public class OI {
 
     // Defining button combinations for modifier 1.
     // ARM ANGLE, THEN WRIST ANGLE
-    // MOD 1 == RIGHT BUMPER+
+    // MOD 1 == RIGHT BUMPER
     mod1AndDPadDown.whenPressed(new  ModifierButtonCombination(60,100)); // bottom rocket score
     mod1AndDPadUp.whenPressed(new  ModifierButtonCombination(135, 150)); // top rocket score
-    mod1AndA.whenPressed(new ModifierButtonCombination(38, 150));  // cargo pickup angle
+    mod1AndA.whenPressed(new ModifierButtonCombination(60, 163));  // cargo pickup angle
     mod1AndX.whenPressed(new ResetArmWrist(RobotMap.armResetAngle, RobotMap.wristResetAngle));
-    mod1AndB.whenPressed(new ModifierButtonCombination(110, 140)); // cargo ship score
-    mod1AndY.whenPressed(new ModifierButtonCombination(126, 180)); // cargo loading station
-    xboxBack.whenPressed(new ToggleWristOverride());
+    mod1AndB.whenPressed(new ModifierButtonCombination(90, 120)); // mid rocket score
+    mod1AndY.whenPressed(new ModifierButtonCombination(70, 110)); // cargo loading station
+    // xboxBack.whenPressed(new PneumaticsActivate());
 
     // Defining button combinations for modifier 2.
     // MOD 2 == LEFT BUMPER -> ALL HATCHES
@@ -120,7 +121,7 @@ public class OI {
     mod2AndB.whenPressed(new ModifierButtonCombination(100, 80));
     mod2AndY.whenPressed(new ModifierButtonCombination(120, 100));
 
-    logitechStart.whenPressed(new AutonomousOveride());
+    logitechStart.whenPressed(new ToggleWristOverride());
     
     logitechBack.whenPressed(new ToggleThirdDriveMotor());
 
@@ -129,10 +130,12 @@ public class OI {
     logitechDown.whenPressed(new SpeedModifierCommand(-0.1));
 
     // Speed modifier presets.
-    logitechA.whenPressed(new SpeedModifierPresetCommand(RobotMap.lowDriveSpeed));
-    logitechB.whenPressed(new SpeedModifierPresetCommand(RobotMap.driveSpeedMultiplier));
-    logitechX.whenPressed(new SpeedModifierPresetCommand(RobotMap.moderateDriveSpeed));
-    logitechY.whenPressed(new SpeedModifierPresetCommand(RobotMap.highDriveSpeed));
+    logitechA.whileHeld(new SpeedModifierPresetCommand(RobotMap.lowDriveSpeed));
+    logitechB.whileHeld(new SpeedModifierPresetCommand(RobotMap.driveSpeedMultiplier));
+    logitechX.whileHeld(new SpeedModifierPresetCommand(RobotMap.moderateDriveSpeed));
+    logitechY.whileHeld(new SpeedModifierPresetCommand(RobotMap.highDriveSpeed));
+
+    xboxStart.whenPressed(new TriggerSafetyMode());
 
     // IF USING XboxController2 AND LogitechController CLASSES, USE THIS CODE
     /*

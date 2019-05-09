@@ -5,40 +5,61 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.autocommands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class SpeedModifierCommand extends Command {
-  private double increaseSpeed = 0;
-
-  public SpeedModifierCommand(double speedValue) {
-    increaseSpeed = speedValue;
+public class TriggerSafetyMode extends Command {
+  public TriggerSafetyMode() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    RobotMap.driveSpeedMultiplier += increaseSpeed;
+    Robot.safetyMode = !Robot.safetyMode;
+    System.out.println("TriggerSafetyMode initialized.");
+    if(Robot.safetyMode) {
+      System.out.println("Safety mode initiated.");
+      RobotMap.driveSpeedMultiplier = 0.25;
+      Robot.arm.armSpeedMultiplier = 0.25;
+      RobotMap.wristSpeedMultiplier = 0.5;
+    }
+    else {
+      System.out.println("Safety mode disabled.");
+      RobotMap.driveSpeedMultiplier = 1.0;
+      Robot.arm.armSpeedMultiplier = 1.0;
+      RobotMap.wristSpeedMultiplier = 1.0;
+
+    }
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    
+    if(Robot.safetyMode) {
+      RobotMap.driveSpeedMultiplier = 0.25;
+      Robot.arm.armSpeedMultiplier = 0.25;
+      RobotMap.wristSpeedMultiplier = 0.5;
+    }
+    else {
+      RobotMap.driveSpeedMultiplier = 1.0;
+      Robot.arm.armSpeedMultiplier = 1.0;
+      RobotMap.wristSpeedMultiplier = 1.0;
+
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return true;
-    /*
-    if (RobotMap.driveSpeedMultiplier == increaseSpeed)
-      return true;
-    else
-      return false;
- */
-    }
+  }
 
   // Called once after isFinished returns true
   @Override
