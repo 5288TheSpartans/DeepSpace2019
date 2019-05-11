@@ -157,9 +157,10 @@ public class RobotMap {
   public static final double blastBallSpeed = -0.7;
 
   // DRIVETRAIN SPEED PRESETS
-  public static final double lowDriveSpeed = 0.8;
-  public static final double moderateDriveSpeed = 1.2;
-  public static final double highDriveSpeed = 1.4;
+  public static final double lowDriveSpeed = 0.25;
+  public static final double moderateDriveSpeed = 0.5;
+  public static final double highDriveSpeed = 0.75;
+  public static final double fullDriveSpeed = 1.0;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
