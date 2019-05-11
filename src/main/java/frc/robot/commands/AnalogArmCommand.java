@@ -72,6 +72,9 @@ public class AnalogArmCommand extends Command {
       // Otherwise, set power depending of trigger values.
     } else {
       // Left for lowering, right for raising
+      if(Robot.safetyMode) {
+        leftTrigger = leftTrigger*0.75;
+      }
       Robot.arm.setArmPower(leftTrigger - rightTrigger);
 
     }

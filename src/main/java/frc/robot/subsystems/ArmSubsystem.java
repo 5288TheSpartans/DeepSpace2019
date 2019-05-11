@@ -25,10 +25,10 @@ import frc.robot.commands.AnalogArmCommand;
 public class ArmSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
+  public boolean isGravityFighting = false;
   private double encoderUnit = 4096;
   private double gearRatio = 93.33;
-  public double armSpeedMultiplier = 1.0;
+  //public double armSpeedMultiplier = 1.0;
   private double tickToAngleRatio = 3.323102083756007;
   // The arm's limit angles (in degrees)
   private double armBottomLimit = 30;
@@ -129,10 +129,17 @@ public class ArmSubsystem extends Subsystem {
     if((getLimitSwitch() & currentArmPower > 0) || (isArmAtTop() & currentArmPower < 0) )  {
       currentArmPower = 0;
     }
+    // Print to SmartDashboard
     SmartDashboard.putNumber("Arm Output",currentArmPower*RobotMap.armSpeedMultiplier);
+    if(currentArmPower == gravityFightingValue) {
+      armMotor1.set(currentArmPower);
+      armMotor2.set(currentArmPower); 
+    }
+    else {
     armMotor1.set(currentArmPower*RobotMap.armSpeedMultiplier);
     armMotor2.set(currentArmPower*RobotMap.armSpeedMultiplier);
     // armMotor3.set(currentArmPower*RobotMap.armSpeedMultiplier);
+    }
   }
   public double getGravityFightingValue() {
     if (getRotationAngle() <= RobotMap.armResetAngle +1) return 0;

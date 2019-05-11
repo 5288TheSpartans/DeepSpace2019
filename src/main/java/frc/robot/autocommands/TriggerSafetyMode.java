@@ -21,17 +21,16 @@ public class TriggerSafetyMode extends Command {
   @Override
   protected void initialize() {
     Robot.safetyMode = !Robot.safetyMode;
-    System.out.println("TriggerSafetyMode initialized.");
     if(Robot.safetyMode) {
       System.out.println("Safety mode initiated.");
       RobotMap.driveSpeedMultiplier = 0.25;
-      Robot.arm.armSpeedMultiplier = 0.25;
+      RobotMap.armSpeedMultiplier = 0.4;
       RobotMap.wristSpeedMultiplier = 0.5;
     }
     else {
       System.out.println("Safety mode disabled.");
       RobotMap.driveSpeedMultiplier = 1.0;
-      Robot.arm.armSpeedMultiplier = 1.0;
+      RobotMap.armSpeedMultiplier = 1.0;
       RobotMap.wristSpeedMultiplier = 1.0;
 
     }
@@ -42,17 +41,6 @@ public class TriggerSafetyMode extends Command {
   @Override
   protected void execute() {
     
-    if(Robot.safetyMode) {
-      RobotMap.driveSpeedMultiplier = 0.25;
-      Robot.arm.armSpeedMultiplier = 0.25;
-      RobotMap.wristSpeedMultiplier = 0.5;
-    }
-    else {
-      RobotMap.driveSpeedMultiplier = 1.0;
-      Robot.arm.armSpeedMultiplier = 1.0;
-      RobotMap.wristSpeedMultiplier = 1.0;
-
-    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

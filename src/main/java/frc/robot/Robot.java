@@ -45,7 +45,7 @@ public class Robot extends TimedRobot {
   public static NetworkTableEntry angleToTurn, distEntry;
   public static boolean isArmPresetRunning = false;
   double distance;
-  public static boolean safetyMode = true;
+  public static boolean safetyMode = false;
   public static Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -241,7 +241,7 @@ public class Robot extends TimedRobot {
    // SmartDashboard.putBoolean("Intake Solenoid", pneumatics.getIsExtended());
   //  SmartDashboard.putNumber("Wrist Distance Altered", Robot.wrist.wristEncoder.getDistance());
     SmartDashboard.putNumber("Drive Multiplier",RobotMap.driveSpeedMultiplier);
-    SmartDashboard.putNumber("Arm Multiplier", Robot.arm.armSpeedMultiplier);
+    SmartDashboard.putNumber("Arm Multiplier", RobotMap.armSpeedMultiplier);
     SmartDashboard.putNumber("Wrist Multiplier", RobotMap.wristSpeedMultiplier);
     SmartDashboard.putBoolean("Wrist Override", Robot.wrist.isOverride);
     drivetrain.putEncoderValues();
