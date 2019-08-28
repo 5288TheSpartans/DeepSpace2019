@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
   public static PneumaticsSubsystem pneumatics;
   public static NetworkTableEntry angleToTurn, distEntry;
   public static boolean isArmPresetRunning = false;
-  double distance;
+  public static double distToObject, xToObject;
   public static boolean safetyMode = false;
   public static Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -55,9 +55,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-
+    distToObject = 0;
+    xToObject =0;
     isArmPresetRunning = false;
-
     // Instantiate subsystems
     drivetrain = new DrivetrainSubsystem();
    // pneumatics = new PneumaticsSubsystem();
@@ -114,6 +114,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    
+    xToObject = SmartDashboard.getNumber("xToObject", 0);
+    distToObject = SmartDashboard.getNumber("distanceToObject", 0);
+
     drivetrain.updateOutputs();
     arm.updateOutputs();
     wrist.updateOutput();

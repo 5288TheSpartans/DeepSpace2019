@@ -16,6 +16,7 @@ import frc.robot.accessories.ModifierCombo;
 import frc.robot.autoCommandGroups.ModifierButtonCombination;
 import frc.robot.autoCommandGroups.ResetArmWrist;
 import frc.robot.autocommands.ArmRotateDegrees;
+import frc.robot.autocommands.ChaseObject;
 import frc.robot.autocommands.TriggerSafetyMode;
 import frc.robot.autocommands.WristRotateDegrees;
 import frc.robot.commands.SpeedModifierCommand;
@@ -137,6 +138,7 @@ public class OI {
 
     xboxStart.whenPressed(new TriggerSafetyMode());
 
+    xboxBack.whenPressed(new ChaseObject(0.15));
     // IF USING XboxController2 AND LogitechController CLASSES, USE THIS CODE
     /*
      * secondaryController.yButton.toggleWhenPressed(new IntakeCommand(0.3));
