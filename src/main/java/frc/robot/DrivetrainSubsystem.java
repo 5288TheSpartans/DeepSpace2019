@@ -5,11 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package frc.robot;
 
 //import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -17,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.commands.ArcadeDriveCommand;
+import frc.robot.ArcadeDriveCommand;
 
 /**
  * Add your docs here.
@@ -35,15 +34,15 @@ public class DrivetrainSubsystem extends Subsystem {
   private Encoder rightEncoder = new Encoder(RobotMap.rightDriveEncoder1, RobotMap.rightDriveEncoder2, true,
       EncodingType.k4X);
 
-  private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+  // private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 
   private VictorSP leftDriveMotor1 = new VictorSP(RobotMap.leftDriveMotor1);
   private VictorSP leftDriveMotor2 = new VictorSP(RobotMap.leftDriveMotor2);
-  private VictorSP leftDriveMotor3 = new VictorSP(RobotMap.leftDriveMotor3);
+  // private VictorSP leftDriveMotor3 = new VictorSP(RobotMap.leftDriveMotor3);
 
   private VictorSP rightDriveMotor1 = new VictorSP(RobotMap.rightDriveMotor1);
   private VictorSP rightDriveMotor2 = new VictorSP(RobotMap.rightDriveMotor2);
-  private VictorSP rightDriveMotor3 = new VictorSP(RobotMap.rightDriveMotor3);
+  // private VictorSP rightDriveMotor3 = new VictorSP(RobotMap.rightDriveMotor3);
 
   public DrivetrainSubsystem() {
     leftEncoder.setDistancePerPulse(wheelCircumference / numberOfTicks);
@@ -55,7 +54,7 @@ public class DrivetrainSubsystem extends Subsystem {
     leftEncoder.setSamplesToAverage(1);
     rightEncoder.setSamplesToAverage(1);
 
-    gyro.calibrate();
+    // gyro.calibrate();
 
   }
 
@@ -81,10 +80,10 @@ public class DrivetrainSubsystem extends Subsystem {
   public void updateOutputs() {
     leftDriveMotor1.set(-leftPower);
     leftDriveMotor2.set(-leftPower);
-    leftDriveMotor3.set(-leftPower);
+    // leftDriveMotor3.set(-leftPower);
     rightDriveMotor1.set(rightPower);
     rightDriveMotor2.set(rightPower);
-    rightDriveMotor3.set(rightPower);
+    // rightDriveMotor3.set(rightPower);
   }
 
   public void putEncoderValues() {
@@ -102,13 +101,6 @@ public class DrivetrainSubsystem extends Subsystem {
     return rightEncoder.getDistance();
   }
 
-  public double getGyroAngle() {
-    return gyro.getAngle();
-  }
-
-  public void resetGyro() {
-    gyro.reset();
-  }
 
   public void resetEncoders() {
     leftEncoder.reset();
@@ -116,9 +108,9 @@ public class DrivetrainSubsystem extends Subsystem {
   }
 
   public double accelerateDriveSpeed() {
-    if (Robot.m_oi.getPrimaryControllerLeftStickY() > 0)
-      return Math.pow(Robot.m_oi.getPrimaryControllerLeftStickY(), 2);
+    if (Robot.m_oi.getXboxControllerLeftStickY() > 0)
+      return Math.pow(Robot.m_oi.getXboxControllerLeftStickY(), 2);
     else
-      return -Math.pow(Robot.m_oi.getPrimaryControllerLeftStickY(), 2);
+      return -Math.pow(Robot.m_oi.getXboxControllerLeftStickY(), 2);
   }
 }

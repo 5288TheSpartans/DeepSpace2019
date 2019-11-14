@@ -1,18 +1,18 @@
-package frc.robot.accessories;
+package frc.robot;
 
-//import com.sun.tools.javac.tree.JCtree.JCTypeParameter;
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-public class LogitechController extends Joystick {
+public class XboxController2 extends XboxController {
+	int m_port = 0;
 
-	public JoystickButton xButton, yButton, aButton, bButton, rightBumper, leftBumper, startButton, selectButton,
-			leftStickButton, rightStickButton;
-
-	// Creation of // PID CONSTANTS
-	public LogitechController(int port) {
+	public JoystickButton xButton,yButton,aButton,bButton,
+	rightBumper,leftBumper,startButton,selectButton
+	,leftStickButton, rightStickButton;
+	
+	public XboxController2(int port) {
 		super(port);
-		xButton = new JoystickButton(this, 3);
+		xButton = new JoystickButton(this, 3);	
 		yButton = new JoystickButton(this, 4);
 		aButton = new JoystickButton(this, 1);
 		bButton = new JoystickButton(this, 2);
@@ -45,11 +45,11 @@ public class LogitechController extends Joystick {
 	}
 
 	public double getLeftAnalogTrigger() {
-		return this.getRawAxis(2);
+		return this.getTriggerAxis(Hand.kLeft);
 	}
 
 	public double getRightAnalogTrigger() {
-		return this.getRawAxis(3);
+		return this.getTriggerAxis(Hand.kRight);
 	}
 
 	public double getDPadValue() {
@@ -60,4 +60,11 @@ public class LogitechController extends Joystick {
 		}
 	}
 
+	public boolean getRightBumperStatus() {
+		return this.getBumperPressed(Hand.kRight);
+	}
+
+	public boolean getLeftBumperStatus() {
+		return this.getBumperPressed(Hand.kLeft);
+	}
 }

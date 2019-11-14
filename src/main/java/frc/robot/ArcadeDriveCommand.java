@@ -5,12 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.accessories.SpartanPID;
+import frc.robot.SpartanPID;
 
 public class ArcadeDriveCommand extends Command {
 
@@ -37,8 +37,8 @@ public class ArcadeDriveCommand extends Command {
     // Calculate how much one side is spinning more than the other
     error = Robot.drivetrain.getLeftDistanceInches() - Robot.drivetrain.getRightDistanceInches();
 
-    leftJoyY = Robot.m_oi.getPrimaryControllerLeftStickY();
-    rightJoyX = Robot.m_oi.getPrimaryControllerRightStickX();
+    leftJoyY = Robot.m_oi.getXboxControllerLeftStickY();
+    rightJoyX = Robot.m_oi.getXboxControllerRightStickX();
 
     // If it IS within the deadzone
     if (leftJoyY > -RobotMap.joystickDeadzone && leftJoyY < RobotMap.joystickDeadzone) {
